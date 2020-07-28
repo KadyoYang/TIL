@@ -44,6 +44,4 @@ tab 누르면 대상 나온다
 git diff 로 차이점 보기
 
 정돈..
-Useless remote commits hehehehehe
-heheheh
-hahaha
+// 여기까지가 기본
