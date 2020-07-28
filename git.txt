@@ -12,3 +12,5 @@ git branch "" // 브랜치 생성
 git checkout "" // 브랜치Yee동
 
 git merge "" // 현재 브랜치와대상 브랜치 머지 
+
+...
