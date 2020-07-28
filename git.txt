@@ -18,3 +18,9 @@ git pull // 원격 저장소에서 쌔거 땡겨온다
 
 git push origin master // 원격 저장소에 푸시
 // git push "원격주소" "브랜치" 형식임
+
+
+Useless remote commits hehehehehe
+
+heheheh
+hahaha
