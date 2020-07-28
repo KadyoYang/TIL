@@ -1,3 +1,4 @@
+// 로컬 git
 git 
 git init
 git config --global user.name ""
@@ -13,8 +14,26 @@ git checkout "" // 브랜치Yee동
 
 git merge "" // 현재 브랜치와대상 브랜치 머지 
 
-git pull // 원격 저장소에서 쌔거 땡겨온다
 
+
+// 원격 저장소 github
+git clone "" 원격저장소의 모든 내용을 로컬 저장소로 복사
+git remote 로컬 저장소를 특정 원격 저장소와 연결
+
+git pull // 원격 저장소에서 쌔거 땡겨온다
+// git remote ㅁ여령을 통해 서로 연결된 원격 저장소의 최신 내용을 로컬 저장소로 가져오면서
+// 다른거 있으면 병합한다. git push와 반대성격
 
 git push origin master // 원격 저장소에 푸시
 // git push "원격주소" "브랜치" 형식임
+
+git push origin --all // 모든 브랜치 올리는 명령어
+
+git fetch // 로컬 저장소와 원격 저장소의 변경사항이 다를 때 이를 비교하고
+// git merge 명령어와 함께 최신데이터를 반영하거나 충돌을 해결한다.. 
+
+pull은 자동으로 페치 병합을 해줘서 뭐가 됬는지알수없다는단점
+fetch는 손수 작업해야하므로 뭐가 변했는지 알수있다.
+
+fetch 후 git branch -a 해서 리모트 브랜치까지 본 후에 머지
+
