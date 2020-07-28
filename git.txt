@@ -1,0 +1,14 @@
+git 
+git init
+git config --global user.name ""
+git config --global user.email ""
+
+git add
+git commit -a //git add 자동으로 해준다
+git commit -m "" // 간단한 커멘트 
+
+git branch // 브랜치 현황 보기
+git branch "" // 브랜치 생성
+git checkout "" // 브랜치Yee동
+
+git merge "" // 현재 브랜치와대상 브랜치 머지 
