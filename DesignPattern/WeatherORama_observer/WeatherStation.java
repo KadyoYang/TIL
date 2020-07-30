@@ -1,4 +1,4 @@
-package WeatherORama_observer;
+package DesignPattern.WeatherORama_observer;
 
 public class WeatherStation {
     public static void main(String[] args){

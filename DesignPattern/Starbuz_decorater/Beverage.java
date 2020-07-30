@@ -1,4 +1,4 @@
-package Starbuz_decorater;
+package DesignPattern.Starbuz_decorater;
 
 public abstract class Beverage {
     String description = "제목 없음";

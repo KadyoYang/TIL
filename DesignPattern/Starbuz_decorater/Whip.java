@@ -1,4 +1,4 @@
-package Starbuz_decorater;
+package DesignPattern.Starbuz_decorater;
 
 public class Whip extends CondimentDecorator{
     Beverage beverage;

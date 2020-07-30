@@ -1,4 +1,4 @@
-package PizzaStore_factory;
+package DesignPattern.PizzaStore_factory;
 
 public class ChicagoPizzaStore extends PizzaStore{
     

@@ -1,4 +1,4 @@
-package PizzaStore_factory;
+package DesignPattern.PizzaStore_factory;
 
 import sun.java2d.pipe.SpanShapeRenderer.Simple;
 

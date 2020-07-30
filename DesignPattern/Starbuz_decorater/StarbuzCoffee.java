@@ -1,4 +1,4 @@
-package Starbuz_decorater;
+package DesignPattern.Starbuz_decorater;
 
 public class StarbuzCoffee {
     public static void main(String[] args){

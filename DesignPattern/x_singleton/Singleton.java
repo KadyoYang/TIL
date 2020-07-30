@@ -1,4 +1,4 @@
-package x_singleton;
+package DesignPattern.x_singleton;
 
 public class Singleton {
     private static Singleton uniqueInstance;

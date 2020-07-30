@@ -1,4 +1,4 @@
-package WeatherORama_observer;
+package DesignPattern.WeatherORama_observer;
 
 
 public class CurrentConditionsDisplay implements Observer, DisplayElement{

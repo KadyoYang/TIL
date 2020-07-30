@@ -1,4 +1,4 @@
-package remoteController_command;
+package DesignPattern.remoteController_command;
 
 public class TestDriver {
     public static void main(String[] args){

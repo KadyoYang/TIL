@@ -1,4 +1,4 @@
-package remoteController_command;
+package DesignPattern.remoteController_command;
 
 public class GarageDoor {
     public void up(){
