@@ -1,0 +1,75 @@
+XML은 웹	에서 규격화된 데이터를 효율적으로 주고받기위해 만든 마크업언어로 JSON, YAML보다 가장 먼저 등장함. JAVA, C# 애플리케이션 설정 파일, 클라이언트-서버 메시지 용도로 활용되고있음
+
+XML은 버전정보가 파일 안에 있음, 직접 지정해줘야함
+
+<?xml version="1.0" encoding="UTF-8"?>
+<message>
+    <number>12345</number>
+    <pi>3.14</pi>
+    <str option1="1" option2="2">문자열 값</str>
+    <null_tag />
+    <object>
+        <str2>문자열값 2</str2>
+        <object2>
+            <number2>12345</number2>
+        </object2>
+    </object>
+    <num_array>
+        <element>1</element>
+        <elemant>2</element>
+        <elemant attribute="value">3</element>
+        <elemant>4</element>
+        <elemant>5</element>
+    </num_array>
+    <str_array>
+        <element>one</element>
+        <element>two</element>
+        <element>three</element>
+        <element>four</element>
+        <element>five</element>
+    </str_array>
+</message>
+
+* 태그와 요소
+XML의 모든 구성요소들은 <로 시작하여 >로 끝남
+요소 number
+시작 태그 <number>
+종료 태그 </number>
+
+* XML의 배열구조
+  XML은 같은 이름을 가진 요소가 여러개 있을때 이를 배열로 취급함
+
+* 속성 
+  요소 안에는 추가적으로 attribute(속성)값을 설정할수가 있다. 부가적인 정보를 나타내는 메타 데이터 정도로 생각하면 된다.
+
+개발자는 두가지선택이 가능
+<length unit="cm">100</length>
+
+<length>
+    <value>100</value>
+    <unit>cm</unit>
+</length>
+
+
+* XML은 json이나 yaml과는 다르게 부분읽기를 지원 일부만 메모리로 가져와서 파싱할 수 있음
+XML도 json과 yaml과 동일하게 최상위 객체를 가져오는 것부터 시작한다.
+다만 XML은 객체 대신 트리라고 부르며 트리에서 값을 읽는 방법도 조금 다르다.
+
+* XML트리 읽기: XPath 사용
+XPath는 XML 태그들을 디렉터리 경로 형태로 정의하는 표준 규격
+XPath를 사용하면 원하는 태그에 바로 접근할 수 있다는 장점이 있음
+
+<?xml version="1.0" encoding="UTF-8"?>
+<message>
+    <number>12345</number>
+...
+일때 XPath로 다음과 같이 정의 가능
+<message>: == /message
+<message>안에 포함된 number: == /message/number
+
+
+* XML트리 읽기: 반복자 사용
+XPath는 쉽게 데이터에 접근하고 읽을수있으나, 미리 XML구조를 알고있어야한다는 전제가 필요
+사용자 요청과같이 XML 데이터를 미리 알 수가 없거나 동적으로 바뀌는 경우는 XPath대신 반복자 기반으로 데이터에 접근해야함
+트리 안에 있는 요소들을 보면서 안에 배열을 갖고있느닞 또는 내부요소인지 단일요소인지 파악후 동작 (재귀형태로 동작)
+

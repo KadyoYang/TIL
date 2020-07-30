@@ -1,0 +1,89 @@
+프로토콜 버퍼(Protobuf)는 구글에서 만든 데이터 직렬화 규격이다.
+앞서 다뤘던 JSON, YAML, XML이 텍스트 기반 규격인 반면, 프로토콜 버퍼는 바이너리 기반 규격이기 때문에 더 빠르고 효율적으로 데이터를 가공하고 처리할 수 있다.
+
+대부분의 시스템은 앞에 나왔던 텍스트기반으로도 충분하지만, 실시간 온라인 게임처럼 제한된 짧은 시간 안에 수많은 클라이언트가 요청할때는 좋지않으므로 프로토콜 버퍼와 같은 바이너리 규격을 사용해야함
+
+받는 쪽과 보내는쪽이 똑같은 규격을 사용해야만 복원 읽기 가능
+
+바이너리 기반 규격은 메시지 크기를 효율적으로 줄일 수 있고, 처리성능도 빠르다
+test.json == 225byte
+test.yaml == 215byte
+test.xml == 607byte
+test.dat(확장자에 제한 없음 맘대로 설정해도됨 없어도됨) == 86byte
+
+
+* 메시지 규격 코드화
+텍스트 기반 메시지 규격인 json, yaml, xml은 라이브러리만 설치하면 코드 안에서 원하는 데이터 규격을 만들 수 있음. 프토토콜버퍼는 몇가지 준비사항이 필요함
+
+ - 스키마 파일
+스키마 파일(.proto)는 프로토콜 버퍼에서 사용할 메시지 구조를 정의함. C랑 상당히 유사한 문법임 구조체나 클래스를 상상하면 됨
+
+message SimpleMessage{
+    string name = 1;
+    int64 num64 = 2;
+    double float64 = 3;
+    bytes uuid = 4;
+    ...
+}
+
+ - 프로토콜 버퍼 컴파일러
+컴파일러(protoc)는 스키마 파일(.protoc)에 필요한 언어를 인터페이스 코드로 만들어주는 프로그램이다. 
+.protoc >> 컴파일러로 컴파일 >> .cpp .py 
+
+ - 인터페이스 코드
+  인터페이스 코드는 컴파일러가 스키마를 읽어 만들어낸 결과물이다. 모든 프로그램은 이 코드를 통해서만 데이터를 직렬화/역직렬화할 수 있다.
+
+ - .proto 프로토파일의 맨 앞부분에는 반드시 syntac = "proto3" 등과같은 버전정보를 명시해줘야함( 버전2는 상당히 오래되서 버전3을 배우고 사용하는 것이 더 좋음 )
+
+
+모든 메시지 스키마는 message로 시작
+기본필드 : 스키마 내부에서 사용할 데이터를 필드라고함. 모든 필드는 타입 필드이름, 필드 번호가 있음
+ex) 타입 필드이름 = 필드번호
+
+syntax = "proto3";
+
+message AnotherMessage{
+  string name = 1;
+  int64 num64 = 2;
+}
+
+message SimpleMessage{
+  string name = 1;
+  int64 num64 = 2;
+  double float64 = 3;
+  bytes uuid = 4;
+  enum Type {
+    Ping = 0;
+    Urgent = 1;
+  }
+  Type type = 5;
+
+  //List<String>과 동일
+  repeated string name_list = 6;
+
+  //List<Int64> 와 동일
+  repeated int64 num64_list = 7;
+
+  //Map<String, String> 과 동일
+  map<string, string> map_filed = 8;
+
+  AnotherMessage another_msg = 9;
+  repeated AnotherMessage another_msg2 = 10;
+}
+
+
+
+* oneof
+어떤 메시지안에 추상화된 메시지를 추가할때 유용함
+ message Login{...}
+ message Product{...}
+ message Order{...}
+  일때
+message RequestMsg{
+   oneof msg{
+      Login login = 1;
+      Order order = 2;
+      Refund refund = 3;
+    }
+}
+
