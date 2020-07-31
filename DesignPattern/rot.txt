@@ -1,0 +1,11 @@
+컴포지트 패턴
+gui에서 패널 - 메뉴 텍스트 처럼
+최상위 구성요소나 중간 구성요소나 똑같은 일 하는놈들
+트리형식으로 보일때 중간에 뚝 때서 내놔도 정상이다
+
+Iterator
+반복자 
+iterator interface 등을 구성하여 
+hasNext next remove 등을 해놓으면 
+서로 arraylist array hashtable 등등 서로 호환안되는데
+이를 해결할 수 있다.
