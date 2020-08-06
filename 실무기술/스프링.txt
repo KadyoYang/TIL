@@ -1,0 +1,28 @@
+Spring IOC contrainer
+Beans
+스프링 백기선 핵심기술
+https://www.youtube.com/watch?v=HACQV_koAIU&list=PLfI752FpVCS8_5t29DWnsrL9NudvKDAKY
+
+###########################################################################################
+# Spring Bean 이란
+
+Spring에서 POJO(plain old java object)를 beans 라고 부름
+Beans는 어플리케이션의 핵심을 이루는 객체이고 스프링 Ioc 컨테이너에 의해 인스턴스화, 관리, 생성됨
+Beans는 우리가 컨테이너에 공급하는 설정 메타 데이터(XML)에 의해 생성된다.
+
+Spring Bean : 일반적으로 XML파일에 정의
+    주요속성 : class(필수) : 정규화된 자바 클래스 이름
+    id : bean의 고유 식별자
+    scope : 객체의 범위 (singleton, prototype)
+    constructor-arg : 생성시 생성자에 전달할 인수
+    property : 생성 시 bean setter에 전달할 인수
+    init mehotd 와 destroy method
+
+Spring Bean Scope : 스프링은 기본적으로 모든 bean을 싱글톤으로 생성하여 관리함. 애플리케이션 구동시 JVM에 스프링이 빈마다 하나의 객체를 생성. 따라서 스프링을 통해서 bean을 제공받으면 언제나 주입받은 bean은 동일한 객체라는 가정하에서 개발
+                    prototype 스코프는 모든 요청에서 새로운 객체를 생성하는 것을 의미, 즉 prototype bean은 의존성 관계의 bean에 주입 될 때 새로운 객체가 생성되어 주입됨, gc에 의해 정상적인방법으로 제거됨
+                
+
+###########################################################################################
+스프링mvc에서 빈 설정하는 방법
+xml, java, component scan
+https://atoz-develop.tistory.com/entry/Spring-%EB%B9%88%EC%9D%84-%EC%84%A4%EC%A0%95%ED%95%98%EB%8A%94-3%EA%B0%80%EC%A7%80-%EB%B0%A9%EB%B2%95-XML-JAVA-Component-Scan?category=869243
