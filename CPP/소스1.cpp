@@ -2,8 +2,8 @@
 
 
 /*
-//¿¬»êÀÚ ¿À¹ö·Îµù ´õ ÆÄ±â 
-//¿¬»êÀÚ ¿À·¯·Îµù ºÒ°¡ ¿¬»êÀÚ .  ::    ?:     sizeof     typeid      static_cast     dynamic_cast    const_cast     reinterpert_cast    µî 
+//ì—°ì‚°ì ì˜¤ë²„ë¡œë”© ë” íŒŒê¸° 
+//ì—°ì‚°ì ì˜¤ëŸ¬ë¡œë”© ë¶ˆê°€ ì—°ì‚°ì .  ::    ?:     sizeof     typeid      static_cast     dynamic_cast    const_cast     reinterpert_cast    ë“± 
 
 #include <iostream>
 using namespace std;
@@ -11,49 +11,49 @@ class Complex {
 private:
 	int real;
 	int image;
-	static int count; // Å¬·¡½ºÁ¤Àû¸â¹öº¯¼ö ¼±¾ğ
+	static int count; // í´ë˜ìŠ¤ì •ì ë©¤ë²„ë³€ìˆ˜ ì„ ì–¸
 public:
-	Complex(int r=0, int i=0); // ±íÀºº¹»ç ¾èÀºº¹»ç
+	Complex(int r=0, int i=0); // ê¹Šì€ë³µì‚¬ ì–•ì€ë³µì‚¬
 	
-	//ÀÏ¹İÀûÀ¸·Î Complex x(10,20);
-	// Complex y = x; ·Î y¸¦ x·Î ÃÊ±âÈ­½ÃÅ°¸é ¾èÀºº¹»ç°¡ ÀÏ¾î³­´Ù ÀÌ°Ç ±× this->real = &temp.real  ¾Æ¹«Æ° ÁÖ¼Ò¸¦ ÁÖ°ÔµÇ¼­ x¼Ò¸êÀÚ°¡ È£ÃâµÇ¸é y¼Ò¸êÀÚ°¡ Áö¿ï°Ô ¾ø¾î¼­ ¾Æ¹«Æ° ÇÒ°Ô¾ø¾îÁü
-	//±íÀº º¹»ç°¡ ÇÊ¿äÇØÁü ±× °Å´Â ÀÌ·¸°Ô ÇÏ¸éµÊ
+	//ì¼ë°˜ì ìœ¼ë¡œ Complex x(10,20);
+	// Complex y = x; ë¡œ yë¥¼ xë¡œ ì´ˆê¸°í™”ì‹œí‚¤ë©´ ì–•ì€ë³µì‚¬ê°€ ì¼ì–´ë‚œë‹¤ ì´ê±´ ê·¸ this->real = &temp.real  ì•„ë¬´íŠ¼ ì£¼ì†Œë¥¼ ì£¼ê²Œë˜ì„œ xì†Œë©¸ìê°€ í˜¸ì¶œë˜ë©´ yì†Œë©¸ìê°€ ì§€ìš¸ê²Œ ì—†ì–´ì„œ ì•„ë¬´íŠ¼ í• ê²Œì—†ì–´ì§
+	//ê¹Šì€ ë³µì‚¬ê°€ í•„ìš”í•´ì§ ê·¸ ê±°ëŠ” ì´ë ‡ê²Œ í•˜ë©´ë¨
 	Complex(const Complex &temp){
-		// ¹®ÀÚ¿­ÀÇ °æ¿ì´Â strcpy_s(this->real, temp.real);
-		//Å¬·¡½º´Â ÀÌ·¸°Ô ÇÏ¸éµÇ³ª?
+		// ë¬¸ìì—´ì˜ ê²½ìš°ëŠ” strcpy_s(this->real, temp.real);
+		//í´ë˜ìŠ¤ëŠ” ì´ë ‡ê²Œ í•˜ë©´ë˜ë‚˜?
 		Complex::count++;
-		cout << Complex::count<<" ¹øÂ°»ı¼ºÀÚ È£Ãâ ±íÀºº¹»ç"<<endl; // ¾ÆÁ÷ ¸ğ¸£°Ú´Ù ¤¾¤¾ ÀÌ°Å ¾î¶»°Ô ÇÏÁö
+		cout << Complex::count<<" ë²ˆì§¸ìƒì„±ì í˜¸ì¶œ ê¹Šì€ë³µì‚¬"<<endl; // ì•„ì§ ëª¨ë¥´ê² ë‹¤ ã…ã… ì´ê±° ì–´ë–»ê²Œ í•˜ì§€
 		real = temp.real;
-		image = temp.image; // ¾Æ ÁÖ¼Ò·Î * ¶óµç°¡ & ¶óµç°¡   ·Î º¹»ç»ı¼ºÀÚ´Â ¾èÀºº¹»çÇÏ¸éÀº ÂüÁ¶°ªÀÚÃ¼°¡ º¹»çµÇ¼­ »õ·Î»ı±â´Â°Ô¾Æ´Ô   ±íÀº°Å´Â ÂüÁ¶µÇ´Â ±× °´Ã¼ ÀÚÃ¼¸¦ º¹»çÇÏ´Â°Å¶ó ¾ÏÆ° ±×·³ ¤¾]
-		// ±Ùµ¥ ¼Ò¸êÀÚ ¿Ö È£Ãâ¾ÈµÇ³Ä
+		image = temp.image; // ì•„ ì£¼ì†Œë¡œ * ë¼ë“ ê°€ & ë¼ë“ ê°€   ë¡œ ë³µì‚¬ìƒì„±ìëŠ” ì–•ì€ë³µì‚¬í•˜ë©´ì€ ì°¸ì¡°ê°’ìì²´ê°€ ë³µì‚¬ë˜ì„œ ìƒˆë¡œìƒê¸°ëŠ”ê²Œì•„ë‹˜   ê¹Šì€ê±°ëŠ” ì°¸ì¡°ë˜ëŠ” ê·¸ ê°ì²´ ìì²´ë¥¼ ë³µì‚¬í•˜ëŠ”ê±°ë¼ ì•”íŠ¼ ê·¸ëŸ¼ ã…]
+		// ê·¼ë° ì†Œë©¸ì ì™œ í˜¸ì¶œì•ˆë˜ëƒ
 		
 	
-		//this->real = new temp.real; ¸ğ¸£°Ú´Ù.
+		//this->real = new temp.real; ëª¨ë¥´ê² ë‹¤.
 		//this->image = new temp.image;
 		
 	}
 	~Complex()
 	{
-		cout << Complex::count <<" ¹øÂ° ¼Ò¸êÀÚ È£Ãâ" << endl;
+		cout << Complex::count <<" ë²ˆì§¸ ì†Œë©¸ì í˜¸ì¶œ" << endl;
 		Complex::count--;
 	}
 	void SetComplex(int r = 0, int i = 0);
 	void PrnComplex()const;
 
-	//¿©±âºÎÅÍ ¿¬»êÀÚ ¿À¹ö·Îµù
-	//ÈÄÀ§ Áõ°¨ ÀüÀ§ Áõ°¨ Á¤ÀÇ 
-	friend Complex &operator++(Complex &cObj); // ÀüÀ§   ++test
-	friend const Complex operator ++(Complex &cObj, int); // ÈÄÀ§ test++
+	//ì—¬ê¸°ë¶€í„° ì—°ì‚°ì ì˜¤ë²„ë¡œë”©
+	//í›„ìœ„ ì¦ê° ì „ìœ„ ì¦ê° ì •ì˜ 
+	friend Complex &operator++(Complex &cObj); // ì „ìœ„   ++test
+	friend const Complex operator ++(Complex &cObj, int); // í›„ìœ„ test++
 
-	friend Complex &operator--(Complex &cObj); // ÀüÀ§ --
+	friend Complex &operator--(Complex &cObj); // ì „ìœ„ --
 	friend const Complex operator--(Complex &cObj, int);
 	
 };
-int Complex::count = 0; //Å¬·¡½ºÁ¤Àû ¸â¹öº¯¼ö Á¤ÀÇ
+int Complex::count = 0; //í´ë˜ìŠ¤ì •ì  ë©¤ë²„ë³€ìˆ˜ ì •ì˜
 Complex::Complex(int r, int i)
 {
 	Complex::count++;
-	cout << Complex::count<<" ¹øÂ° »ı¼ºÀÚ È£Ãâ" << endl;
+	cout << Complex::count<<" ë²ˆì§¸ ìƒì„±ì í˜¸ì¶œ" << endl;
 	this->real = r; 
 	this->image = i; 
 	
@@ -98,7 +98,7 @@ const Complex operator--(Complex &cObj, int)
 void main()
 {
 	Complex x(1, 2), y(4, 6), z = x;
-	//x.PrnComplex(); // Àß ÀÛµ¿ÇÑ´Ù.
+	//x.PrnComplex(); // ì˜ ì‘ë™í•œë‹¤.
 	//x++.PrnComplex();
 	//x.PrnComplex();
 	//(++x).PrnComplex();
@@ -113,7 +113,7 @@ void main()
 
 
 /*
-// string class << °¡´ÉÇÏ°Ô ¿¹Á¦
+// string class << ê°€ëŠ¥í•˜ê²Œ ì˜ˆì œ
 #include <iostream>
 #include <string.h>
 using namespace std;
@@ -122,7 +122,7 @@ private:
 	char data[256];
 public:
 	Cstring(const char *nul = "\0") {
-		strcpy_s(data, nul);// »ı¼ºÀÚ·Î ÃÊ±âÈ­
+		strcpy_s(data, nul);// ìƒì„±ìë¡œ ì´ˆê¸°í™”
 	}
 	friend ostream &operator<<(ostream &os, const Cstring &right) ;
 };
@@ -136,7 +136,7 @@ void main()
 	Cstring Astr("ghh0");
 	Cstring Bstr("asdsad");
 
-	cout << Astr << endl; // ¿ä°Å¸¦ °¡´ÉÇÏ°Ô << ¸¦ ¿À¹ö·Îµù
+	cout << Astr << endl; // ìš”ê±°ë¥¼ ê°€ëŠ¥í•˜ê²Œ << ë¥¼ ì˜¤ë²„ë¡œë”©
 	cout << Bstr << endl;
 
 	system("pause");
@@ -147,7 +147,7 @@ void main()
 
 
 /*
-//½ÇÁ¦ ¿¬»êÀÚ·Î ÇÑ¹ø ÇØº¸ÀÚ operator- +
+//ì‹¤ì œ ì—°ì‚°ìë¡œ í•œë²ˆ í•´ë³´ì operator- +
 #include <iostream>
 using namespace std;
 class Complex {
@@ -156,16 +156,16 @@ private:
 	int image;
 public:
 	Complex(int r = 0, int i = 0);
-	void ShowComplex() const; // const ¸â¹öÇÔ¼ö´Â ¸â¹öº¯¼öµéÀÇ °ªÀ» »ç¿ë¸¸ÇÏ°í º¯°æÇÏÁö ¸øÇÏµµ·Ï ÇÑ´Ù.
+	void ShowComplex() const; // const ë©¤ë²„í•¨ìˆ˜ëŠ” ë©¤ë²„ë³€ìˆ˜ë“¤ì˜ ê°’ì„ ì‚¬ìš©ë§Œí•˜ê³  ë³€ê²½í•˜ì§€ ëª»í•˜ë„ë¡ í•œë‹¤.
 	void SetComplex(int r=0, int i=0);
 	Complex operator-(Complex &rightHand) const; 
-	Complex operator-() const; // ´ÜÇ×¿¬»êÀÚ -  ex)   -a
+	Complex operator-() const; // ë‹¨í•­ì—°ì‚°ì -  ex)   -a
 	Complex operator+(Complex &rightHand);
 
-	// Ãâ·Â´ã´ç ÇÔ¼öµµ ¸¸µé¾îº¸ÀÚ operator<<
+	// ì¶œë ¥ë‹´ë‹¹ í•¨ìˆ˜ë„ ë§Œë“¤ì–´ë³´ì operator<<
 	friend ostream &operator<<(ostream &os, const Complex &comObj) ;
 
-	// °ö¼ÀÀ» ´ã´çÇÏ´Â ÇÔ¼öµµ ¸¸µé¾îº¸ÀÚ operator*
+	// ê³±ì…ˆì„ ë‹´ë‹¹í•˜ëŠ” í•¨ìˆ˜ë„ ë§Œë“¤ì–´ë³´ì operator*
 	Complex &operator*(Complex &rightHand)const;
 	
 	
@@ -187,7 +187,7 @@ void Complex::SetComplex(int r, int i)
 	real = r;
 	image = i;
 }
-inline Complex Complex::operator-(Complex &rightHand) const // ¸â¹öÇÔ¼öÀÎµ¥ 
+inline Complex Complex::operator-(Complex &rightHand) const // ë©¤ë²„í•¨ìˆ˜ì¸ë° 
 {
 	Complex res;
 	res.real = this->real - rightHand.real;
@@ -208,7 +208,7 @@ inline Complex Complex::operator+(Complex &rightHand)
 	res.image = this->image + rightHand.image;
 	return res;
 }
-inline ostream &operator<<(ostream &os, const Complex &comObj) // cout << a << "i" << b<< endl;  cout << a °¡ cout ¹İÈ¯ÇÏ°í   cout<<"i"<<b<<endl; ¿¡¼­ ¹İº¹ÀûÀ¸·Î ¿À¸¥ÂÊÀ¸·Î°£´Ù
+inline ostream &operator<<(ostream &os, const Complex &comObj) // cout << a << "i" << b<< endl;  cout << a ê°€ cout ë°˜í™˜í•˜ê³    cout<<"i"<<b<<endl; ì—ì„œ ë°˜ë³µì ìœ¼ë¡œ ì˜¤ë¥¸ìª½ìœ¼ë¡œê°„ë‹¤
 {
 	os << comObj.real << "." << comObj.image << "i" << endl;
 	return os;
@@ -253,7 +253,7 @@ void main()
 
 
 /*
-//¾Õ¿¡²¨¸¦ ÇÁ·£µåÇÔ¼ö + ·¹ÆÛ·±½º¿¡ÀÇÇÑ Àü´Ş ½áº¸ÀÚ // p407 ±îÁöÇß´Ù..
+//ì•ì—êº¼ë¥¼ í”„ëœë“œí•¨ìˆ˜ + ë ˆí¼ëŸ°ìŠ¤ì—ì˜í•œ ì „ë‹¬ ì¨ë³´ì // p407 ê¹Œì§€í–ˆë‹¤..
 #include <iostream>
 using namespace std;
 class Complex {
@@ -319,7 +319,7 @@ void main()
 
 
 /*
-// ++a   a++ ¸¦ ±¸ÇöÇØº¸ÀÚ  °¢°¢ ¸â¹öÇÔ¼ö¸íÀº AddOnePrefix    AddOnePostfix  
+// ++a   a++ ë¥¼ êµ¬í˜„í•´ë³´ì  ê°ê° ë©¤ë²„í•¨ìˆ˜ëª…ì€ AddOnePrefix    AddOnePostfix  
 #include <iostream>
 using namespace std;
 class Complex {
@@ -385,7 +385,7 @@ void main()
 
 
 /*
-// Complex ´õÇÏ±â¸¦ ÇÁ·£µå ÇÔ¼ö·Î ±¸Çö
+// Complex ë”í•˜ê¸°ë¥¼ í”„ëœë“œ í•¨ìˆ˜ë¡œ êµ¬í˜„
 #include <iostream>
 using namespace std;
 class Complex {
@@ -395,7 +395,7 @@ private:
 public:
 	Complex(int = 0, int = 0);
 	void ShowComplex() const;
-	friend Complex sum(Complex &x, Complex &y); // ÇÁ·£µå ComplexÀÇ ¸â¹öÇÔ¼ö°¡ ¾Æ´Ï¶ó ÀÏ¹İÇÔ¼ö¾ß ¤¾¤¾
+	friend Complex sum(Complex &x, Complex &y); // í”„ëœë“œ Complexì˜ ë©¤ë²„í•¨ìˆ˜ê°€ ì•„ë‹ˆë¼ ì¼ë°˜í•¨ìˆ˜ì•¼ ã…ã…
 };
 
 Complex::Complex(int r, int i)
@@ -433,7 +433,7 @@ void main() {
 
 
 /*
-//¿¬»êÀÚ ¿À¹ö·Îµù ÀÏ´Ü +  - ´Â ³ªÁß¿¡ ÇÏ°í Complex°´Ã¼³¢¸® ´õÇÏ´Â°ÍÀ» ¸â¹öÇÔ¼ö·Î ±¸ÇöÇÏÀÚ.
+//ì—°ì‚°ì ì˜¤ë²„ë¡œë”© ì¼ë‹¨ +  - ëŠ” ë‚˜ì¤‘ì— í•˜ê³  Complexê°ì²´ë¼ë¦¬ ë”í•˜ëŠ”ê²ƒì„ ë©¤ë²„í•¨ìˆ˜ë¡œ êµ¬í˜„í•˜ì.
 #include <iostream>
 using namespace std;
 class Complex {
@@ -492,10 +492,10 @@ void main()
 
 
 /*
-//friend functions   ÀÏ¹İÇÔ¼öµûÀ§°¡ À§´ëÇÏ½Å Å¬·¡½º¼³°èÀÇ private¿¡ Á¢±ÙÇÒ¼öÀÖµµ·Ï ÇÏ´Â µûÀ§³ª ¹æ¹ı ... friend ÇÔ¼ö....   µ¥ÀÌÅÍÀº´Ğ¼ºÀº °³³ªÁà¹ö¸². ±×·¯´Ï±î Àı´ë ³²¿ëÇÏ¸é ¾ÈµÊ. 
-// friend functions ÀÌ µÇ±â À§ÇÑ Á¶°Ç.
-// Á¢±ÙÇÏ°íÀÚ ÇÏ´Â private¸â¹ö¸¦ °®´Â Å¬·¡½º ³»ºÎ¿¡ friendÇÔ¼ö¸¦ ¼±¾ğÇÑ´Ù.
-// ÇÁ·»µå ÇÔ¼ö ¼±¾ğÇÒ¶§´Â ÇÔ¼ö¸í ¾Õ¿¡ ´ÙÀ½°ú °°ÀÌ ¿¹¾à¾î friend¸¦ ºÙÀÎ´Ù.
+//friend functions   ì¼ë°˜í•¨ìˆ˜ë”°ìœ„ê°€ ìœ„ëŒ€í•˜ì‹  í´ë˜ìŠ¤ì„¤ê³„ì˜ privateì— ì ‘ê·¼í• ìˆ˜ìˆë„ë¡ í•˜ëŠ” ë”°ìœ„ë‚˜ ë°©ë²• ... friend í•¨ìˆ˜....   ë°ì´í„°ì€ë‹‰ì„±ì€ ê°œë‚˜ì¤˜ë²„ë¦¼. ê·¸ëŸ¬ë‹ˆê¹Œ ì ˆëŒ€ ë‚¨ìš©í•˜ë©´ ì•ˆë¨. 
+// friend functions ì´ ë˜ê¸° ìœ„í•œ ì¡°ê±´.
+// ì ‘ê·¼í•˜ê³ ì í•˜ëŠ” privateë©¤ë²„ë¥¼ ê°–ëŠ” í´ë˜ìŠ¤ ë‚´ë¶€ì— friendí•¨ìˆ˜ë¥¼ ì„ ì–¸í•œë‹¤.
+// í”„ë Œë“œ í•¨ìˆ˜ ì„ ì–¸í• ë•ŒëŠ” í•¨ìˆ˜ëª… ì•ì— ë‹¤ìŒê³¼ ê°™ì´ ì˜ˆì•½ì–´ friendë¥¼ ë¶™ì¸ë‹¤.
 #include <iostream>
 using namespace std;
 class Complex {
@@ -508,8 +508,8 @@ public:
 	~Complex();
 	void ShowComplex() const;
 	
-	friend void prn(Complex *parr); // ÇÁ·£µå ÇÔ¼ö ¼±¾ğ
-	friend void rprn(Complex &r); // ·¹ÆÛ·±½º·Î ÇØº¼±î?? // ¹è¿­ ÀÚÃ¼°¡ Æ÷ÀÎÅÍÀÇ ¿¬¼ÓÀÌ´Ù.. ±×·¡¼­ ·¹ÆÛ·±½º·Î´Â ¾ÈµÈ´Ù´Âµ¥???¤»¤»
+	friend void prn(Complex *parr); // í”„ëœë“œ í•¨ìˆ˜ ì„ ì–¸
+	friend void rprn(Complex &r); // ë ˆí¼ëŸ°ìŠ¤ë¡œ í•´ë³¼ê¹Œ?? // ë°°ì—´ ìì²´ê°€ í¬ì¸í„°ì˜ ì—°ì†ì´ë‹¤.. ê·¸ë˜ì„œ ë ˆí¼ëŸ°ìŠ¤ë¡œëŠ” ì•ˆëœë‹¤ëŠ”ë°???ã…‹ã…‹
 };
 
 int Complex::count = 0;
@@ -542,7 +542,7 @@ void rprn(Complex &r)
 
 void main()
 {
-	Complex arr[6] = { //¸¶Áö¸· arr[5] ´Â default
+	Complex arr[6] = { //ë§ˆì§€ë§‰ arr[5] ëŠ” default
 		Complex(4,3),
 		Complex(6,4),
 		Complex(1,2),
@@ -550,7 +550,7 @@ void main()
 		Complex(0,1)
 	};
 		
-	prn(arr); // ComplexÀÇ ÇÁ·£µå ÇÔ¼öÀÎ prnÀÌ ComplexÅ¬·¡½º °´Ã¼µéÀÇ private memberÀÎ real°ú image¸¦ Áö¸¾´ë·Î °¡Á®´Ù ½è´Ù. 
+	prn(arr); // Complexì˜ í”„ëœë“œ í•¨ìˆ˜ì¸ prnì´ Complexí´ë˜ìŠ¤ ê°ì²´ë“¤ì˜ private memberì¸ realê³¼ imageë¥¼ ì§€ë§˜ëŒ€ë¡œ ê°€ì ¸ë‹¤ ì¼ë‹¤. 
 	//rprn(arr);
 	system("pause");
 	return;
@@ -562,7 +562,7 @@ void main()
 
 
 /*
-// °´Ã¼¹è¿­ 
+// ê°ì²´ë°°ì—´ 
 #include <iostream>
 using namespace std;
 class Complex {
@@ -584,9 +584,9 @@ Complex::Complex(int real, int image)
 	this->image = image;
 	Complex::count++;
 }
-Complex::~Complex() // Ä«¿îÆ® ÁÙ¿©ÁÖ´Â ¼Ò¸êÀÚ Á¤ÀÇ
+Complex::~Complex() // ì¹´ìš´íŠ¸ ì¤„ì—¬ì£¼ëŠ” ì†Œë©¸ì ì •ì˜
 {
-	cout << "¼Ò¸êÀÚ È£Ãâ" << endl;
+	cout << "ì†Œë©¸ì í˜¸ì¶œ" << endl;
 	Complex::count--;
 }
 void Complex::SetComplex(int real, int image)
@@ -599,11 +599,11 @@ void Complex::PrnComplex()const
 }
 void Complex::PrnCount()
 {
-	cout << Complex::count << "¹øÂ° »ı¼º" << endl;
+	cout << Complex::count << "ë²ˆì§¸ ìƒì„±" << endl;
 }
 
 void prn(Complex *parr) {
-	// ÀÌ°Å ¹è¿­ ´Ù Ãâ·ÂÇÏ´Â ÇÔ¼ö ¼±¾ğ, Á¤ÀÇ
+	// ì´ê±° ë°°ì—´ ë‹¤ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜ ì„ ì–¸, ì •ì˜
 	for (int i = 0; i < 5; i++)
 		(parr + i)->PrnComplex();
 }
@@ -614,21 +614,21 @@ void main()
 		Complex(8,34),
 		Complex(7,12),
 		Complex(3,4)
-	}; // ¸¶Áö¸· 4¹øÂ°²¨´Â ÃÊ±â°ªÁÖÀÚ
-	Complex *parr = arr; // *parr ¼±¾ğ ÈÄ arr¹è¿­ÀÇ ½ÃÀÛÁÖ¼Ò ´ëÀÔ 
+	}; // ë§ˆì§€ë§‰ 4ë²ˆì§¸êº¼ëŠ” ì´ˆê¸°ê°’ì£¼ì
+	Complex *parr = arr; // *parr ì„ ì–¸ í›„ arrë°°ì—´ì˜ ì‹œì‘ì£¼ì†Œ ëŒ€ì… 
 	Complex::PrnCount();
 
-	for (int i = 0; i < 5; i++) { // arr[0] 1000 ¹øÁö¶ó°í Ä¡¸é    arr
-		arr[i].PrnComplex(); // ¸¸¾à *parr Æ÷ÀÎÅÍ ¼±¾ğÈÄ »ç¿ëÇÏ·Á¸é *(parr+i)->PrnComplex(); ÇØÁÖ¸é µÊ ½ÇÇèÀº ¹Ø¿¡
+	for (int i = 0; i < 5; i++) { // arr[0] 1000 ë²ˆì§€ë¼ê³  ì¹˜ë©´    arr
+		arr[i].PrnComplex(); // ë§Œì•½ *parr í¬ì¸í„° ì„ ì–¸í›„ ì‚¬ìš©í•˜ë ¤ë©´ *(parr+i)->PrnComplex(); í•´ì£¼ë©´ ë¨ ì‹¤í—˜ì€ ë°‘ì—
 	}
 	for (int i = 0; i < 5; i++) {
 		(parr + i)->PrnComplex();
 		(arr + i)->PrnComplex();
-		cout << "\n parr+i ÀÇ ÁÖ¼Ò°ª"<< (&parr+i);
-		cout << "\n arr+i ÀÇ ÁÖ¼Ò°ª" << arr + i << endl;
+		cout << "\n parr+i ì˜ ì£¼ì†Œê°’"<< (&parr+i);
+		cout << "\n arr+i ì˜ ì£¼ì†Œê°’" << arr + i << endl;
 		
 	}
-	prn(arr); // prn ÇÔ¼ö È£Ãâ
+	prn(arr); // prn í•¨ìˆ˜ í˜¸ì¶œ
 	system("pause");
 	return;
 }
@@ -640,7 +640,7 @@ void main()
 
 
 /*
-//Á¤Àû ¸â¹öº¯¼öÀÇ À¯¿ëÇÑ »ç¿ë ¿¹
+//ì •ì  ë©¤ë²„ë³€ìˆ˜ì˜ ìœ ìš©í•œ ì‚¬ìš© ì˜ˆ
 #include <iostream>
 using namespace std;
 class Cstud {
@@ -648,24 +648,24 @@ private:
 	char name[20];
 	char handphone[30];
 	char email[40];
-	//static int count; //Á¤Àû¸â¹öº¯¼ö count ¼±¾ğ
+	//static int count; //ì •ì ë©¤ë²„ë³€ìˆ˜ count ì„ ì–¸
 	static int count;
 
 public:
-	static void PrnCount(); // static ºÙ¿©Áà¾ß ÀÎ½ºÅÏ½º ¾øÀ»¶§µµ Cstud::PrnCount·Î È£ÃâÀÌ µÊ 
+	static void PrnCount(); // static ë¶™ì—¬ì¤˜ì•¼ ì¸ìŠ¤í„´ìŠ¤ ì—†ì„ë•Œë„ Cstud::PrnCountë¡œ í˜¸ì¶œì´ ë¨ 
 	Cstud( char const pname[20] = "null", char const phandphone[30] = "010-0000-0000", char const pemail[40] = "null@naver.com");
-	void PrintStud()const; //ÄÜÇª·Î½ºÆ®
+	void PrintStud()const; //ì½˜í‘¸ë¡œìŠ¤íŠ¸
 };
 
-int Cstud::count = 0; // Á¤Àû¸â¹öº¯¼ö count 0À¸·Î ÃÊ±âÈ­
+int Cstud::count = 0; // ì •ì ë©¤ë²„ë³€ìˆ˜ count 0ìœ¼ë¡œ ì´ˆê¸°í™”
 
 Cstud::Cstud(char const pname[20], char const phandphone[30], char const pemail[40])
 {
-	strcpy_s(name, pname);   // ÀÌ¾ß _s Á¤¸» ¾ÈÀüÇÏ´Ù 
+	strcpy_s(name, pname);   // ì´ì•¼ _s ì •ë§ ì•ˆì „í•˜ë‹¤ 
 	strcpy_s(handphone, phandphone);
 	strcpy_s(email, pemail);
 	Cstud::count++;
-	cout << "ÇöÀç " << count << endl;
+	cout << "í˜„ì¬ " << count << endl;
 }
 void Cstud::PrintStud()const
 {
@@ -673,20 +673,20 @@ void Cstud::PrintStud()const
 }
 void Cstud::PrnCount()
 {
-	cout << "ÇöÀç count" << Cstud::count << endl;
+	cout << "í˜„ì¬ count" << Cstud::count << endl;
 }
 void main()
 {
 	Cstud x("aaa","aaa","aaa"), y("bbb","bbb","bbb"), z, d;
-	// cout << Csutd::count << endl; ÀÌ·¸°Ô È£Ãâ Àı´ë ahtÇÑ´Ù. private¿©¼­ 
+	// cout << Csutd::count << endl; ì´ë ‡ê²Œ í˜¸ì¶œ ì ˆëŒ€ ahtí•œë‹¤. privateì—¬ì„œ 
 	//cout << Cstud::count << endl;
 	x.PrintStud();
 	y.PrintStud();
 	z.PrintStud();
 	d.PrintStud();
 
-	x.PrnCount(); // xÀÎ½ºµı½º¸¦ ÅëÇØ¼­ È£Ãâ
-	Cstud::PrnCount(); // Å¬·¡½º´ÜÀ§ Á¤Àû¸â¹öÇÔ¼ö¸¦ È£Ãâ static À» ºÙ¿©¾ßÇÑ´Ù
+	x.PrnCount(); // xì¸ìŠ¤ë”´ìŠ¤ë¥¼ í†µí•´ì„œ í˜¸ì¶œ
+	Cstud::PrnCount(); // í´ë˜ìŠ¤ë‹¨ìœ„ ì •ì ë©¤ë²„í•¨ìˆ˜ë¥¼ í˜¸ì¶œ static ì„ ë¶™ì—¬ì•¼í•œë‹¤
 	system("pause");
 	return;
 }
@@ -697,8 +697,8 @@ void main()
 
 
 /*
-// Å¬·¡½º ´ÜÀ§ ¸â¹ö¿Í °´Ã¼ ´ÜÀ§ ¸â¹ö
-//Á¤Àû ¸â¹öÇÔ¼ö
+// í´ë˜ìŠ¤ ë‹¨ìœ„ ë©¤ë²„ì™€ ê°ì²´ ë‹¨ìœ„ ë©¤ë²„
+//ì •ì  ë©¤ë²„í•¨ìˆ˜
 #include <iostream>
 using namespace std;
 class StaticTest {
@@ -739,12 +739,12 @@ void main()
 using namespace std;
 class StaticTest {
 public:
-	static int a; // Å¬·¡½º ´ÜÀ§ ¸â¹ö º¯¼ö ¼±¾ğ
-	int b; // °´Ã¼ ´ÜÀ§ ¸â¹ö ¼±¾ğ
+	static int a; // í´ë˜ìŠ¤ ë‹¨ìœ„ ë©¤ë²„ ë³€ìˆ˜ ì„ ì–¸
+	int b; // ê°ì²´ ë‹¨ìœ„ ë©¤ë²„ ì„ ì–¸
 	StaticTest();
 };
 
-int StaticTest::a = 0; // Å¬·¡½º ´ÜÀ§ ¸â¹ö º¯¼ö ÃÊ±âÈ­´Â Å¬·¡½º ¼±¾ğ¹® ¹Û¿¡´Ù°¡ Á¤ÀÇÇØÁà¾ßÇÔ.
+int StaticTest::a = 0; // í´ë˜ìŠ¤ ë‹¨ìœ„ ë©¤ë²„ ë³€ìˆ˜ ì´ˆê¸°í™”ëŠ” í´ë˜ìŠ¤ ì„ ì–¸ë¬¸ ë°–ì—ë‹¤ê°€ ì •ì˜í•´ì¤˜ì•¼í•¨.
 
 StaticTest::StaticTest()
 {
@@ -776,7 +776,7 @@ void main()
 
 
 /*
-// ¾Æ·¡¿¡ ´ëÇÑ ¿¹Á¦
+// ì•„ë˜ì— ëŒ€í•œ ì˜ˆì œ
 #include <iostream>
 using namespace std;
 class Complex {
@@ -802,7 +802,7 @@ void Complex::ShowComplex() const
 Complex &CopyComplex(Complex &dst, const Complex &src)
 {
 	dst = src;
-	return dst;  // ÀÌ°Ô Complex &CopyComplex = (return)dst  ½ÄÀ¸·Î µÇ³ªº½   ¾Æ¸¶..
+	return dst;  // ì´ê²Œ Complex &CopyComplex = (return)dst  ì‹ìœ¼ë¡œ ë˜ë‚˜ë´„   ì•„ë§ˆ..
 }
 
 void main()
@@ -828,20 +828,20 @@ void main()
 
 
 Complex CopyComplex(Complex &dst, Complex &src) {
-// ÀÌ°Å ¹İÈ¯ÇÏ·Á°íÇÏ¸é CopyComplex³»¿¡ dst¸¦ ÀúÀåÇÒ °ø°£À» ¸¸µç´Ù. ±×·¯¸é ³¶ºñ´Ù ±×·¯´Ï±î
+// ì´ê±° ë°˜í™˜í•˜ë ¤ê³ í•˜ë©´ CopyComplexë‚´ì— dstë¥¼ ì €ì¥í•  ê³µê°„ì„ ë§Œë“ ë‹¤. ê·¸ëŸ¬ë©´ ë‚­ë¹„ë‹¤ ê·¸ëŸ¬ë‹ˆê¹Œ
 return dst
 }
 
 
 
-Complex &CopyComplex(Complex &dst, Complex &src) { // ¿©±â Complex &CopyComplex °¡ º¸ÀÌ´Â°¡. & ºÙÀÌ¸éÀº   &dst   ±×·¯´Ï±î main::y  ÀÇ º°ÄªÀ¸·Î CopyComplex°¡ »ı±â´Â°Å´Ù 
-// ±×·¯¸é main::y ÀÇ º°ÄªÀº ÃÑ    CopyComplex::dst      CopyComplex()   °¡ µÇ´Â°Å´Ù                        ¾ÏÆ° ±×·¯¸éÀº ¸®ÅÏÀ» À§ÇØ º°´Ù¸¥ °ø°£À» ³¶ºñÇÏÁö¾Ê´Â´Ù
+Complex &CopyComplex(Complex &dst, Complex &src) { // ì—¬ê¸° Complex &CopyComplex ê°€ ë³´ì´ëŠ”ê°€. & ë¶™ì´ë©´ì€   &dst   ê·¸ëŸ¬ë‹ˆê¹Œ main::y  ì˜ ë³„ì¹­ìœ¼ë¡œ CopyComplexê°€ ìƒê¸°ëŠ”ê±°ë‹¤ 
+// ê·¸ëŸ¬ë©´ main::y ì˜ ë³„ì¹­ì€ ì´    CopyComplex::dst      CopyComplex()   ê°€ ë˜ëŠ”ê±°ë‹¤                        ì•”íŠ¼ ê·¸ëŸ¬ë©´ì€ ë¦¬í„´ì„ ìœ„í•´ ë³„ë‹¤ë¥¸ ê³µê°„ì„ ë‚­ë¹„í•˜ì§€ì•ŠëŠ”ë‹¤
 return dst
 }
 */
 
 /*
-//·¹ÆÛ·±½º¿¡ ÀÇÇÑ CopyComplex ÇÔ¼ö ±è±¸Çö
+//ë ˆí¼ëŸ°ìŠ¤ì— ì˜í•œ CopyComplex í•¨ìˆ˜ ê¹€êµ¬í˜„
 #include <iostream>
 using namespace std;
 class Complex {
@@ -863,9 +863,9 @@ void Complex::ShowComplex() const
 	cout << real << "." << image << "i" << endl;
 }
 
-void CopyComplex(Complex &dst, const Complex &src)  // ÀÌ ÇÔ¼ö³»¿¡¼­ src·¹ÆÛ·±½º°´Ã¼ ³»ºÎÀÇ °ªÀÌ º¯°æµÇ¸éÀº ¾ÈµÇ¹Ç·Î const ¿¹¾à¾î ºÙ¿©ÁØ´Ù. const Complex &src     ¸¶Ä¡ const int num = 0; °°ÀÌ ¤¾¤¾ ¸¸¾à¿¡ ÇÔ¼ö ³»ºÎ¿¡¼­ º¯°æµÉ¶ó°íÇÏ¸é ¿À·ù³­´Ù.¤¾
+void CopyComplex(Complex &dst, const Complex &src)  // ì´ í•¨ìˆ˜ë‚´ì—ì„œ srcë ˆí¼ëŸ°ìŠ¤ê°ì²´ ë‚´ë¶€ì˜ ê°’ì´ ë³€ê²½ë˜ë©´ì€ ì•ˆë˜ë¯€ë¡œ const ì˜ˆì•½ì–´ ë¶™ì—¬ì¤€ë‹¤. const Complex &src     ë§ˆì¹˜ const int num = 0; ê°™ì´ ã…ã… ë§Œì•½ì— í•¨ìˆ˜ ë‚´ë¶€ì—ì„œ ë³€ê²½ë ë¼ê³ í•˜ë©´ ì˜¤ë¥˜ë‚œë‹¤.ã…
 {
-	dst = src; // ¸¸¾à¿¡ ÀÌ ÇÔ¼ö ¸®ÅÏ°ª ¸¸µé¸éÀº  ÀÌ ÇÔ¼ö ³»ºÎ¿¡¼­   ÀÌ ¸®ÅÏ°ªÀ» À§ÇÑ Complex°´Ã¼ °ø°£ÀÌ ÇÏ³ª »ı±ä´Ù ÀÌ°Íµµ ÀÏÁ¾ÀÇ ³¶ºñ¶ó°íº¼¼öÀÖÀ½. ±×·¯´Ï±î. À§¿¡ ÁÖ¼® ´Ş¾Æ³õ°ÚÀ½
+	dst = src; // ë§Œì•½ì— ì´ í•¨ìˆ˜ ë¦¬í„´ê°’ ë§Œë“¤ë©´ì€  ì´ í•¨ìˆ˜ ë‚´ë¶€ì—ì„œ   ì´ ë¦¬í„´ê°’ì„ ìœ„í•œ Complexê°ì²´ ê³µê°„ì´ í•˜ë‚˜ ìƒê¸´ë‹¤ ì´ê²ƒë„ ì¼ì¢…ì˜ ë‚­ë¹„ë¼ê³ ë³¼ìˆ˜ìˆìŒ. ê·¸ëŸ¬ë‹ˆê¹Œ. ìœ„ì— ì£¼ì„ ë‹¬ì•„ë†“ê² ìŒ
 
 }
 
@@ -874,7 +874,7 @@ int main()
 	Complex x(10, 20), y(50, 60);
 	x.ShowComplex();
 	y.ShowComplex();
-	cout << "Copy Complex() È£ÃâÈÄ " << endl;
+	cout << "Copy Complex() í˜¸ì¶œí›„ " << endl;
 	CopyComplex(y, x);
 	x.ShowComplex();
 	y.ShowComplex();
@@ -886,8 +886,8 @@ int main()
 
 
 /*
-// °ª¿¡ /*ÀÇÇÑ Àü´ŞÀ» ¹Ş¾Æ ¼­·Î ¹Ù²Ù´Â CopyComplex(Complex src, Complex dst) ´Â ¿ª½Ã³ª ¾ÈµÈ´Ù ¿ª½Ã. °´Ã¼ ÁÖ¼Ò·Î ³Ñ°ÜÁà¾ß ÀÛµ¿ÇÑ´Ù. ·¹ÆÛ·±½º·Îµµ µÇ³ª? µÈ´Ù
-//ÀÏ´Ü °ª¿¡ ÀÇÇÑ Àü´Ş·Î CopyComplex¸¦ ÇÒ·Á¸éÀº ¹«½ÄÇÏ°Ô ¸®ÅÏ°ªÀ¸·Î ¾ÏÆ°ÇØ¾ßÇÑ´Ù 
+// ê°’ì— /*ì˜í•œ ì „ë‹¬ì„ ë°›ì•„ ì„œë¡œ ë°”ê¾¸ëŠ” CopyComplex(Complex src, Complex dst) ëŠ” ì—­ì‹œë‚˜ ì•ˆëœë‹¤ ì—­ì‹œ. ê°ì²´ ì£¼ì†Œë¡œ ë„˜ê²¨ì¤˜ì•¼ ì‘ë™í•œë‹¤. ë ˆí¼ëŸ°ìŠ¤ë¡œë„ ë˜ë‚˜? ëœë‹¤
+//ì¼ë‹¨ ê°’ì— ì˜í•œ ì „ë‹¬ë¡œ CopyComplexë¥¼ í• ë ¤ë©´ì€ ë¬´ì‹í•˜ê²Œ ë¦¬í„´ê°’ìœ¼ë¡œ ì•”íŠ¼í•´ì•¼í•œë‹¤ 
 
 #include <iostream>
 using namespace std;
@@ -910,7 +910,7 @@ void Complex::ShowComplex() const
 	cout << real << "." << image << "i" << endl;
 }
 
-void CopyComplex(Complex *pdst, Complex src)  // °ÅÀÇ function(dst, src) ÀÎ°¡º¸³×
+void CopyComplex(Complex *pdst, Complex src)  // ê±°ì˜ function(dst, src) ì¸ê°€ë³´ë„¤
 {
 	*pdst = src;
 }
@@ -935,8 +935,8 @@ int main()
 
 
 /*
-//¸Å°³º¯¼ö°¡ °´Ã¼ÀÎ ÇÔ¼ö.
-// µ¿ÀÏÇÑ ÀÚ·áÇüÀ¸·Î ¼±¾ğµÈ °´Ã¼³¢¸®´Â ´ëÀÔ¿¬»êÀÚ·Î °ªÀ» Ä¡È¯ °¡´ÉÇÏ´Ù.
+//ë§¤ê°œë³€ìˆ˜ê°€ ê°ì²´ì¸ í•¨ìˆ˜.
+// ë™ì¼í•œ ìë£Œí˜•ìœ¼ë¡œ ì„ ì–¸ëœ ê°ì²´ë¼ë¦¬ëŠ” ëŒ€ì…ì—°ì‚°ìë¡œ ê°’ì„ ì¹˜í™˜ ê°€ëŠ¥í•˜ë‹¤.
 #include <iostream>
 using namespace std;
 class Complex {
@@ -971,11 +971,11 @@ void main()
 	Complex x(10, 20), y(50, 60);
 	x.ShowComplex();
 	y.ShowComplex();
-	cout << "´ëÀÔÇÏ¸é" << endl;
+	cout << "ëŒ€ì…í•˜ë©´" << endl;
 	y = x;
 	x.ShowComplex();
 	y.ShowComplex();
-	cout << "Y »õ·Î ÀÔ·ÂÇÏ¸é" << endl;
+	cout << "Y ìƒˆë¡œ ì…ë ¥í•˜ë©´" << endl;
 
 	y.SetComplex(1, 2);
 	x.ShowComplex();
@@ -988,11 +988,11 @@ void main()
 
 
 /*
-// °´Ã¼´Â ÀÚ·áÇüÀÌ Å¬·¡½º¶ó´Â°Å»©°í´Â ´Ù¸¥ ÀÏ¹İ º¯¼ö¿Í µ¿ÀÏÇÏ´Ù. ±×·¯´Ï²¥ Æ÷ÀÎÅÍµµ ÀÖ´Ù. °´Ã¼ Æ÷ÀÎÅÍ        
-// Å¬·¡½ºÀÇ ¸â¹öÇÔ¼ö´Â ÇØ´ç Å¬·¡½º°´Ã¼µéÀÌ °øÀ¯ÇÏ´Â°ÅÀÓ ±×·¯¸é ÇÔ¼ö ³»ÀÇ ¸â¹öº¯¼öµéÀÌ ¾î¶² °´Ã¼¼Ò¼ÓÀÎÁö¸¦ ¾î¶»°Ô ¾Æ³ª..
-// ±×°Å´Â ÄÄÆÄÀÏ·¯¿¡ ÀÇÇØ »ı¼ºµÇ´Â this Æ÷ÀÎÅÍ »ç¿ëÇØ¼­ ÇÑ´Ù. this ´Â "¸â¹öÇÔ¼ö¸¦ È£ÃâÇÑ °´Ã¼ÀÇ ÁÖ¼Ò" ÀÓ ¾ÏÆ° ÄÄÆÄÀÏ·¯°¡ ¾Ë¾Æ¼­ this -> real = 4;   this->image = 3; ÀÌ·± Çü½ÄÀ¸·Î ¾Ë¾Æ¼­ ÇØÁÜ this ´Â ¸â¹öÇÔ¼ö ³»¿¡¼­¸¸ »ç¿ë°¡´ÉÇÔ.
-// ¸â¹öÇÔ¼ö³»¿¡ this Æ÷ÀÎÅÍ°¡ ÀÖ´Ù. this ¸¦ ²À »ç¿ëÇØ¾ß ÇÏ´Â °æ¿ì´Â   ÇÔ¼öÀÇ ¸Å°³º¯¼ö¿Í ¸â¹öº¯¼öÀÇ ÀÌ¸§ÀÌ ¶È°°À»¶§ÀÌ´Ù.
-//this ¸¦ ÇÑ¹ø ¾µ¶§¾øÀÌ ¸í½ÃÀûÀ¸·Î »ç¿ëÇØº¸ÀÚ
+// ê°ì²´ëŠ” ìë£Œí˜•ì´ í´ë˜ìŠ¤ë¼ëŠ”ê±°ë¹¼ê³ ëŠ” ë‹¤ë¥¸ ì¼ë°˜ ë³€ìˆ˜ì™€ ë™ì¼í•˜ë‹¤. ê·¸ëŸ¬ë‹ˆêº„ í¬ì¸í„°ë„ ìˆë‹¤. ê°ì²´ í¬ì¸í„°        
+// í´ë˜ìŠ¤ì˜ ë©¤ë²„í•¨ìˆ˜ëŠ” í•´ë‹¹ í´ë˜ìŠ¤ê°ì²´ë“¤ì´ ê³µìœ í•˜ëŠ”ê±°ì„ ê·¸ëŸ¬ë©´ í•¨ìˆ˜ ë‚´ì˜ ë©¤ë²„ë³€ìˆ˜ë“¤ì´ ì–´ë–¤ ê°ì²´ì†Œì†ì¸ì§€ë¥¼ ì–´ë–»ê²Œ ì•„ë‚˜..
+// ê·¸ê±°ëŠ” ì»´íŒŒì¼ëŸ¬ì— ì˜í•´ ìƒì„±ë˜ëŠ” this í¬ì¸í„° ì‚¬ìš©í•´ì„œ í•œë‹¤. this ëŠ” "ë©¤ë²„í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•œ ê°ì²´ì˜ ì£¼ì†Œ" ì„ ì•”íŠ¼ ì»´íŒŒì¼ëŸ¬ê°€ ì•Œì•„ì„œ this -> real = 4;   this->image = 3; ì´ëŸ° í˜•ì‹ìœ¼ë¡œ ì•Œì•„ì„œ í•´ì¤Œ this ëŠ” ë©¤ë²„í•¨ìˆ˜ ë‚´ì—ì„œë§Œ ì‚¬ìš©ê°€ëŠ¥í•¨.
+// ë©¤ë²„í•¨ìˆ˜ë‚´ì— this í¬ì¸í„°ê°€ ìˆë‹¤. this ë¥¼ ê¼­ ì‚¬ìš©í•´ì•¼ í•˜ëŠ” ê²½ìš°ëŠ”   í•¨ìˆ˜ì˜ ë§¤ê°œë³€ìˆ˜ì™€ ë©¤ë²„ë³€ìˆ˜ì˜ ì´ë¦„ì´ ë˜‘ê°™ì„ë•Œì´ë‹¤.
+//this ë¥¼ í•œë²ˆ ì“¸ë•Œì—†ì´ ëª…ì‹œì ìœ¼ë¡œ ì‚¬ìš©í•´ë³´ì
 
 #include <iostream>
 using namespace std;
@@ -1103,7 +1103,7 @@ void Crect::input(int t0, int t1, int t2, int t3) {
 }
 Crect::Crect(int t0, int t1, int t2, int t3)
 {
-	cout << "»ı¼ºÀÚ È£Ãâ" << endl;
+	cout << "ìƒì„±ì í˜¸ì¶œ" << endl;
 	left = t0;
 	top = t1;
 	right = t2;
@@ -1111,7 +1111,7 @@ Crect::Crect(int t0, int t1, int t2, int t3)
 }
 Crect::~Crect()
 {
-	cout << "¼Ò¸êÀÚ È£Ãâ" << endl;
+	cout << "ì†Œë©¸ì í˜¸ì¶œ" << endl;
 	system("pause");
 }
 void main() {
@@ -1129,13 +1129,13 @@ void main() {
 
 
 
-//¿©±âºÎÅÍ ¿¹Á¦
+//ì—¬ê¸°ë¶€í„° ì˜ˆì œ
 
 
 /*
-//¼Ò¸êÀÚ. Destructor ¼Ò¸êÀÚ´Â °´Ã¼°¡ ¼Ò¸êÇÒ¶§ ÀÚµ¿È£Ãâ  
-// »ı¼ºÀÚ°¡ °´Ã¼¸¦ ÃÊ±âÈ­ÇÏ±â À§ÇÑ ¸â¹öÇÔ¼ö¶ó¸é ¼Ò¸êÀÚ´Â °´Ã¼¸¦ Á¤¸®ÇØ ÁÖ´Â (¸®¼Ò½º)¸¦ ÇØÁ¦ÇÑ´ÙµçÁö ÇÏ´Â ÀÛ¾÷À» ÇÏ´Â ¸â¹öÇÔ¼öÀÌ´Ù . ¿¹¶óÀÌ
-// cpp ÄÄÆÄÀÏ·¯°¡ ¼Ò¸êÀÚµµ Á¦°øÇØÁÖ´Âµ¥ »ı¼ºÀÚ¿Í ¶È°°ÀÌ ¾Æ¹«°Íµµ ¾ÈÇÏ´Â ¼Ò¸êÀÚ¶ó¼­  °´Ã¼¸¦ ÇØÁ¦ÇÒ¶§ ²À ÇØ¾ßÇÒÀÏÀÌ ÀÖÀ¸¸é ¸í½ÃÀûÀ¸·Î Á¤ÀÇÇØÁà¾ßÇÑ´Ù. ¤¾¼Ò¸êÀÚ´Â ¸Å°³º¯¼ö ÁöÁ¤ X ¿À¹ö·Îµù X  ~ºÙÀÌ¸é µÈ´Ù Å¬·¡½ºÀÌ¸§ ¾Õ¿¡
+//ì†Œë©¸ì. Destructor ì†Œë©¸ìëŠ” ê°ì²´ê°€ ì†Œë©¸í• ë•Œ ìë™í˜¸ì¶œ  
+// ìƒì„±ìê°€ ê°ì²´ë¥¼ ì´ˆê¸°í™”í•˜ê¸° ìœ„í•œ ë©¤ë²„í•¨ìˆ˜ë¼ë©´ ì†Œë©¸ìëŠ” ê°ì²´ë¥¼ ì •ë¦¬í•´ ì£¼ëŠ” (ë¦¬ì†ŒìŠ¤)ë¥¼ í•´ì œí•œë‹¤ë“ ì§€ í•˜ëŠ” ì‘ì—…ì„ í•˜ëŠ” ë©¤ë²„í•¨ìˆ˜ì´ë‹¤ . ì˜ˆë¼ì´
+// cpp ì»´íŒŒì¼ëŸ¬ê°€ ì†Œë©¸ìë„ ì œê³µí•´ì£¼ëŠ”ë° ìƒì„±ìì™€ ë˜‘ê°™ì´ ì•„ë¬´ê²ƒë„ ì•ˆí•˜ëŠ” ì†Œë©¸ìë¼ì„œ  ê°ì²´ë¥¼ í•´ì œí• ë•Œ ê¼­ í•´ì•¼í• ì¼ì´ ìˆìœ¼ë©´ ëª…ì‹œì ìœ¼ë¡œ ì •ì˜í•´ì¤˜ì•¼í•œë‹¤. ã…ì†Œë©¸ìëŠ” ë§¤ê°œë³€ìˆ˜ ì§€ì • X ì˜¤ë²„ë¡œë”© X  ~ë¶™ì´ë©´ ëœë‹¤ í´ë˜ìŠ¤ì´ë¦„ ì•ì—
 
 #include <iostream>
 using namespace std;
@@ -1159,7 +1159,7 @@ Complex::Complex(int r, int i)
 
 Complex::~Complex()
 {
-	cout << "¼Ò¸êÀÚ È£Ãâ" << endl;
+	cout << "ì†Œë©¸ì í˜¸ì¶œ" << endl;
 	system("pause");
 
 }
@@ -1185,7 +1185,7 @@ void main()
 
 
 /*
-//Äİ·ĞÃÊ±âÈ­ ;; ÀÌ°Å´Â º¸±â´Â ÁÁ°ÚÁö¸¸;;Á» ±×·¸³×
+//ì½œë¡ ì´ˆê¸°í™” ;; ì´ê±°ëŠ” ë³´ê¸°ëŠ” ì¢‹ê² ì§€ë§Œ;;ì¢€ ê·¸ë ‡ë„¤
 #include <iostream>
 using namespace std;
  
@@ -1198,7 +1198,7 @@ public :
 	void ShowComplex()const;
 };
 
-Complex::Complex(int r, int i) : real(r), image(i) // º¸±â ÂÉ±İ ±×·¸´Ù.
+Complex::Complex(int r, int i) : real(r), image(i) // ë³´ê¸° ìª¼ê¸ˆ ê·¸ë ‡ë‹¤.
 {
 
 }
@@ -1215,7 +1215,7 @@ private :
 	int real;
 	int image;
 public :
-	Complex(int r = 0, int i = 0); // ÀÌ·¸°Ô ÇÒ¼öµµ ÀÖ´Ù . ÀÌ·¸°Ô ÇÏ¸é »ı¼ºÀÚ ±¸Áö ¿ÀºÛ·Îµß ÇØ¼­ ¿©·¯°Ô ¸¸µéÇÊ¿ä°¡ »ç¶óÁú¼öµµÀÖ´Ù ¤¾
+	Complex(int r = 0, int i = 0); // ì´ë ‡ê²Œ í• ìˆ˜ë„ ìˆë‹¤ . ì´ë ‡ê²Œ í•˜ë©´ ìƒì„±ì êµ¬ì§€ ì˜¤ë¶œë¡œë’¹ í•´ì„œ ì—¬ëŸ¬ê²Œ ë§Œë“¤í•„ìš”ê°€ ì‚¬ë¼ì§ˆìˆ˜ë„ìˆë‹¤ ã…
 	void ShowComplex() const;
 };
 
@@ -1262,7 +1262,7 @@ public :
 	void ShowComplex() const;
 };
 
-Complex::Complex() // ¿Í.. ÀÌ·± ½Ç¼ö¸¦ ÇÏ´Ù´Ï...     »ı¼ºÀÚ Á¤ÀÇºÎºĞ¿¡ int real = 0; ÀÌ¶ó°í ÇÔ¼ö¾È¿¡ º¯¼ö¸¦ ¶Ç ¼±¾ğÇß¾ú³× ¿Í ÀÌ·¯´Ï±î ¾²·¹±â°ª³ª¿ÀÁö , ÇÏ..
+Complex::Complex() // ì™€.. ì´ëŸ° ì‹¤ìˆ˜ë¥¼ í•˜ë‹¤ë‹ˆ...     ìƒì„±ì ì •ì˜ë¶€ë¶„ì— int real = 0; ì´ë¼ê³  í•¨ìˆ˜ì•ˆì— ë³€ìˆ˜ë¥¼ ë˜ ì„ ì–¸í–ˆì—ˆë„¤ ì™€ ì´ëŸ¬ë‹ˆê¹Œ ì“°ë ˆê¸°ê°’ë‚˜ì˜¤ì§€ , í•˜..
 {
 	real = 0;
 		image = 0;
@@ -1297,7 +1297,7 @@ void main()
 
 
 /*
-// ¸Å°³º¯¼ö¸¦ °®´Â »ı¼ºÀÚ
+// ë§¤ê°œë³€ìˆ˜ë¥¼ ê°–ëŠ” ìƒì„±ì
 #include <iostream>
 using namespace std;
 class Complex
@@ -1347,7 +1347,7 @@ void main()
 
 
 /*
-//¤µ»ı¼ºÀÚ ÄÄÆÄÀÏ·¯¿¡¼­ µğÆúÆ® »ı¼ºÀÚ¸¦ ÀÚµ¿À¸·Î »ı¼ºÇØÁÖÁö¸¸. ÀÌ°Å´Â ¾²·¹±â°ª¸¸ »ı°Ü¼­ ¸í½ÃÀûÀ¸·Î ÇØ¾ßÇÒ°Å´Â »ı¼ºÇØ¾ßÇÑ´Ù.
+//ã……ìƒì„±ì ì»´íŒŒì¼ëŸ¬ì—ì„œ ë””í´íŠ¸ ìƒì„±ìë¥¼ ìë™ìœ¼ë¡œ ìƒì„±í•´ì£¼ì§€ë§Œ. ì´ê±°ëŠ” ì“°ë ˆê¸°ê°’ë§Œ ìƒê²¨ì„œ ëª…ì‹œì ìœ¼ë¡œ í•´ì•¼í• ê±°ëŠ” ìƒì„±í•´ì•¼í•œë‹¤.
 #include <iostream>
 using namespace std;
 class Complex
@@ -1356,24 +1356,24 @@ private:
 	int real;
 	int image;
 public:
-	Complex(); //»ı¼ºÀÚ ¼±¾ğ
+	Complex(); //ìƒì„±ì ì„ ì–¸
 	void ShowComplex() const;
 };          
 
-Complex::Complex() // »ı¼ºÀÚ Á¤ÀÇ
+Complex::Complex() // ìƒì„±ì ì •ì˜
 {
 	real = 5;
 	image = 20;
 }
 
-void Complex::ShowComplex() const // const·Î ShowComplex³»ºÎ¿¡¼­ Complex Å¬·¡½º ³»ºÎ°ª ¸ø¹Ù²Ù°Ô
+void Complex::ShowComplex() const // constë¡œ ShowComplexë‚´ë¶€ì—ì„œ Complex í´ë˜ìŠ¤ ë‚´ë¶€ê°’ ëª»ë°”ê¾¸ê²Œ
 {
 	cout << real << "." << image << "i" << endl;
 }
 
 int main()
 {
-	Complex x; // x¶ó´Â °´Ã¼¸¦ ¸¸µé¶§ »ı¼ºÀÚ ½ÇÇà.
+	Complex x; // xë¼ëŠ” ê°ì²´ë¥¼ ë§Œë“¤ë•Œ ìƒì„±ì ì‹¤í–‰.
 
 	x.ShowComplex();
 
@@ -1409,17 +1409,17 @@ void main() {
 	return;
 }*/
 /*
-void print(int x, int y, int z) { // ÇÔ¼öÀÇ µğÆúÆ® ÃÊ±â°ªÀº ¹«Á¶°Ç ¼±¾ğºÎ¿¡´Ù ÇØÁà¾ß´í´Ù. ¿©±â´Ù°¡ ½á¹ö¸®¸é ¿À·ù³­´Ù. ÀÌ¹®Àå ÁÖ¼® ÇØÁ¦ÇØµµ ÀÛµ¿ÇÑ´Ù. 
+void print(int x, int y, int z) { // í•¨ìˆ˜ì˜ ë””í´íŠ¸ ì´ˆê¸°ê°’ì€ ë¬´ì¡°ê±´ ì„ ì–¸ë¶€ì—ë‹¤ í•´ì¤˜ì•¼ëŒ„ë‹¤. ì—¬ê¸°ë‹¤ê°€ ì¨ë²„ë¦¬ë©´ ì˜¤ë¥˜ë‚œë‹¤. ì´ë¬¸ì¥ ì£¼ì„ í•´ì œí•´ë„ ì‘ë™í•œë‹¤. 
 	cout << x << " " << y << " " << z << endl;
 	return;
-}// ³»¸»Àº ¿©±â´Ù°¡ void print(int x=99 ÀÌ·±Áş ÇÏÁö¸»¶õ¾ê±â´Ù
+}// ë‚´ë§ì€ ì—¬ê¸°ë‹¤ê°€ void print(int x=99 ì´ëŸ°ì§“ í•˜ì§€ë§ë€ì–˜ê¸°ë‹¤
 */
 
 
 
 
 /*
-//¸Å°³º¯¼öÀÇ °¹¼ö°¡ ´Ù¸¥ ¿À¹ö·Îµù
+//ë§¤ê°œë³€ìˆ˜ì˜ ê°¯ìˆ˜ê°€ ë‹¤ë¥¸ ì˜¤ë²„ë¡œë”©
 #include <iostream>
 using namespace std;
 inline void print(int);
@@ -1452,16 +1452,16 @@ inline void print(int num, int num2, int num3) {
 
 
 /*
-#include <iostream> // ¸Å°³º¯¼öÀÇ ÀÚ·áÇüÀÌ ´Ù¸¥ overloading
+#include <iostream> // ë§¤ê°œë³€ìˆ˜ì˜ ìë£Œí˜•ì´ ë‹¤ë¥¸ overloading
 using namespace std;
 
 void absolute(int num);
 void absolute(double num);
-void absolute(long int num); // long ÀÚ·áÇü long int ¶ó°íµµ ÇÏ´Â±¸³ª.. ´Ù¸¥°¡.
+void absolute(long int num); // long ìë£Œí˜• long int ë¼ê³ ë„ í•˜ëŠ”êµ¬ë‚˜.. ë‹¤ë¥¸ê°€.
 
 int main() {
 	
-	for (int i = 0; i < 3; i++) { // ¼¼°¡ÁöÀÇ ½ÇÇèÀ» ÇØº¸ÀÚ »ı°¢ÇØº¸´Ï±î ÀÌ for¹®Àº °³Áö¶öÀÌ´Ù.
+	for (int i = 0; i < 3; i++) { // ì„¸ê°€ì§€ì˜ ì‹¤í—˜ì„ í•´ë³´ì ìƒê°í•´ë³´ë‹ˆê¹Œ ì´ forë¬¸ì€ ê°œì§€ë„ì´ë‹¤.
 		
 		switch (i) {
 		case 0:absolute(-3); break;
@@ -1478,7 +1478,7 @@ int main() {
 void absolute(int num) {
 	if (num < 0)
 		cout << -(num) << endl;
-	cout << "int ¶ó°í ÀÎ½ÄÇÔ" << endl;
+	cout << "int ë¼ê³  ì¸ì‹í•¨" << endl;
 }
 void absolute(double num) {
 	if (num < 0)
@@ -1488,7 +1488,7 @@ void absolute(double num) {
 void absolute(long int num) {
 	if (num < 0)
 		cout << -(num) << endl;
-	cout << "long int ÀÛµ¿´ï!!!" << endl;
+	cout << "long int ì‘ë™ëŒ!!!" << endl;
 }
 */
 
@@ -1498,16 +1498,16 @@ void absolute(long int num) {
 
 
 /*
-//ÇÔ¼öÀÇ  signature  ÄÄÆÄÀÏ·¯°¡ ÇÔ¼ö¸¦ ±¸ºĞÇÏ´Â º¯¼öµé. 1.ÇÔ¼öÀÇ ÀÌ¸§ 2. ¸Å°³º¯¼öÀÇ °³¼ö 3. ¸Å°³º¯¼öÀÇ ÀÚ·áÇü
-#include <iostream> // ÇÔ¼öÀÇ ´ÙÇü¼ºÀ» ¾Ë¾Æº¸±â À§ÇØ ÄÚµå¸¦ ÀÛ¼ºÇØº¸¾Ò½À´Ï´Ù.
+//í•¨ìˆ˜ì˜  signature  ì»´íŒŒì¼ëŸ¬ê°€ í•¨ìˆ˜ë¥¼ êµ¬ë¶„í•˜ëŠ” ë³€ìˆ˜ë“¤. 1.í•¨ìˆ˜ì˜ ì´ë¦„ 2. ë§¤ê°œë³€ìˆ˜ì˜ ê°œìˆ˜ 3. ë§¤ê°œë³€ìˆ˜ì˜ ìë£Œí˜•
+#include <iostream> // í•¨ìˆ˜ì˜ ë‹¤í˜•ì„±ì„ ì•Œì•„ë³´ê¸° ìœ„í•´ ì½”ë“œë¥¼ ì‘ì„±í•´ë³´ì•˜ìŠµë‹ˆë‹¤.
 using namespace std; // 
 
 void printstr(const char *);
-void printstr(char, int); //¸Å°³º¯¼ö¸íÀ» ¿©±â¼­´Â ÁöÁ¤¾ÈÇØµµ µÇ´Â±¸³ª..... ¾Æ¤¿,,,,Á¤¸»?
+void printstr(char, int); //ë§¤ê°œë³€ìˆ˜ëª…ì„ ì—¬ê¸°ì„œëŠ” ì§€ì •ì•ˆí•´ë„ ë˜ëŠ”êµ¬ë‚˜..... ì•„ã…,,,,ì •ë§?
 
 int main()
 {
-	printstr("Sorry i'm sorry"); // ¾Æ c++ Ã¥ °³ ºÒÄ£ÀıÇÏ³× .    "sorry i'm sorry" ÀÌ°Ô ¹®ÀÚ¿­ »ó¼ö¾ß »ó¼ö const ½Ã¹ß  ±×·¡¼­ Ãâ·ÂÇÏ´Â ÇÔ¼ö·Î °Ç³»ÁÙ¶§ ±× ¸Å°³º¯¼ö ÀÚ·áÇü¿¡´Ù°¡ const ºÙ¿©¾ßÇÔ ÇÏ....
+	printstr("Sorry i'm sorry"); // ì•„ c++ ì±… ê°œ ë¶ˆì¹œì ˆí•˜ë„¤ .    "sorry i'm sorry" ì´ê²Œ ë¬¸ìì—´ ìƒìˆ˜ì•¼ ìƒìˆ˜ const ì‹œë°œ  ê·¸ë˜ì„œ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜ë¡œ ê±´ë‚´ì¤„ë•Œ ê·¸ ë§¤ê°œë³€ìˆ˜ ìë£Œí˜•ì—ë‹¤ê°€ const ë¶™ì—¬ì•¼í•¨ í•˜....
 	printstr('a', 4);
 	system("pause");
 	return 0;
@@ -1516,7 +1516,7 @@ int main()
 void printstr(const char *the_string) {
 	cout << the_string << endl;
 }
-void printstr(char the_char, int repeat_cnt) { // ÇÏ¸é¼­ ´À³¤°Ô ¿µ¾î.. ¾î¿ø root ¸¦ Á¶±İ ÇĞ½ÀÇØ¾ß°Ú´Ù... ±×¸»ÀÌ¾Æ..
+void printstr(char the_char, int repeat_cnt) { // í•˜ë©´ì„œ ëŠë‚€ê²Œ ì˜ì–´.. ì–´ì› root ë¥¼ ì¡°ê¸ˆ í•™ìŠµí•´ì•¼ê² ë‹¤... ê·¸ë§ì´ì•„..
 	for (int i = 0; i < repeat_cnt; i++)
 		cout << the_char << endl;
 
@@ -1529,20 +1529,20 @@ void printstr(char the_char, int repeat_cnt) { // ÇÏ¸é¼­ ´À³¤°Ô ¿µ¾î.. ¾î¿ø root
 
 
 /*
-//class ¼±¾ğ
+//class ì„ ì–¸
 #include <iostream>
 using namespace std;
-class Complex // Complex Å¬·¡½º ¼±¾ğ
+class Complex // Complex í´ë˜ìŠ¤ ì„ ì–¸
 {
 private: 
 	int real;
 	int image;
 
 public:
-	void SetComplex(); // public Complex Å¬·¡½º ¸â¹öÇÔ¼ö ¼±¾ğ
-	void ShowComplex() const; // ShowComplex ÇÔ¼ö´Â °´Ã¼ ³»ºÎÀÇ °ªÀ» ¾Æ¹«°Íµµ º¯°æÇÏ¸é ¾ÈµÇ´Â ÇÔ¼öÀÌ´Ù ±×·¯¹Ç·Î const ¿¹¾à¾î¸¦ ¾Õ¿¡´Ù ÃÄÁà¾ßÇÑ´Ù.
-	inline void SetReal(int r); // real image¿¡ Á÷Á¢ °ªÀ» ÀÔ·ÂÇÒ¼öÀÖ°Ô ÇÑ´Ù.
-	void SetImage(int i); // ¸¸¾á¿¡ ¿©±â ¾È¿¡´Ù°¡ Á¤ÀÇ±îÁöÇÏ¸é ±×°ÍÀº inline ÇÔ¼ö°¡ µÈ´Ù. ÂªÀº ÇÔ¼öÀÏ¶§´Â inline ÇØÁà¾ß ºü¸¥Á¢±Ù µî ÇØ¼­ ¾ÏÆ° È¿À²ÀÌ ÁÁ´Ù ´ë½Å Å«°Å¸éÀº ÇÁ·Î±×·¥ÀÇ ¿ë·®ÀÌ Ä¿Áø´Ù. ¸í½ÃÀûÀ¸·Î inline Àû¾îÁàµµ µÈ´Ù.
+	void SetComplex(); // public Complex í´ë˜ìŠ¤ ë©¤ë²„í•¨ìˆ˜ ì„ ì–¸
+	void ShowComplex() const; // ShowComplex í•¨ìˆ˜ëŠ” ê°ì²´ ë‚´ë¶€ì˜ ê°’ì„ ì•„ë¬´ê²ƒë„ ë³€ê²½í•˜ë©´ ì•ˆë˜ëŠ” í•¨ìˆ˜ì´ë‹¤ ê·¸ëŸ¬ë¯€ë¡œ const ì˜ˆì•½ì–´ë¥¼ ì•ì—ë‹¤ ì³ì¤˜ì•¼í•œë‹¤.
+	inline void SetReal(int r); // real imageì— ì§ì ‘ ê°’ì„ ì…ë ¥í• ìˆ˜ìˆê²Œ í•œë‹¤.
+	void SetImage(int i); // ë§Œì–€ì— ì—¬ê¸° ì•ˆì—ë‹¤ê°€ ì •ì˜ê¹Œì§€í•˜ë©´ ê·¸ê²ƒì€ inline í•¨ìˆ˜ê°€ ëœë‹¤. ì§§ì€ í•¨ìˆ˜ì¼ë•ŒëŠ” inline í•´ì¤˜ì•¼ ë¹ ë¥¸ì ‘ê·¼ ë“± í•´ì„œ ì•”íŠ¼ íš¨ìœ¨ì´ ì¢‹ë‹¤ ëŒ€ì‹  í°ê±°ë©´ì€ í”„ë¡œê·¸ë¨ì˜ ìš©ëŸ‰ì´ ì»¤ì§„ë‹¤. ëª…ì‹œì ìœ¼ë¡œ inline ì ì–´ì¤˜ë„ ëœë‹¤.
 };
 
 void Complex::SetComplex() {
@@ -1553,7 +1553,7 @@ void Complex::ShowComplex() const {
 	cout << "print Complex " << endl;
 	cout << real << "." << image << "i" << endl;
 }
-inline void Complex::SetReal(int r) {   // ¿äµû°¡ inline Àû¾îÁÖ¸é µÈ´Ù.
+inline void Complex::SetReal(int r) {   // ìš”ë”°ê°€ inline ì ì–´ì£¼ë©´ ëœë‹¤.
 	real = r;
 }
 void Complex::SetImage(int i) {
@@ -1579,24 +1579,22 @@ int main()
 
 
 
-// ±¸Á¶Ã¼ ¹è¿­À» call by reference ·Î ÇÔ¼ö·Î Àü´Ş °¡´ÉÇÏ´Ù ÀÌ·¸°Ô
+// êµ¬ì¡°ì²´ ë°°ì—´ì„ call by reference ë¡œ í•¨ìˆ˜ë¡œ ì „ë‹¬ ê°€ëŠ¥í•˜ë‹¤ ì´ë ‡ê²Œ
 /*
-void func(structTest (&ref)[100] // ÀÌ°Ô Æ÷ÀÎÅÍ°¡ ¾Æ´Ï¶ó ·¹ÆÛ·±½º¶ó¼­ ²À ¹è¿­ÀÇ Å©±â¸¦ ¸í½ÃÇØÁà¾ßÇÔ.
+void func(structTest (&ref)[100] // ì´ê²Œ í¬ì¸í„°ê°€ ì•„ë‹ˆë¼ ë ˆí¼ëŸ°ìŠ¤ë¼ì„œ ê¼­ ë°°ì—´ì˜ í¬ê¸°ë¥¼ ëª…ì‹œí•´ì¤˜ì•¼í•¨.
 {
 refer[0].weight = 10;
 }
 
-func(test)   // È£Ãâ call
+func(test)   // í˜¸ì¶œ call
 */
 
 
 
 
 /*
-1. ¼ºÀûÀ» °ü¸®ÇÏ±â À§ÇÑ ±¸Á¶Ã¼¸¦ ¼±¾ğÇÏ¶ó ±¸Á¶Ã¼ ÀÌ¸§ stuRecord > ¸â¹öº¯¼ö name kor eng mat tot ave
-2. 1¹ø ¹®Á¦¿¡ ÃÊ±â°ª ÁÖ°í ÃÑÁ¡°ú Æò±ÕÀ» ±¸ÇÏ°í(3. ÀÌ°É ¶Ç ÇÔ¼ö·Î ¸¸µé¾î¶ó ¤¾¤¾) ÀÌ¸¦ Ãâ·ÂÇÏ·¡ 4. Ãâ·Âµµ ÇÔ¼ö·Î ÇÏ¶ó prn 5.ÀÔ·Âµµ init ÇÔ¼ö ¼±¾ğ ÇÒ¼öÀÖ°Ô ±×³É Á¾ÇÕÀûÀ¸·Î ¸¸µé¶ó ÀÌ¾ê±â³× ¤¾¤¾ ¾ÖµéÀº ±¸Á¶Ã¼ ¹è¿­·Î
-¾¾ºÎ¾Æ¤Ã¶ó¤À¤·¤±³Ê¸®¤¿¤±¤¤¾ó;¤Ó¤·¤±³ª·¯;¤Ó¤±¾È·¯; ¤Ó¾Æ´Ï ¾¾¹ß strcpy ¸¦ ¾²¸é µÈ´Ù°í ¸»À» ÇÏÁö ÀÌ ¾¾ºÎ·² »õ³¢µé Ã¥ ¸¸µç»õ³¢µé ´Ù ÃÄÆĞ¾ßÇØ ¾¾ºÎ·² ¾Æ´Ï ¾¥ºÎ·² Áö½ÄÀÎµéµµ ¶È°°Àº³ğµéÀÌ¾ß¹ÌÄ£ ´É±¸··ÀÌ °°Àº »õ³¢µé Á¸³ª ¹Ì²ø¹Ì²ø ºüÁ®³ª°¡³× ¾¾¹ß
-´äÀº Á¦´ë·Î ¾ÈÇÏ°í Çê¼Ò¸®¸¸ ¾¾ºÎ·² ³ğµé Á¿°°Àº ³ğµé
+1. ì„±ì ì„ ê´€ë¦¬í•˜ê¸° ìœ„í•œ êµ¬ì¡°ì²´ë¥¼ ì„ ì–¸í•˜ë¼ êµ¬ì¡°ì²´ ì´ë¦„ stuRecord > ë©¤ë²„ë³€ìˆ˜ name kor eng mat tot ave
+2. 1ë²ˆ ë¬¸ì œì— ì´ˆê¸°ê°’ ì£¼ê³  ì´ì ê³¼ í‰ê· ì„ êµ¬í•˜ê³ (3. ì´ê±¸ ë˜ í•¨ìˆ˜ë¡œ ë§Œë“¤ì–´ë¼ ã…ã…) ì´ë¥¼ ì¶œë ¥í•˜ë˜ 4. ì¶œë ¥ë„ í•¨ìˆ˜ë¡œ í•˜ë¼ prn 5.ì…ë ¥ë„ init í•¨ìˆ˜ ì„ ì–¸ í• ìˆ˜ìˆê²Œ ê·¸ëƒ¥ ì¢…í•©ì ìœ¼ë¡œ ë§Œë“¤ë¼ ì´ì–˜ê¸°ë„¤ ã…ã… ì• ë“¤ì€ êµ¬ì¡°ì²´ ë°°ì—´ë¡œ
 */
 /*
 #include <iostream>
@@ -1617,36 +1615,36 @@ void prn(sturecord *p, int num);
 
 int main() {
 
-	sturecord a[headnum]; // a¶ó´Â ·¹ÄÚµå±¸Á¶Ã¼ ¹è¿­ ¼±¾ğ 
+	sturecord a[headnum]; // aë¼ëŠ” ë ˆì½”ë“œêµ¬ì¡°ì²´ ë°°ì—´ ì„ ì–¸ 
 	
-	init(a, headnum); //init È£Ãâ
-	prn(a, headnum); //prn È£Ãâ »ç½Ç headnum ¸ÅÅ©·Î»ó¼ö·Î ¼±¾ğÇØ¼­ ÇÔ¼ö ¸Å°³º¯¼ö¿¡ ³¢¿ö³ÖÀ» ÇÊ¿ä´Â ¾ø´Âµ¥ ±×³É ±âºĞ³»¼­ ³ÖÀ½.
+	init(a, headnum); //init í˜¸ì¶œ
+	prn(a, headnum); //prn í˜¸ì¶œ ì‚¬ì‹¤ headnum ë§¤í¬ë¡œìƒìˆ˜ë¡œ ì„ ì–¸í•´ì„œ í•¨ìˆ˜ ë§¤ê°œë³€ìˆ˜ì— ë¼ì›Œë„£ì„ í•„ìš”ëŠ” ì—†ëŠ”ë° ê·¸ëƒ¥ ê¸°ë¶„ë‚´ì„œ ë„£ìŒ.
 
 	system("pause");
 	return 0;
 }
 
 void init(sturecord *p, int num) {
-	cout << endl << " init ÇÔ¼ö È£Ãâ0¹øÂ°´Â ÃÊ±âÈ­ÇØÁÜ ¤¾¤¾" <<endl;
-	strcpy_s(p[0].name, "È«±æµ¿");
+	cout << endl << " init í•¨ìˆ˜ í˜¸ì¶œ0ë²ˆì§¸ëŠ” ì´ˆê¸°í™”í•´ì¤Œ ã…ã…" <<endl;
+	strcpy_s(p[0].name, "í™ê¸¸ë™");
 	p[0].kor = 82;
 	p[0].eng = 93;
 	p[0].mat = 91;
 
 	for (int i = 1; i < headnum; i++) {
 		cout <<"\n"<< i << endl;
-		cout << "ÀÌ¸§ ÀÔ·Â";
+		cout << "ì´ë¦„ ì…ë ¥";
 		cin >> p[i].name;
-		cout << "\n±¹¾î ÀÔ·Â";
+		cout << "\nêµ­ì–´ ì…ë ¥";
 		cin >> p[i].kor;
-		cout << "\n¿µ¾î ÀÔ·Â";
+		cout << "\nì˜ì–´ ì…ë ¥";
 		cin >> p[i].eng;
-		cout << "\n¼öÇĞ ÀÔ·Â";
+		cout << "\nìˆ˜í•™ ì…ë ¥";
 		cin >> p[i].mat;
 	}
-	cout << endl << "°è»ê ½ÃÀÛ cal() ÇÔ¼ö È£Ãâ"<<endl;
+	cout << endl << "ê³„ì‚° ì‹œì‘ cal() í•¨ìˆ˜ í˜¸ì¶œ"<<endl;
 	cal(p, headnum);
-	cout << endl << "main ÇÔ¼ö·Î º¹±Í" << endl;
+	cout << endl << "main í•¨ìˆ˜ë¡œ ë³µê·€" << endl;
 	return;
 }
 
@@ -1655,19 +1653,19 @@ void cal(sturecord *p, int num) {
 		p[i].tot = p[i].kor + p[i].eng + p[i].mat;
 		p[i].ave = (double)((double)(p[i].tot) / 3);
 	}
-	cout << endl << "°è»ê ³¡ init()ÇÔ¼ö·Î º¹±Í";
+	cout << endl << "ê³„ì‚° ë init()í•¨ìˆ˜ë¡œ ë³µê·€";
 	return;
 }
 
 void prn(sturecord *p, int num) {
-	cout << endl << "prn ÇÔ¼ö È£Ãâ... ÇĞ»ıÀÇ ¼ºÀûÀÌ´Ù." << endl;
-	cout << "\tÀÌ¸§\t±¹¾î\t¿µ¾î\t¼öÇĞ\tÃÑÁ¡\tÆò±Õ\n";
+	cout << endl << "prn í•¨ìˆ˜ í˜¸ì¶œ... í•™ìƒì˜ ì„±ì ì´ë‹¤." << endl;
+	cout << "\tì´ë¦„\têµ­ì–´\tì˜ì–´\tìˆ˜í•™\tì´ì \tí‰ê· \n";
 	for (int i = 0; i < headnum; i++) {
 		cout << "\t" << p[i].name << "\t" << p[i].kor << "\t" << p[i].eng << "\t" << p[i].mat << "\t" << p[i].tot << "\t" << p[i].ave << "\n";
 	}
 	
-	cout << "\n¸ŞÀÎÀ¸·Î º¹±Í\n";
+	cout << "\në©”ì¸ìœ¼ë¡œ ë³µê·€\n";
 	return;
 }
-// ÈÄ ¾¾footÈûµé¾ú´Ù
+// í›„ ì”¨footí˜ë“¤ì—ˆë‹¤
 */

@@ -1,11 +1,11 @@
 
-// Å¥´Â ¼±ÀÔ¼±Ãâ
-// ¾Õ(front)°ú    µÚ(rear)¸¦      put get
-// ¼±Çü Å¥¿Í ¿øÇüÅ¥  circular queue 
-// ¼±ÇüÅ¥´Â ÇÏ³ª ¾ø¾Ö¸é µÚ¿§³ðµé ´Ù ¾ÕÀ¸·Î¿Í¾ßÇÔ. ÄÄÇ»ÅÍ°¡ ±ÍÂúÀº ÀÛ¾÷ ÇØ¼­ ´À·ÁÁü
-// ¿øÇüÅ¥´Â ±×³É Æ÷ÀÎÅÍ°¡ °¡¸®Å°´Â³ðÀÌ ¾ÕÀÌ¶ó°í»ý°¢ÇÏ¸é µÊ
-// °³°¡ Áö ²¿¸® ¹°À¸·Á°í ºùºù µµ´Â°Å »ý°¢ÇÏ¸é µÊ ¤¾
-// ¿øÇü Å¥ ±¸Çö
+// íëŠ” ì„ ìž…ì„ ì¶œ
+// ì•ž(front)ê³¼    ë’¤(rear)ë¥¼      put get
+// ì„ í˜• íì™€ ì›í˜•í  circular queue 
+// ì„ í˜•íëŠ” í•˜ë‚˜ ì—†ì• ë©´ ë’¤ì—£ë†ˆë“¤ ë‹¤ ì•žìœ¼ë¡œì™€ì•¼í•¨. ì»´í“¨í„°ê°€ ê·€ì°®ì€ ìž‘ì—… í•´ì„œ ëŠë ¤ì§
+// ì›í˜•íëŠ” ê·¸ëƒ¥ í¬ì¸í„°ê°€ ê°€ë¦¬í‚¤ëŠ”ë†ˆì´ ì•žì´ë¼ê³ ìƒê°í•˜ë©´ ë¨
+// ê°œê°€ ì§€ ê¼¬ë¦¬ ë¬¼ìœ¼ë ¤ê³  ë¹™ë¹™ ë„ëŠ”ê±° ìƒê°í•˜ë©´ ë¨ ã…Ž
+// ì›í˜• í êµ¬í˜„
 /*
 #include <iostream>
 using namespace std;
@@ -16,8 +16,8 @@ class Queue {
 private:
 	double queueDat[MAX];
 	int front;
-	int rear; // °¡¸®Å°°íÀÖ´Â ±âÁØ°ªµé.
-	bool is_this_full; // ÀÌ°Å ¼³Á¤ÇÒ ÇÊ¿ä¾ø´Ù. ¹æ¹ýÀÌ ÀÖ´Ù . 
+	int rear; // ê°€ë¦¬í‚¤ê³ ìžˆëŠ” ê¸°ì¤€ê°’ë“¤.
+	bool is_this_full; // ì´ê±° ì„¤ì •í•  í•„ìš”ì—†ë‹¤. ë°©ë²•ì´ ìžˆë‹¤ . 
 
 
 public:
@@ -32,19 +32,19 @@ Queue::Queue() {
 	for (int i = 0; i < MAX; i++) {
 		queueDat[i] = NULL;
 	}
-	front = 0; // Ã³À½¿¡ front°¡ 10 rear °¡ 0
-	rear = 0; // ¾Æ ¤½½Ã¹ß ÇÎšÇ¾Æ~~~ »ý¼ºÀÚ¿¡´Ù°¡ Áö¿ªº¯¼ö¸¦ ¸¸µé¸é ¾îÂ¼´Ï ¤»¤»¤»¤»¤»¤»¤»¤»¤»
+	front = 0; // ì²˜ìŒì— frontê°€ 10 rear ê°€ 0
+	rear = 0; 
 	is_this_full = false;
 }
 
 
 bool Queue::Put(double data) {
 	if (is_this_full == true) {
-		cout << "ERROR: ¿øÇüÅ¥°¡ ²Ë Â÷¼­ ³ÖÀ» °ø°£ÀÌ ¾ø´Ù."<<endl;
+		cout << "ERROR: ì›í˜•íê°€ ê½‰ ì°¨ì„œ ë„£ì„ ê³µê°„ì´ ì—†ë‹¤."<<endl;
 		return false;
 	}else {
 		queueDat[rear] = data;
-		rear = (++rear) % MAX; // ¿Í ¸Ó¸® ÁÁ´Ù.
+		rear = (++rear) % MAX; // ì™€ ë¨¸ë¦¬ ì¢‹ë‹¤.
 			if (front == rear) {
 				is_this_full = true;
 			}
@@ -56,7 +56,7 @@ bool Queue::Put(double data) {
 
 bool Queue::Get(double &data) {
 	if (is_this_full == false && front == rear) {
-		cout << "ERROR: ¿øÇüÅ¥°¡ ºñ¾î¼­ ²¨³¾°ÍÀÌ ¾ø´Ù" << endl;
+		cout << "ERROR: ì›í˜•íê°€ ë¹„ì–´ì„œ êº¼ë‚¼ê²ƒì´ ì—†ë‹¤" << endl;
 		return false;
 	}else {
 		data = queueDat[front];
@@ -70,7 +70,7 @@ bool Queue::Get(double &data) {
 
 
 void Queue::ShowQueue(){
-	cout << "ShowQueue È£Ãâ";
+	cout << "ShowQueue í˜¸ì¶œ";
 	for (int i = 0; i < MAX; i++) {
 	cout << i << "::" << queueDat[i] << "\t";
 	}
@@ -83,7 +83,7 @@ void main() {
 	Queue Qobj;
 	double data = 20;
 	bool temp = true;
-	cout << "¼±¾ð ³¡" << endl;
+	cout << "ì„ ì–¸ ë" << endl;
 
 	Qobj.ShowQueue();
 
@@ -168,11 +168,6 @@ void main() {
 
 
 /*
-// ±³°ú¼­ ¹æ¹ý ±³°ú¼­ ¹æ¹ýÀº is this full ?? ÀÌ ÇÊ¿äÇÏÁö¾Ê´Ù.
-
-// ¤»¤»¤»¤»¤»¤»¤»¤»¤» ±³°ú¼­ ¤»¤»¤»¤»¤»¤»¤»¤»¤» rear°¡ 9ÀÏ¶§ 9¹øÂ°°Å ¾È³Ö¾îÁü Put¾È´ï
-//¤»¤»¤»¤»¤»¤»¤»¤»¤»¤»¤»¤»¤»¤»¤»¤»¤» Á¶°Ç +1À» ¾ø¾ÖÀÚ´Ï GetÀÌ; ¾ÈµÊ ¤»¤»¤»¤»¤»¤»¤»¤»¤»¤»¤»¤»
-// ³» ¹æ¹ý´ë·Î ÇØ¾ßÇÔ.
 
 #include <iostream>
 using namespace std;
@@ -208,7 +203,7 @@ Queue::Queue() {
 
 bool Queue::Put(char data) {
 	if (front == ((rear + 1) % MAX)) {
-		cout << "ERROR: ¿øÇüÅ¥°¡ ²ËÂü" << endl;
+		cout << "ERROR: ì›í˜•íê°€ ê½‰ì°¸" << endl;
 		return false;
 	}else {
 		queue[rear] = data;
@@ -221,7 +216,7 @@ bool Queue::Put(char data) {
 
 bool Queue::Get(char &data) {
 	if (rear == ((front + 1) % MAX)) {
-		cout <<"ERROR: ¿øÇüÅ¥°¡ ºñ¾úÀ½" <<endl;
+		cout <<"ERROR: ì›í˜•íê°€ ë¹„ì—ˆìŒ" <<endl;
 			return false;
 	}else {
 		data = queue[front];
@@ -256,7 +251,7 @@ void main()
 	qObj.Put('K');
 	qObj.Put('L');
 
-	qObj.Put('M'); // ¾Æ¸¶ ¿¡·¯
+	qObj.Put('M'); // ì•„ë§ˆ ì—ëŸ¬
 	qObj.Put('M');
 
 
@@ -272,9 +267,9 @@ void main()
 	qObj.Get(Data);
 
 	qObj.Get(Data);
-	qObj.Get(Data); // ¾Æ¸¶ ¿¡·¯ 
+	qObj.Get(Data); // ì•„ë§ˆ ì—ëŸ¬ 
 
-	qObj.Put('A'); // ¼º°ø
+	qObj.Put('A'); // ì„±ê³µ
 
 
 }

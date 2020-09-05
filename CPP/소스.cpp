@@ -24,12 +24,12 @@ void test(int *p)
 
 /*
 void cal(stuRecord* p, int num);
-void prn(stuRecord* p, int num); // &temp = stu[0] ½ÄÀ¸·Î´Â µÇ´Âµ¥ 
-±×³É ¹è¿­ ÀÌ¸§ ÀÚÃ¼¸¦ ³Ñ±â´Â°Å´Â ¾ÈµÇ³× ±×·¯´Ï±î call by address ¹Ù²²¾È´í´Ù  ¹è¿­Àº ¾È´ë³ªº¸´Ù..¤¾¤¾¤¾¤¾ Á¶¤Ã¤¤³ª ±Ã±İÇÏ´Ù
+void prn(stuRecord* p, int num); // &temp = stu[0] ì‹ìœ¼ë¡œëŠ” ë˜ëŠ”ë° 
+ê·¸ëƒ¥ ë°°ì—´ ì´ë¦„ ìì²´ë¥¼ ë„˜ê¸°ëŠ”ê±°ëŠ” ì•ˆë˜ë„¤ ê·¸ëŸ¬ë‹ˆê¹Œ call by address ë°”ê»˜ì•ˆëŒ„ë‹¤  ë°°ì—´ì€ ì•ˆëŒ€ë‚˜ë³´ë‹¤..ã…ã…ã…ã… ê¶ê¸ˆí•˜ë‹¤
 */
 /*
-1. ¼ºÀûÀ» °ü¸®ÇÏ±â À§ÇÑ ±¸Á¶Ã¼¸¦ ¼±¾ğÇÏ¶ó ±¸Á¶Ã¼ ÀÌ¸§ stuRecord > ¸â¹öº¯¼ö name kor eng mat tot ave
-2. 1¹ø ¹®Á¦¿¡ ÃÊ±â°ª ÁÖ°í ÃÑÁ¡°ú Æò±ÕÀ» ±¸ÇÏ°í(3. ÀÌ°É ¶Ç ÇÔ¼ö·Î ¸¸µé¾î¶ó ¤¾¤¾) ÀÌ¸¦ Ãâ·ÂÇÏ·¡ 4. Ãâ·Âµµ ÇÔ¼ö·Î ÇÏ¶ó prn 5.ÀÔ·Âµµ init ÇÔ¼ö ¼±¾ğ ÇÒ¼öÀÖ°Ô ±×³É Á¾ÇÕÀûÀ¸·Î ¸¸µé¶ó ÀÌ¾ê±â³× ¤¾¤¾ ¾ÖµéÀº ±¸Á¶Ã¼ ¹è¿­·Î 
+1. ì„±ì ì„ ê´€ë¦¬í•˜ê¸° ìœ„í•œ êµ¬ì¡°ì²´ë¥¼ ì„ ì–¸í•˜ë¼ êµ¬ì¡°ì²´ ì´ë¦„ stuRecord > ë©¤ë²„ë³€ìˆ˜ name kor eng mat tot ave
+2. 1ë²ˆ ë¬¸ì œì— ì´ˆê¸°ê°’ ì£¼ê³  ì´ì ê³¼ í‰ê· ì„ êµ¬í•˜ê³ (3. ì´ê±¸ ë˜ í•¨ìˆ˜ë¡œ ë§Œë“¤ì–´ë¼ ã…ã…) ì´ë¥¼ ì¶œë ¥í•˜ë˜ 4. ì¶œë ¥ë„ í•¨ìˆ˜ë¡œ í•˜ë¼ prn 5.ì…ë ¥ë„ init í•¨ìˆ˜ ì„ ì–¸ í• ìˆ˜ìˆê²Œ ê·¸ëƒ¥ ì¢…í•©ì ìœ¼ë¡œ ë§Œë“¤ë¼ ì´ì–˜ê¸°ë„¤ ã…ã… ì• ë“¤ì€ êµ¬ì¡°ì²´ ë°°ì—´ë¡œ 
 */
 /*
 #include <iostream>
@@ -54,11 +54,11 @@ int main() {
 /*
 int main()
 {
-	stuRecord stu[headnum]; // stu ±¸Á¶Ã¼ ¹è¿­ ¼±¾ğ
+	stuRecord stu[headnum]; // stu êµ¬ì¡°ì²´ ë°°ì—´ ì„ ì–¸
 	
 	cin >> stu[0].name;
 
-	init(stu, headnum); //init È£Ãâ 
+	init(stu, headnum); //init í˜¸ì¶œ 
 	
 	system("pause");
 	
@@ -66,13 +66,13 @@ int main()
 
 
 }
-// ±¸Á¶Ã¼¹è¿­À» ÁÖ¼Ò·Î ÇÔ¼ö¿¡ ÇÏ 
+// êµ¬ì¡°ì²´ë°°ì—´ì„ ì£¼ì†Œë¡œ í•¨ìˆ˜ì— í•˜ 
 */
 
 
  
 /*
-// 2Â÷¿ø ±¸Á¶Ã¼ ¹è¿­
+// 2ì°¨ì› êµ¬ì¡°ì²´ ë°°ì—´
 #include <iostream>
 #define ROW 2
 #define COL 3
@@ -87,26 +87,26 @@ void main() {
 	namecard (*p)[COL];
 	p = a;
 	
-	cout << endl << "ÀÔ·Â" << endl;
+	cout << endl << "ì…ë ¥" << endl;
 	for (int i = 0; i < ROW; i++)
 		for (int j = 0; j < COL; j++) {
-			cout << "\n ¾Ö·Î¿ì ¿¬»êÀÚ »ç¿ë " << endl;
+			cout << "\n ì• ë¡œìš° ì—°ì‚°ì ì‚¬ìš© " << endl;
 			cin >> *(*(p + i) + j)->name;
-			cin >> *(*(p + i) + j)->job; // ¾Ö·Î¿ì ¿¬»êÀÚ »ç¿ë
+			cin >> *(*(p + i) + j)->job; // ì• ë¡œìš° ì—°ì‚°ì ì‚¬ìš©
 
-			cout << "\n ´å ¿¬»êÀÚ »ç¿ë " << endl;
+			cout << "\n ë‹· ì—°ì‚°ì ì‚¬ìš© " << endl;
 			cin >> (*(*(p + i) + j)).name;
 			cin >> (*(*(p + i) + j)).job;
 		}
 
-	cout << endl << "Ãâ·Â" << endl;
+	cout << endl << "ì¶œë ¥" << endl;
 	for (int i = 0; i < ROW; i++)
 		for (int j = 0; j < COL; j++) {
-			cout << "\n ¾Ö·Î¿ì ¿¬»êÀÚ »ç¿ë " << endl;
+			cout << "\n ì• ë¡œìš° ì—°ì‚°ì ì‚¬ìš© " << endl;
 			cout << *(*(p + i) + j)->name << endl;
-			cout << *(*(p + i) + j)->job << endl; // ¾Ö·Î¿ì ¿¬»êÀÚ »ç¿ë
+			cout << *(*(p + i) + j)->job << endl; // ì• ë¡œìš° ì—°ì‚°ì ì‚¬ìš©
 
-			cout << "\n ´å ¿¬»êÀÚ »ç¿ë " << endl;
+			cout << "\n ë‹· ì—°ì‚°ì ì‚¬ìš© " << endl;
 			cout << (*(*(p + i) + j)).name << endl;
 			cout << (*(*(p + i) + j)).job << endl;
 		}
@@ -120,7 +120,7 @@ void main() {
 
 
 /*
-// ±¸Á¶Ã¼ ¹è¿­ 
+// êµ¬ì¡°ì²´ ë°°ì—´ 
 #include <iostream>
 using namespace std;
 #define headnum 2
@@ -138,11 +138,11 @@ void main()
 {
 	namecard info[headnum];
 	
-	cout << "Á¤º¸ ÀÔ·Â ´Ü°è"<<endl;
+	cout << "ì •ë³´ ì…ë ¥ ë‹¨ê³„"<<endl;
 	for (int i = 0; i < headnum; i++)
 		namecardInput(&info[i]);
 
-	cout << "Á¤º¸ Ãâ·Â ´Ü°è" << endl;
+	cout << "ì •ë³´ ì¶œë ¥ ë‹¨ê³„" << endl;
 	for (int i = 0; i < headnum; i++)
 		namecardPrint(info[i]);
 
@@ -151,7 +151,7 @@ void main()
 }
 
 void namecardInput(namecard *p) {
-	cout << " ÀÔ·Â ÀÌ¸§ Á÷¾÷ ÀüÈ­ ÀÌ¸ŞÀÏ ¼øÀÓ" << endl;
+	cout << " ì…ë ¥ ì´ë¦„ ì§ì—… ì „í™” ì´ë©”ì¼ ìˆœì„" << endl;
 	cin >> (*p).name;
 	cin >> p->job;
 	cin >> (*p).tel;
@@ -159,7 +159,7 @@ void namecardInput(namecard *p) {
 	return;
 }
 void namecardPrint(namecard &temp){
-	cout << " Ãâ·Â ÀÌ¸§ Á÷¾÷ ÀüÈ­ ÀÌ¸ŞÀÏ ¼øÀÓ" << endl;
+	cout << " ì¶œë ¥ ì´ë¦„ ì§ì—… ì „í™” ì´ë©”ì¼ ìˆœì„" << endl;
 	cout << temp.name << endl << temp.job << endl << temp.tel << endl << temp.email << endl;
 	return;
 }
@@ -169,16 +169,16 @@ void namecardPrint(namecard &temp){
 
 
 
-// ±¸Á¶Ã¼ Æ÷ÀÎÅÍ´Â (*p).member   Çü½ÄÀ¸·Î ¸â¹ö¸¦ È£ÃâÇØ¾ßÇÑ´Ù ¿Ö³ÄÇÏ¸é . ¿¬»êÀÚ°¡ *¿¬»êÀÚº¸´Ù ¿ì¼±¼øÀ§°¡ ³ô´Ù. -> ÀÌ°É·Î ½áµµµÈ´Ù.
+// êµ¬ì¡°ì²´ í¬ì¸í„°ëŠ” (*p).member   í˜•ì‹ìœ¼ë¡œ ë©¤ë²„ë¥¼ í˜¸ì¶œí•´ì•¼í•œë‹¤ ì™œëƒí•˜ë©´ . ì—°ì‚°ìê°€ *ì—°ì‚°ìë³´ë‹¤ ìš°ì„ ìˆœìœ„ê°€ ë†’ë‹¤. -> ì´ê±¸ë¡œ ì¨ë„ëœë‹¤.
 /*
 call by address 
-void structInput(namecard *p){ cin >> p->name µîµî ÀÌ·¸°Ô ÇÏ¸é µÈ´Ù    cin >> (*p).name ¿ä·ÎÄÚ·Ò return;
-ÇÔ¼öÈ£ÃâÇÒ¶§ ÀÌ·¸°Ô ÀÎÀÚÁÖ¸éµÈ´Ù    structInput(&x); ÀÌ·¸°Ô ¤¾¤¾
+void structInput(namecard *p){ cin >> p->name ë“±ë“± ì´ë ‡ê²Œ í•˜ë©´ ëœë‹¤    cin >> (*p).name ìš”ë¡œì½”ë¡¬ return;
+í•¨ìˆ˜í˜¸ì¶œí• ë•Œ ì´ë ‡ê²Œ ì¸ìì£¼ë©´ëœë‹¤    structInput(&x); ì´ë ‡ê²Œ ã…ã…
 */
 
 /*
 call by reference 
-void structInput(namecard &temp) { cin >> temp.name     µîµî ÀÌ·¸°Ô ÇÏ¸é µÈ´Ù    ±×³É ±¸Á¶Ã¼ ¸â¹ö ºÎ¸£´Â°ÍÃ³·³ ÇÏ¸é µÈ´Ù ¾öÃ»ÆíÇÏ´Ù ¸Ş¸ğ¸®µµ Ãß°¡·Î ÇÒ´ç ¾ÈÇÏ°í ÁÁ´Ù.    return;
+void structInput(namecard &temp) { cin >> temp.name     ë“±ë“± ì´ë ‡ê²Œ í•˜ë©´ ëœë‹¤    ê·¸ëƒ¥ êµ¬ì¡°ì²´ ë©¤ë²„ ë¶€ë¥´ëŠ”ê²ƒì²˜ëŸ¼ í•˜ë©´ ëœë‹¤ ì—„ì²­í¸í•˜ë‹¤ ë©”ëª¨ë¦¬ë„ ì¶”ê°€ë¡œ í• ë‹¹ ì•ˆí•˜ê³  ì¢‹ë‹¤.    return;
 */
 /*
 #include <iostream>
@@ -204,11 +204,11 @@ void main()
 	xp = &x;
 	yp = &y;
 
-	cout << "\n x ÀÇ Å©±â´Â" << sizeof(x);
-	cout << "\n y ÀÇ Å©±â´Â" << sizeof(y);
+	cout << "\n x ì˜ í¬ê¸°ëŠ”" << sizeof(x);
+	cout << "\n y ì˜ í¬ê¸°ëŠ”" << sizeof(y);
 
-	cout << "\n xp ÀÇ Å©±â´Â" << sizeof(xp);
-	cout << "\n *xpÀÇ Å©±â´Â" << sizeof(*xp) << endl;
+	cout << "\n xp ì˜ í¬ê¸°ëŠ”" << sizeof(xp);
+	cout << "\n *xpì˜ í¬ê¸°ëŠ”" << sizeof(*xp) << endl;
 	
 	cout << sizeof(xp->name);
 
@@ -227,13 +227,13 @@ void structPrn(namecard temp) {
 
 namecard structInput() {
 	namecard temp;
-	cout << "ÀÌ¸§À» ÀÔ·ÂÇÏ½Ã¿À";
+	cout << "ì´ë¦„ì„ ì…ë ¥í•˜ì‹œì˜¤";
 	cin >> temp.name;
-	cout << "Á÷¾÷À» ÀÔ·ÂÇÏ½Ã¿À";
+	cout << "ì§ì—…ì„ ì…ë ¥í•˜ì‹œì˜¤";
 	cin >> temp.job;
-	cout << "ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇÏ½Ã¿À";
+	cout << "ì „í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì‹œì˜¤";
 	cin >> temp.tel;
-	cout << "emailÀ» ÀÔ·ÂÇÏ½Ã¿À";
+	cout << "emailì„ ì…ë ¥í•˜ì‹œì˜¤";
 	cin >> temp.email;
 	return (temp);
 }
@@ -241,7 +241,7 @@ namecard structInput() {
 
 
 
-//structInput ÇÔ¼ö ¼±¾ğÇØ¼­ ½±°Ô ÀÔ·ÂÇØº¸±â
+//structInput í•¨ìˆ˜ ì„ ì–¸í•´ì„œ ì‰½ê²Œ ì…ë ¥í•´ë³´ê¸°
 /*
 #include <iostream>
 using namespace std;
@@ -275,7 +275,7 @@ void main() {
 */
 
 
-//structprn ÇÔ¼ö ¼±¾ğÇØ¼­ Ãâ·Â½±°Ô ÇØº¸±â
+//structprn í•¨ìˆ˜ ì„ ì–¸í•´ì„œ ì¶œë ¥ì‰½ê²Œ í•´ë³´ê¸°
 /*
 #include <iostream>
 using namespace std;
@@ -304,7 +304,7 @@ void structprn(namecard temp) {
 */
 
 
-//±¸Á¶Ã¼´ÜÀ§·Î °ª º¹»çÇÏ±â
+//êµ¬ì¡°ì²´ë‹¨ìœ„ë¡œ ê°’ ë³µì‚¬í•˜ê¸°
 /*
 #include <iostream>
 using namespace std;
@@ -314,7 +314,7 @@ struct namecard {
 	char email[50];
 };
 void main() {
-	namecard x = { "ÀÌµ¿½Ä", "010-xxxx-xxxx", "mrrnd@naver.com" };
+	namecard x = { "ì´ë™ì‹", "010-xxxx-xxxx", "mrrnd@naver.com" };
 	namecard y;
 
 	cout << x.name << "\t" << x.tel << "\t" << x.email << endl;
@@ -330,7 +330,7 @@ void main() {
 
 
 /*
-// ±¸Á¶Ã¼ º¯¼ö¸¦ ¼±¾ğÇÒ¶§ ÃÊ±âÈ­µµ ÇØ¡Ÿ¼öÀÖÀ½.
+// êµ¬ì¡°ì²´ ë³€ìˆ˜ë¥¼ ì„ ì–¸í• ë•Œ ì´ˆê¸°í™”ë„ í•´ì¤‹ìˆ˜ìˆìŒ.
 #include <iostream>
 using namespace std;
 struct namecard {
@@ -340,8 +340,8 @@ struct namecard {
 };
 void main() {
 	
-	namecard x = { "ÀÌµ¿½Ä", "1111", "lksjf@naer.coj" },
-		y = { "°³¹«¹«", "2222", "adkf@dgadf.d" },
+	namecard x = { "ì´ë™ì‹", "1111", "lksjf@naer.coj" },
+		y = { "ê°œë¬´ë¬´", "2222", "adkf@dgadf.d" },
 		z = { "alsone", "3333", "skdf@dddam.cc" };
 	
 	cout << x.name << x.tel << x.email << endl;
@@ -351,12 +351,12 @@ void main() {
 	system("pause");
 	return;
 }
-*///ÀÌ°Å´Â ÀÌ°Å´Ù
-//ÀÌ°Å´Â ÀÌ°Å´Ù
+*///ì´ê±°ëŠ” ì´ê±°ë‹¤
+//ì´ê±°ëŠ” ì´ê±°ë‹¤
 
 /*
-//struct ¸¦ ÀÌ¿ëÇØ¼­ »õ·á¿î ÀÚ·áÇüÀ» ¸¸µç´Ù.   ¸¶Ä¡ int float ¼¼»ó¿¡ bool
-// ±¸Á¶Ã¼ ¼±¾ğÇÒ¶§ Æ²¸¸ ¸¸µå´Â °Å¶ó¼­ ÃÊ±â°ª ÁÖÁöµµ ¸øÇÏ°í µ¿½Ã¿¡ ¸Ş¸ğ¸® ÇÒ´çµµ ¾ÈµÈ´Ù.
+//struct ë¥¼ ì´ìš©í•´ì„œ ìƒˆë£Œìš´ ìë£Œí˜•ì„ ë§Œë“ ë‹¤.   ë§ˆì¹˜ int float ì„¸ìƒì— bool
+// êµ¬ì¡°ì²´ ì„ ì–¸í• ë•Œ í‹€ë§Œ ë§Œë“œëŠ” ê±°ë¼ì„œ ì´ˆê¸°ê°’ ì£¼ì§€ë„ ëª»í•˜ê³  ë™ì‹œì— ë©”ëª¨ë¦¬ í• ë‹¹ë„ ì•ˆëœë‹¤.
 #include <iostream>
 using namespace std;
 struct namecard {
@@ -371,20 +371,20 @@ void main()
 {
 	struct namecard man;
 
-	cout << " ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä. =>";
+	cout << " ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”. =>";
 	cin >> man.name;
-	cout << " Á÷¾÷À» ÀÔ·ÂÇÏ¼¼¿ä. =>";
+	cout << " ì§ì—…ì„ ì…ë ¥í•˜ì„¸ìš”. =>";
 	cin >> man.job;
-	cout << " ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä. =>";
+	cout << " ì „í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”. =>";
 	cin >> man.tel;
-	cout << " EmailÀ» ÀÔ·ÂÇÏ¼¼¿ä =>";
+	cout << " Emailì„ ì…ë ¥í•˜ì„¸ìš” =>";
 	cin >> man.email;
 	for (int i = 0; i < 6; i++) {
 		man.test[i] = i + 1;
 	}
 
-	cout << "\n ÀÔ·Â¹ŞÀº µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇÕ´Ï´Ù.";
-	cout << "\n ÀÌ¸§\tÁ÷¾÷\t¿¬¶ôÃ³\tÀÌ¸ŞÀÏ";
+	cout << "\n ì…ë ¥ë°›ì€ ë°ì´í„°ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.";
+	cout << "\n ì´ë¦„\tì§ì—…\tì—°ë½ì²˜\tì´ë©”ì¼";
 	cout << "\n " << man.name << "\t" << man.job << "\t" << man.tel << "\t" << man.email << endl << endl;
 	
 	cout << "\n sizeof(namecard) =>\t" << sizeof(namecard);
@@ -399,7 +399,7 @@ void main()
 
 
 /*
-// ¼ıÀÚ ´Ù¼¸°³ ÀÔ·Â ¹Ş°í  ÃÖ´ë ÃÖ¼Ò ÆÇ´Ü
+// ìˆ«ì ë‹¤ì„¯ê°œ ì…ë ¥ ë°›ê³   ìµœëŒ€ ìµœì†Œ íŒë‹¨
 #include <iostream>
 using namespace std;
 int main() {
@@ -408,17 +408,17 @@ int main() {
 	int temp = 0;
 
 	for (int i = 0; i < 5; i++) {
-		cout << i + 1 << "¹øÂ° ¼ıÀÚ ÀÔ·Â"<<endl;
+		cout << i + 1 << "ë²ˆì§¸ ìˆ«ì ì…ë ¥"<<endl;
 		cin >> num[i];
 	}
 	for (int i = 0; i < 5; i++) {
 		
-		if (num[i] > num[0]) { // ÃÖ´ë¸¦ ±¸ÇÏ´Â if'
+		if (num[i] > num[0]) { // ìµœëŒ€ë¥¼ êµ¬í•˜ëŠ” if'
 			temp = num[0];
 			num[0] = num[i];
 			num[i] = temp;
 		}
-		else if (num[i] < num[4]) { // ÃÖ¼Ò¸¦ ±¸ÇÏ´Â if
+		else if (num[i] < num[4]) { // ìµœì†Œë¥¼ êµ¬í•˜ëŠ” if
 			temp = num[5];
 			num[5] = num[i];
 			num[i] = temp;
@@ -479,17 +479,17 @@ void main() {
 
 
 /*
-//2Â÷¿ø ¹è¿­À» Ãâ·ÂÇÏ´Â ÇÔ¼ö¸¸µé±â 
+//2ì°¨ì› ë°°ì—´ì„ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜ë§Œë“¤ê¸° 
 #include <iostream>
 #define ROW 3
 #define COL 4
 using namespace std;
-void prn(int (*p)[COL]);  // ÀÌ°Å void prn(int p[][COL]) ½ÄÀ¸·Î ÇØµµµÈ´Ù ±Ùµ¥  ÀÌ°Å´Â ÇÔ¼ö ¸Å°³º¯¼ö¿ëÀ¸·Î¸¸ ½á¾ßÇÑ´Ù ´Ù¸¥´ë¼­ ÀÌ·¸°Ô ¾²¸é ÄÄÆÄÀÏ·¯ÇÑÅ× ÃÄ¸Â´Â´Ù.
+void prn(int (*p)[COL]);  // ì´ê±° void prn(int p[][COL]) ì‹ìœ¼ë¡œ í•´ë„ëœë‹¤ ê·¼ë°  ì´ê±°ëŠ” í•¨ìˆ˜ ë§¤ê°œë³€ìˆ˜ìš©ìœ¼ë¡œë§Œ ì¨ì•¼í•œë‹¤ ë‹¤ë¥¸ëŒ€ì„œ ì´ë ‡ê²Œ ì“°ë©´ ì»´íŒŒì¼ëŸ¬í•œí…Œ ì³ë§ëŠ”ë‹¤.
 
 int main() {
 	int a[ROW][COL] = { {1,2,3,4}, {5,6,7,8}, {9,10,11,12} };
 
-	prn(a); // prn ¸Å°³º¯¼ö·Î ¹è¿­ÁÖ¼Ò¸¦ ¹Ş´Â ÇÁ¸°Æ®ÇÔ¼ö ±Ùµ¥ÀÌ°Å Æ÷ÀÎÅÍ¸»°í ·¹ÆÛ·±½ºµµ µÇ³ª?¤»¤»¤»¤»
+	prn(a); // prn ë§¤ê°œë³€ìˆ˜ë¡œ ë°°ì—´ì£¼ì†Œë¥¼ ë°›ëŠ” í”„ë¦°íŠ¸í•¨ìˆ˜ ê·¼ë°ì´ê±° í¬ì¸í„°ë§ê³  ë ˆí¼ëŸ°ìŠ¤ë„ ë˜ë‚˜?ã…‹ã…‹ã…‹ã…‹
 
 	system("pause");
 	return 0;
@@ -522,7 +522,7 @@ int main() {
 	}
 	system("pause");
 	return 0;
-} // 2Â÷¿ø ¹è¿­ÀÌ¶û 2Â÷¿ø Æ÷ÀÎÅÍ¹è¿­ÀÌ¶û ¶È°°³× »ç¿ë¹ıÀÌ ¤¾¤¾
+} // 2ì°¨ì› ë°°ì—´ì´ë‘ 2ì°¨ì› í¬ì¸í„°ë°°ì—´ì´ë‘ ë˜‘ê°™ë„¤ ì‚¬ìš©ë²•ì´ ã…ã…
 */
 
 
@@ -549,7 +549,7 @@ int main() {
 
 
 /*
-// a[i][j]  ÀÏ¶§    a+1 ÇÏ¸é      4*j ¸¸Å­ ÁÖ¼Ò°¡ ´õÇØÁø´Ù. ÀÌ¶æÀº Çà´ÜÀ§·Î µÈ´Ù´Â ¶æ ÀÌÂ÷¿ø ¹è¿­
+// a[i][j]  ì¼ë•Œ    a+1 í•˜ë©´      4*j ë§Œí¼ ì£¼ì†Œê°€ ë”í•´ì§„ë‹¤. ì´ëœ»ì€ í–‰ë‹¨ìœ„ë¡œ ëœë‹¤ëŠ” ëœ» ì´ì°¨ì› ë°°ì—´
 #include <iostream>
 using namespace std;
 #define ROW 3
@@ -592,7 +592,7 @@ int main() {
 
 
 /*
-// 2Â÷¿ø ¹è¿­ ÁÖ¼Ò°ª Ãâ·Â
+// 2ì°¨ì› ë°°ì—´ ì£¼ì†Œê°’ ì¶œë ¥
 #include <iostream>
 using namespace std;
 #define ROW 3
@@ -615,8 +615,8 @@ int main()
 
 
 /*
-// 2Â÷¿ø Æ÷ÀÎÅÍ     int a    int *p      int **pp             a´Â ÀÏ¹İº¯¼ö      &a 1Â÷¿ø Æ÷ÀÎÅÍ     p 1Â÷¿ø Æ÷ÀÎÅÍ   &p 2Â÷¿ø Æ÷ÀÎÅÍ  pp 2Â÷¿ø Æ÷ÀÎÅÍ     & ´Â µÎ°³ÀÌ»ó ¸øºÙÀÓ, *´Â ¹«Á¦ÇÑÀ¸·Î ºÙÀÏ¼öÀÖÀ½   *ÇÒ¶§¸¶´Ù Â÷¿ø ³»·Á°¡°í & Àº Â÷¿ø ¿Ã¶ó°¨
-// ¿¹Á¦
+// 2ì°¨ì› í¬ì¸í„°     int a    int *p      int **pp             aëŠ” ì¼ë°˜ë³€ìˆ˜      &a 1ì°¨ì› í¬ì¸í„°     p 1ì°¨ì› í¬ì¸í„°   &p 2ì°¨ì› í¬ì¸í„°  pp 2ì°¨ì› í¬ì¸í„°     & ëŠ” ë‘ê°œì´ìƒ ëª»ë¶™ì„, *ëŠ” ë¬´ì œí•œìœ¼ë¡œ ë¶™ì¼ìˆ˜ìˆìŒ   *í• ë•Œë§ˆë‹¤ ì°¨ì› ë‚´ë ¤ê°€ê³  & ì€ ì°¨ì› ì˜¬ë¼ê°
+// ì˜ˆì œ
 #include <iostream>
 using namespace std;
 void main() {
@@ -641,8 +641,8 @@ void main() {
 
 
 /*
-// ´Ù¸¥ Ç¥Çö¹ıµµ ÀÖ´Ù void prn (int p[]) µµ ÀÖ´Ù ÀÌ°Å ¹«½¼ Á¤¼ö¹è¿­°°Áö¸¸ »ç½ÇÀº ÄÄÆÄÀÏ·¯°¡ ÇØ¼®ÇÏ¸éÀº void prn(int *p) ÀÌ´Ù   ±×·¯´Ï±î
-// VOID PRN( INT P[])  ==  void prn(int *p) ÀÌ´Ù ±×·¯´Ï±î Çò°¥¸®Áö¸¶¶ó¶ó... ¾Æ·¡´Â ¿¹Á¦
+// ë‹¤ë¥¸ í‘œí˜„ë²•ë„ ìˆë‹¤ void prn (int p[]) ë„ ìˆë‹¤ ì´ê±° ë¬´ìŠ¨ ì •ìˆ˜ë°°ì—´ê°™ì§€ë§Œ ì‚¬ì‹¤ì€ ì»´íŒŒì¼ëŸ¬ê°€ í•´ì„í•˜ë©´ì€ void prn(int *p) ì´ë‹¤   ê·¸ëŸ¬ë‹ˆê¹Œ
+// VOID PRN( INT P[])  ==  void prn(int *p) ì´ë‹¤ ê·¸ëŸ¬ë‹ˆê¹Œ í—·ê°ˆë¦¬ì§€ë§ˆë¼ë¼... ì•„ë˜ëŠ” ì˜ˆì œ
 #include <iostream>
 using namespace std;
 void prn(int p[], int size);
@@ -667,7 +667,7 @@ void prn(int p[], int size) { // void prn(int p[] == void prn(int *p
 #include <iostream>
 using namespace std;
 void prn(int *p, int num);
-int main()// ÇÔ¼öÀÇ ¸Å°³º¯¼ö¸¦ Æ÷ÀÎÅÍ·Î ¼Ç¾ğÇØ¼­ ÁÖ¼Ò·Î ¹Ş´Â´Ù. num Àº ¹è¿­ÀÇ Å©±â¸¦ ÁØ°Å´Ù .À½.
+int main()// í•¨ìˆ˜ì˜ ë§¤ê°œë³€ìˆ˜ë¥¼ í¬ì¸í„°ë¡œ ì…˜ì–¸í•´ì„œ ì£¼ì†Œë¡œ ë°›ëŠ”ë‹¤. num ì€ ë°°ì—´ì˜ í¬ê¸°ë¥¼ ì¤€ê±°ë‹¤ .ìŒ.
 {
 	int arr[5] = { 1,2,3,4,5 };
 	
@@ -729,7 +729,7 @@ int main() {
 	return 0;
 }  
 */
-/* À§ÀÇ ÄÚµåÀÇ °è»ê °á°ú.
+/* ìœ„ì˜ ì½”ë“œì˜ ê³„ì‚° ê²°ê³¼.
 arr + 0 = 0x00CFF9AC    &arr[0] = 0x00CFF9AC
 arr + 1 = 0x00CFF9B0    &arr[1] = 0x00CFF9B0
 arr + 2 = 0x00CFF9B4    &arr[2] = 0x00CFF9B4
@@ -740,13 +740,13 @@ arr + 4 = 0x00CFF9BC    &arr[4] = 0x00CFF9BC
 *(arr+i) = 5    arr[i] = 5
 *(arr+i) = 7    arr[i] = 7
 *(arr+i) = 9    arr[i] = 9
-°è¼ÓÇÏ·Á¸é ¾Æ¹« Å°³ª ´©¸£½Ê½Ã¿À . . .
+ê³„ì†í•˜ë ¤ë©´ ì•„ë¬´ í‚¤ë‚˜ ëˆ„ë¥´ì‹­ì‹œì˜¤ . . .
 */
 
 
 
 /*
-//   *a    *a+1   *(a+1) ÀÇ Â÷ÀÌ¸¦ ¾Ë¾Æº¸ÁÂ.
+//   *a    *a+1   *(a+1) ì˜ ì°¨ì´ë¥¼ ì•Œì•„ë³´ì¢Œ.
 #include <iostream>
 using namespace std;
 int main()
@@ -757,7 +757,7 @@ int main()
 	cout << "*(a+1) = " << *(a + 1) << endl;
 
 	system("pause");
-	return 0; // °á°ú·Î 1  2  3 ³ª¿Â´Ù.
+	return 0; // ê²°ê³¼ë¡œ 1  2  3 ë‚˜ì˜¨ë‹¤.
 }
 */
 
@@ -778,9 +778,9 @@ int main()
 }
 */
 
-// ¹è¿­ int a[5]       ¿¡¼­    a == &a[0] ÀÌ°Íµé °°Àº ÀÇ¹ÌÀÓ a ±× ÀÚÃ¼°¡ ½ÃÀÛÁÖ¼Ò¸¦ ÀÇ¹Ì   *a == a[0]          a+i ==    &a[i]
+// ë°°ì—´ int a[5]       ì—ì„œ    a == &a[0] ì´ê²ƒë“¤ ê°™ì€ ì˜ë¯¸ì„ a ê·¸ ìì²´ê°€ ì‹œì‘ì£¼ì†Œë¥¼ ì˜ë¯¸   *a == a[0]          a+i ==    &a[i]
 /*
-//1Â÷¿ø ¹è¿­ÀÇ ÁÖ¼Ò°ªÀ» ¾Ë¾Æº¸ÀÚ short ¶û int ¸¦ ¿¹·Î µéÀÚ
+//1ì°¨ì› ë°°ì—´ì˜ ì£¼ì†Œê°’ì„ ì•Œì•„ë³´ì short ë‘ int ë¥¼ ì˜ˆë¡œ ë“¤ì
 #include <iostream>
 using namespace std;
 int main()
@@ -788,19 +788,19 @@ int main()
 	int arrshort[5] = { 1,2,3,4,5 };
 	int arrint[5] = { 6,7,8,9,10 };
 	
-	cout << " short °ª Ãâ·Â\t";
+	cout << " short ê°’ ì¶œë ¥\t";
 	for (int i = 0; i < 5; i++)
 		cout << arrshort[i] << "\t";
 	cout << endl;
-	cout << " short ÁÖ¼Ò Ãâ·Â\t";
+	cout << " short ì£¼ì†Œ ì¶œë ¥\t";
 	for (int i = 0; i < 5 ; i++)
 		cout << &arrshort[i] << "\t";
 	cout << endl;
-	cout << " int °ª Ãâ·Â\t";
+	cout << " int ê°’ ì¶œë ¥\t";
 	for (int i = 0; i < 5; i++)
 		cout << arrint[i] << "\t";
 	cout << endl;
-	cout << " int  ÁÖ¼Ò Ãâ·Â\t";
+	cout << " int  ì£¼ì†Œ ì¶œë ¥\t";
 	for (int i = 0; i < 5 ; i++)
 		cout << &arrint[i] << "\t";
 	cout << endl;
@@ -815,7 +815,7 @@ int main()
 
 
 /*
-// ¼ºÀûÀÔ·Â ÇÁ·Î±×·¥ ¼öÁ¤½±°Ô ÇÏ±â À§ÇÏ¿© ROW COLÀ» ¸ÅÅ©·Î»ó¼ö·Î Á¤ÀÇÇØ³õÀÚ.
+// ì„±ì ì…ë ¥ í”„ë¡œê·¸ë¨ ìˆ˜ì •ì‰½ê²Œ í•˜ê¸° ìœ„í•˜ì—¬ ROW COLì„ ë§¤í¬ë¡œìƒìˆ˜ë¡œ ì •ì˜í•´ë†“ì.
 #include <iostream>
 #define ROW 3
 #define COL 5
@@ -823,19 +823,19 @@ using namespace std;
 
 int main()
 {
-	cout << "¼ºÀûÀ» ÀÔ·ÂÇÏÀÚ ÇĞ»ı ¹øÈ£ ±¹¾î ¼öÇĞ ¿µ¾î" << endl;
+	cout << "ì„±ì ì„ ì…ë ¥í•˜ì í•™ìƒ ë²ˆí˜¸ êµ­ì–´ ìˆ˜í•™ ì˜ì–´" << endl;
 	int arr[ROW][COL] = { 0, };
 		for (int i = 0; i < ROW; i++){
 			arr[i][0] = i + 1;
 			for (int j = 1; j < COL; j++) {
-				cout << arr[i][0] << "¹ø ÇĞ»ıÀÇ "<< (j) << "¹ø °ú¸ñÀÇ ¼ºÀûÀ» ÀÔ·ÂÇÏ¼¼¿ä" << endl;
+				cout << arr[i][0] << "ë²ˆ í•™ìƒì˜ "<< (j) << "ë²ˆ ê³¼ëª©ì˜ ì„±ì ì„ ì…ë ¥í•˜ì„¸ìš”" << endl;
 				cin >> arr[i][j];
 
 			}
 	}
 		
-		cout << "ÀÔ·Â Á¾·á" << endl;
-		cout << "\t¹øÈ£\t±¹¾î\t¼öÇĞ\t¿µ¾î\t" << endl;;
+		cout << "ì…ë ¥ ì¢…ë£Œ" << endl;
+		cout << "\të²ˆí˜¸\têµ­ì–´\tìˆ˜í•™\tì˜ì–´\t" << endl;;
 			for (int i = 0; i < ROW; i++) {
 				cout << "\t";
 				for (int j = 0; j < COL; j++) {
@@ -854,7 +854,7 @@ int main()
 
 
 /*
-// 2Â÷¿ø ¹è¿­ 
+// 2ì°¨ì› ë°°ì—´ 
 #include <iostream>
 using namespace std;
 int main()
@@ -878,7 +878,7 @@ int main()
 
 
 /*
-// ¹è¿­À» ÀÌ¿ëÇÏ¿© ÀÔ·Â¹ŞÀº 5°³ÀÇ °ªÀÇ ÃÖ´ë¸¦ ±¸ÇÏ´Â ÄÚµå
+// ë°°ì—´ì„ ì´ìš©í•˜ì—¬ ì…ë ¥ë°›ì€ 5ê°œì˜ ê°’ì˜ ìµœëŒ€ë¥¼ êµ¬í•˜ëŠ” ì½”ë“œ
 #include <iostream>
 using namespace std;
 void main()
@@ -900,7 +900,7 @@ void main()
 
 
 /*
-//ÁøÂ¥ °£´ÜÇÑ ¹è¿­ 
+//ì§„ì§œ ê°„ë‹¨í•œ ë°°ì—´ 
 #include <iostream>
 using namespace std;
 void main()
@@ -921,7 +921,7 @@ void main()
 
 
 /*
-// Àı´ñ°ª ±¸ÇÏ±â ÇÔ¼ö¸¦ absolute ÇÔ¼ö¸¦ ¸¸µå´Âµ¥ call by reference ¶û call by address µÑ´Ù ¸¸µé¾îº¸ÀÚ.
+// ì ˆëŒ“ê°’ êµ¬í•˜ê¸° í•¨ìˆ˜ë¥¼ absolute í•¨ìˆ˜ë¥¼ ë§Œë“œëŠ”ë° call by reference ë‘ call by address ë‘˜ë‹¤ ë§Œë“¤ì–´ë³´ì.
 #include <iostream>
 using namespace std;
 void absoluteP(int *ap);
@@ -953,7 +953,7 @@ void absoluteR(int &br)
 
 
 /*
-// Call by Reference ¸¦ »ç¿ëÇÑ ¼ıÀÚ ±³È¯ ÇÔ¼ö
+// Call by Reference ë¥¼ ì‚¬ìš©í•œ ìˆ«ì êµí™˜ í•¨ìˆ˜
 #include <iostream>
 using namespace std;
 void swap(int &ar, int &br);
@@ -981,11 +981,11 @@ void swap(int &ar, int &br)
 
 
 
-// reference º¯¼ö ¿ä³ğÀº ¼±¾ğ½Ã¿¡ ¸Ş¸ğ¸®¿¡ ¿Ã¶ó°¡Áö¾Ê´Â´Ù. ´Ù½Ã¸»ÇÏ¸é ÇÏ³ªÀÇ ÁÖ¼Ò¿¡ ¿©·¯ÀÌ¸§À» ºÙÀÌ´Â°Å´Ù º°¸íÀ» ¤¾¤¾¤¾ ÂüÁ¶ÂüÁ¶ ¿©±â¼­´Â & ÂüÁ¶¿¬»êÀÚ ¾´´Ù Æ÷ÀÎÅÍ¿¡¼­ ¾²´ø &ÁÖ¼Ò¿¬»êÀÚ°¡ ¾Æ´Ï´Ù!!!!!!
-// º¯¼ö ¼±¾ğ½Ã¿¡ & ÀÌ°Ô º¸ÀÌ¸é ÂüÁ¶¿¬»êÀÚ¶ó°í ÆÇ´ÜÇÏ°í    ÀÌ¹Ì ¼±¾ğµÈ º¯¼ö ¾Õ¿¡ & ÀÌ°Ô ºÙÀ¸¸é ÁÖ¼Ò¿¬»êÀÚ¶ó°í ÆÇ´ÜÇÑ´Ù°íÇÑ´Ù. 
-// ·¹ÆÛ·±½ºº¯¼ö ¼±¾ğÇÒ¶§´Â ¹«Á¶°Ç ÃÊ±â°ª Áà¾ßÇÑ´Ù ÇÏ³ªÀÇ º°¸íÀÌ±â ¶§¹®¿¡.
+// reference ë³€ìˆ˜ ìš”ë†ˆì€ ì„ ì–¸ì‹œì— ë©”ëª¨ë¦¬ì— ì˜¬ë¼ê°€ì§€ì•ŠëŠ”ë‹¤. ë‹¤ì‹œë§í•˜ë©´ í•˜ë‚˜ì˜ ì£¼ì†Œì— ì—¬ëŸ¬ì´ë¦„ì„ ë¶™ì´ëŠ”ê±°ë‹¤ ë³„ëª…ì„ ã…ã…ã… ì°¸ì¡°ì°¸ì¡° ì—¬ê¸°ì„œëŠ” & ì°¸ì¡°ì—°ì‚°ì ì“´ë‹¤ í¬ì¸í„°ì—ì„œ ì“°ë˜ &ì£¼ì†Œì—°ì‚°ìê°€ ì•„ë‹ˆë‹¤!!!!!!
+// ë³€ìˆ˜ ì„ ì–¸ì‹œì— & ì´ê²Œ ë³´ì´ë©´ ì°¸ì¡°ì—°ì‚°ìë¼ê³  íŒë‹¨í•˜ê³     ì´ë¯¸ ì„ ì–¸ëœ ë³€ìˆ˜ ì•ì— & ì´ê²Œ ë¶™ìœ¼ë©´ ì£¼ì†Œì—°ì‚°ìë¼ê³  íŒë‹¨í•œë‹¤ê³ í•œë‹¤. 
+// ë ˆí¼ëŸ°ìŠ¤ë³€ìˆ˜ ì„ ì–¸í• ë•ŒëŠ” ë¬´ì¡°ê±´ ì´ˆê¸°ê°’ ì¤˜ì•¼í•œë‹¤ í•˜ë‚˜ì˜ ë³„ëª…ì´ê¸° ë•Œë¬¸ì—.
 /*
-//·¹ÆÛ·±½º ¿¹
+//ë ˆí¼ëŸ°ìŠ¤ ì˜ˆ
 #include <iostream>
 using namespace std;
 void main()
@@ -1011,7 +1011,7 @@ void main()
 
 
 /*
-//±³È¯ÇÔ¼ö call by Address	
+//êµí™˜í•¨ìˆ˜ call by Address	
 #include <iostream>
 using namespace std;
 void swap(int *ap, int *bp);
@@ -1092,13 +1092,13 @@ void main()
 
 
 /*
-// Æ÷ÀÎÅÍ ±âº» 
+// í¬ì¸í„° ê¸°ë³¸ 
 #include <iostream>
 using namespace std;
 void main()
 {
 	int a = 30;
- // int b = &a ÇØºÃ´Âµ¥ ÀÏ¹İ Á¤¼öº¯¼ö´Â ÁÖ¼Ò¸¦ °¡Áú¼ö¾ø³ªº¸´Ù. ¤¾ ¹«Á¶°Ç int *  ÇØÁà¾ßÇÏ´Âµí ¤¾
+ // int b = &a í•´ë´¤ëŠ”ë° ì¼ë°˜ ì •ìˆ˜ë³€ìˆ˜ëŠ” ì£¼ì†Œë¥¼ ê°€ì§ˆìˆ˜ì—†ë‚˜ë³´ë‹¤. ã… ë¬´ì¡°ê±´ int *  í•´ì¤˜ì•¼í•˜ëŠ”ë“¯ ã…
 	cout << "a = " << a << endl;
 	cout << "&a = " << &a << endl;
 	cout << "*&a = " << *&a << endl;
@@ -1113,7 +1113,7 @@ void main()
 
 
 /*
-// Call by Value °ªÀÇ ÀÇÇÑ Àü´Ş¹æ½Ä
+// Call by Value ê°’ì˜ ì˜í•œ ì „ë‹¬ë°©ì‹
 #include  <iostream>
 using namespace std;
 int sum(int x, int b);
@@ -1145,12 +1145,12 @@ int sum(int x, int b)
 
 
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@¿©±â±îÁö°¡ ¿ÏÀü ±âº»ÀÌ¾ú½À´Ï´Ù.!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ì—¬ê¸°ê¹Œì§€ê°€ ì™„ì „ ê¸°ë³¸ì´ì—ˆìŠµë‹ˆë‹¤.!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 
 
 
 /*
-// µÎ°³ÀÇ Á¤¼ö¸¦ ÀÔ·Â¹Ş°í Æò±ÕÀ» ½Ç¼ö·Î ¹İÈ¯ÇÏ´Â ÇÔ¼ö¸¦ Á¦ÀÛ.
+// ë‘ê°œì˜ ì •ìˆ˜ë¥¼ ì…ë ¥ë°›ê³  í‰ê· ì„ ì‹¤ìˆ˜ë¡œ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜ë¥¼ ì œì‘.
 #include <iostream>
 using namespace std;
 double avg(int a, int b);
@@ -1158,7 +1158,7 @@ double avg(int a, int b);
 int main()
 {
 	int a = 0, b = 0;
-	cout << "µÎ Á¤¼ö¸¦ ÀÔ·Â";
+	cout << "ë‘ ì •ìˆ˜ë¥¼ ì…ë ¥";
 	cin >> a;
 	cin >> b;
 	
@@ -1215,7 +1215,7 @@ int main()
 }
 void prn()
 {
-	cout << "³» ÀÌ¸§Àº YangCK´Ù " << endl;
+	cout << "ë‚´ ì´ë¦„ì€ YangCKë‹¤ " << endl;
 
 }
 */
@@ -1226,14 +1226,14 @@ void prn()
 
 
 
-//ÀÚµ¿º¯¼ö auto    Àü¿ªº¯¼ö extern    Á¤Àûº¯¼ö? static:¿Üº¸¿¡ ¾²ÀÏ°æ¿ì ÇØ´ç ÄÚµåÆÄÀÏ ¾È¿¡¼­¸¸ ÀÛµ¿ ¾È¿¡¼­ÇÒ°æ¿ì ¾ÏÆ° ±× ¸Ş¸ğ¸®¿¡ ÇÒ´çµÊ °è¼Ó  ·¹Áö½ºÅÍº¯¼ö register cpu register¿¡ ºü¸£°Ôºü¸£°Ô 
-// #define ¸ÅÅ©·Î »ó¼ö¶û ¸ÅÅ©·Î ÇÔ¼ö      inline ÇÔ¼ö  ¼±ÇàÃ³¸®¶§ #ºÙÀº°Íµé ´Ù Ã³¸®µÈ´Ù. ±×·¡¼­ ½ÇÁ¦ ÄÚµå·Î ´ëÄ¡µÇ¼­ ÄÄÆÄÀÏµÇ±â¶§¹®¿¡ ÇÁ·Î±×·¥ ¼Óµµ Çâ»ó¿¡ µµ¿òÀ» ÁÜ. ±âÅ¸ ÇÔ¼ö´Â ±× ·ÎÁ÷ÀÌ ±×´ë·Î ÄÄÆÄÀÏµÇ¼­ ¿À·¡°É¸² ... ¿Ô´Ù¸®°¬´Ù¸®ÇÔ
-// ex)  #define PI 3.141592      µîµî      #define add(x,y) 2*(x+y)  ¿ä·ÎÄÚ·Ò inline ÇÔ¼ö´Â ÀÏ¹İ ÇÔ¼öÃ³·³ ¼±¾ğÇØ¼­ ¾²¸éµÈ´Ù. ´Ù¸¸ ¸®ÅÏÇü¼±¾ğ ¾Õ¿¡´Ù°¡ inline ¸¸ ºÙ¿©ÁÖ¸é µÈ´Ù. ¤¾¤¾¤¾¤¾ 
+//ìë™ë³€ìˆ˜ auto    ì „ì—­ë³€ìˆ˜ extern    ì •ì ë³€ìˆ˜? static:ì™¸ë³´ì— ì“°ì¼ê²½ìš° í•´ë‹¹ ì½”ë“œíŒŒì¼ ì•ˆì—ì„œë§Œ ì‘ë™ ì•ˆì—ì„œí• ê²½ìš° ì•”íŠ¼ ê·¸ ë©”ëª¨ë¦¬ì— í• ë‹¹ë¨ ê³„ì†  ë ˆì§€ìŠ¤í„°ë³€ìˆ˜ register cpu registerì— ë¹ ë¥´ê²Œë¹ ë¥´ê²Œ 
+// #define ë§¤í¬ë¡œ ìƒìˆ˜ë‘ ë§¤í¬ë¡œ í•¨ìˆ˜      inline í•¨ìˆ˜  ì„ í–‰ì²˜ë¦¬ë•Œ #ë¶™ì€ê²ƒë“¤ ë‹¤ ì²˜ë¦¬ëœë‹¤. ê·¸ë˜ì„œ ì‹¤ì œ ì½”ë“œë¡œ ëŒ€ì¹˜ë˜ì„œ ì»´íŒŒì¼ë˜ê¸°ë•Œë¬¸ì— í”„ë¡œê·¸ë¨ ì†ë„ í–¥ìƒì— ë„ì›€ì„ ì¤Œ. ê¸°íƒ€ í•¨ìˆ˜ëŠ” ê·¸ ë¡œì§ì´ ê·¸ëŒ€ë¡œ ì»´íŒŒì¼ë˜ì„œ ì˜¤ë˜ê±¸ë¦¼ ... ì™”ë‹¤ë¦¬ê°”ë‹¤ë¦¬í•¨
+// ex)  #define PI 3.141592      ë“±ë“±      #define add(x,y) 2*(x+y)  ìš”ë¡œì½”ë¡¬ inline í•¨ìˆ˜ëŠ” ì¼ë°˜ í•¨ìˆ˜ì²˜ëŸ¼ ì„ ì–¸í•´ì„œ ì“°ë©´ëœë‹¤. ë‹¤ë§Œ ë¦¬í„´í˜•ì„ ì–¸ ì•ì—ë‹¤ê°€ inline ë§Œ ë¶™ì—¬ì£¼ë©´ ëœë‹¤. ã…ã…ã…ã… 
 
 
 
 /*
-//for ¹®À» ÀÌ¿ëÇÏ¿© 1! 2! .... 10! À» ±¸ÇÏ¿©¶ó °¡´ÉÇÏ¸é ºü¸¥ ½ÇÇà¼Óµµ·Î ¿Ã·Áº¸ÀÚ 
+//for ë¬¸ì„ ì´ìš©í•˜ì—¬ 1! 2! .... 10! ì„ êµ¬í•˜ì—¬ë¼ ê°€ëŠ¥í•˜ë©´ ë¹ ë¥¸ ì‹¤í–‰ì†ë„ë¡œ ì˜¬ë ¤ë³´ì 
 #include <iostream>
 using namespace std;
 int main()
@@ -1256,7 +1256,7 @@ int main()
 
 
 /*
-//¾ËÆÄºª A to Z ±îÁö Ãâ·ÂÇÏ±â 
+//ì•ŒíŒŒë²³ A to Z ê¹Œì§€ ì¶œë ¥í•˜ê¸° 
 #include <iostream>
 using namespace std;
 int main()
@@ -1276,7 +1276,7 @@ int main()
 
 
 /*
-// do while »ç¿ë 
+// do while ì‚¬ìš© 
 #include <iostream>
 int main()
 {
@@ -1284,7 +1284,7 @@ int main()
 	int sum = 0;
 	
 
-	do { // ÀÏ´Ü ÁøÇàÇÏ¶ó.... 
+	do { // ì¼ë‹¨ ì§„í–‰í•˜ë¼.... 
 		std::cout << a << std::endl;
 		sum += a;
 		std::cout << sum << std::endl<< std::endl;
@@ -1302,7 +1302,7 @@ int main()
 
 
 /*
-// while »ç¿ë ¿¹Á¦ 1 ºÎÅÍ 10ÀÇ ÇÕ
+// while ì‚¬ìš© ì˜ˆì œ 1 ë¶€í„° 10ì˜ í•©
 #include <iostream>
 using namespace std;
 void main()
@@ -1310,15 +1310,15 @@ void main()
 	int a = 0;
 	int sum = 0;
 
-	while (a < 11) // () ¾ÈÀÌ ÂüÀÌ¸é °è¼Ó ÇÏ¶ó..
+	while (a < 11) // () ì•ˆì´ ì°¸ì´ë©´ ê³„ì† í•˜ë¼..
 	{
-		cout << "ÇöÀç ¼ö´Â " << a << endl;
+		cout << "í˜„ì¬ ìˆ˜ëŠ” " << a << endl;
 		
 		sum += a;
 		a++;
 	}
 
-	cout << "ÇÕÀº " << sum << endl;
+	cout << "í•©ì€ " << sum << endl;
 	system("pause");
 
 }
@@ -1329,7 +1329,7 @@ void main()
 
 
 /*
-// for ¹®À» ÀÌ¿ëÇØ¼­ ±¸±¸´Ü Ãâ·Â
+// for ë¬¸ì„ ì´ìš©í•´ì„œ êµ¬êµ¬ë‹¨ ì¶œë ¥
 #include <iostream>
 using namespace std;
 void main()
@@ -1352,25 +1352,25 @@ void main()
 
 
 /*
-// 0ºÎÅÍ ÀÔ·ÂÇØÁØ ¼ö ±îÁöÀÇ È¦¼öÇÕ ±¸ÇÏ±â	
+// 0ë¶€í„° ì…ë ¥í•´ì¤€ ìˆ˜ ê¹Œì§€ì˜ í™€ìˆ˜í•© êµ¬í•˜ê¸°	
 #include <iostream>
 using namespace std;
 void main()
 {
 	int sum = 0;
 	int num = 0;
-	cout << "¼öÀÔ·Â =";
+	cout << "ìˆ˜ì…ë ¥ =";
 	cin >> num;
 
 	for (int temp = 0; temp < num+1; temp++)
 	{
-		cout << "ÇöÀç ¼ö =" << temp;
+		cout << "í˜„ì¬ ìˆ˜ =" << temp;
 		if (temp % 2)
-			cout << "ÇöÀç ÇÕ =" << (sum += temp) << endl;
+			cout << "í˜„ì¬ í•© =" << (sum += temp) << endl;
 		else
-			cout << "ÇöÀç ÇÕ =" << sum << endl;
+			cout << "í˜„ì¬ í•© =" << sum << endl;
 
-	} // ÀÌ·¸°Ô if ·Î È¦¼ö °¡·Áµµ µÇ°í ºü¸¥ ½ÇÇà ½Ã°£À» ¿øÇÏ¸éÀº... for ÃÊ±â °ªÀ» 1·Î Áõ°¨½ÄÀ¸·Î´Â1 3 5 7 Ãâ·ÂÀÌ µÇ°Ô +2¾¿ ÇÏ¸é µÉµíÇÏ´Ù.  
+	} // ì´ë ‡ê²Œ if ë¡œ í™€ìˆ˜ ê°€ë ¤ë„ ë˜ê³  ë¹ ë¥¸ ì‹¤í–‰ ì‹œê°„ì„ ì›í•˜ë©´ì€... for ì´ˆê¸° ê°’ì„ 1ë¡œ ì¦ê°ì‹ìœ¼ë¡œëŠ”1 3 5 7 ì¶œë ¥ì´ ë˜ê²Œ +2ì”© í•˜ë©´ ë ë“¯í•˜ë‹¤.  
 
 	system("pause");
 }
@@ -1381,7 +1381,7 @@ void main()
 
 
 /*
-// for ·Î 1¿¡¼­ 5ºÎÅÍ ´õÇÏ±â ¤¾¤¾¤¾¤¾ÀÎ°¡ Ãâ·ÂÀÎ°¡ ¾ÏÆ° µÑ´Ù ÇØº¸ÀÚ ¤¾¤¾¤¾¤¾¤¾¤¾¤¾
+// for ë¡œ 1ì—ì„œ 5ë¶€í„° ë”í•˜ê¸° ã…ã…ã…ã…ì¸ê°€ ì¶œë ¥ì¸ê°€ ì•”íŠ¼ ë‘˜ë‹¤ í•´ë³´ì ã…ã…ã…ã…ã…ã…ã…
 #include <iostream>
 using namespace std;
 void main()
@@ -1389,8 +1389,8 @@ void main()
 	int sum = 0;
 	for (int num = 0; num < 6; num++)
 	{
-		cout << "ÇöÀç ¼ö´Â " << num << "ÀÌ´Ù" << endl;
-		cout << "ÇöÀç sumÀÇ °ª" << (sum += num) << "ÀÌ´Ù" << endl;
+		cout << "í˜„ì¬ ìˆ˜ëŠ” " << num << "ì´ë‹¤" << endl;
+		cout << "í˜„ì¬ sumì˜ ê°’" << (sum += num) << "ì´ë‹¤" << endl;
 
 	}
 	system("pause");
@@ -1410,7 +1410,7 @@ using namespace std;
 void main()
 {
 	int num = 0;
-	cout << "Á¡¼ö¸¦ ÀÔ·Â = ";
+	cout << "ì ìˆ˜ë¥¼ ì…ë ¥ = ";
 	cin >> num;
 
 	switch (num / 10)
@@ -1422,7 +1422,7 @@ void main()
 	case 6: cout << "60" << endl;
 	default: cout << "default" << endl;
 	}
-	cout << "70¿¡ break; °Ç´Ù" << endl;
+	cout << "70ì— break; ê±´ë‹¤" << endl;
 		
 	switch (num / 10)
 	{
@@ -1434,7 +1434,7 @@ void main()
 	default: cout << "default" << endl;
 	}
 
-	// ½ÇÇè °á°ú 90 ÀÔ·ÂÇßÀ»¶§ ÀÌ³ğÀÌ case 9·Î °¡¼­ break; ¸¸³¯¶§ ±îÁö Âß  °£´Ù ÀÌ³ğÀÌ ¤¾¤¾¤¾¤¾ ½ÇÇè ¼º°ø
+	// ì‹¤í—˜ ê²°ê³¼ 90 ì…ë ¥í–ˆì„ë•Œ ì´ë†ˆì´ case 9ë¡œ ê°€ì„œ break; ë§Œë‚ ë•Œ ê¹Œì§€ ì­‰  ê°„ë‹¤ ì´ë†ˆì´ ã…ã…ã…ã… ì‹¤í—˜ ì„±ê³µ
 
 	system("pause");
 }
@@ -1449,21 +1449,21 @@ void main()
 #include <iostream>
 using namespace std;
 
-void main() // ½ºÀ§Ä¡ ¹® »ç¿ë¹ı ¿¹Á¦ 
+void main() // ìŠ¤ìœ„ì¹˜ ë¬¸ ì‚¬ìš©ë²• ì˜ˆì œ 
 {
 
 	int num = 0;
-	cout << "Á¡¼ö¸¦ ÀÔ·ÂÇÏ¶ó : ";
+	cout << "ì ìˆ˜ë¥¼ ì…ë ¥í•˜ë¼ : ";
 	cin >> num;
 	
 	switch (num / 10)
 	{
-	case 10: cout << "¼ºÀûÀº 100Á¡´ëÀÌ´Ù." << endl; break; //break; ¸¦ ÇØÁà¾ß switch ¹® ºüÁ®³ª¿Â´Ù ÀÌ°Å ¾ÈÇÏ¸éÀº ´ÙÀ½²¨±îÁö ¾Æ¸¶ Ãâ·ÂÇÒÅÙµ¥ ½ÇÇèÇØº¸ÀÚ ¤¾¤¾ 
-	case 9: cout << "¼ºÀûÀº 90Á¡´ëÀÌ´Ù." << endl; break;
-	case 8: cout << "¼ºÀûÀº 80Á¡´ëÀÌ´Ù." << endl; break;
-	case 7: cout << "¼ºÀûÀº 70Á¡´ëÀÌ´Ù." << endl; break;
-	case 6: cout << "¼ºÀûÀº 60Á¡´ëÀÌ´Ù." << endl; break;
-	default: cout << "¼ºÀûÀº (-¹«ÇÑ´ë ~ 59) ÀÌ°Å³ª (110 ~ ¹«ÇÑ´ë) ÀÌ´Ù" << endl;
+	case 10: cout << "ì„±ì ì€ 100ì ëŒ€ì´ë‹¤." << endl; break; //break; ë¥¼ í•´ì¤˜ì•¼ switch ë¬¸ ë¹ ì ¸ë‚˜ì˜¨ë‹¤ ì´ê±° ì•ˆí•˜ë©´ì€ ë‹¤ìŒêº¼ê¹Œì§€ ì•„ë§ˆ ì¶œë ¥í• í…ë° ì‹¤í—˜í•´ë³´ì ã…ã… 
+	case 9: cout << "ì„±ì ì€ 90ì ëŒ€ì´ë‹¤." << endl; break;
+	case 8: cout << "ì„±ì ì€ 80ì ëŒ€ì´ë‹¤." << endl; break;
+	case 7: cout << "ì„±ì ì€ 70ì ëŒ€ì´ë‹¤." << endl; break;
+	case 6: cout << "ì„±ì ì€ 60ì ëŒ€ì´ë‹¤." << endl; break;
+	default: cout << "ì„±ì ì€ (-ë¬´í•œëŒ€ ~ 59) ì´ê±°ë‚˜ (110 ~ ë¬´í•œëŒ€) ì´ë‹¤" << endl;
 	}
 	system("pause");
 	
@@ -1483,19 +1483,19 @@ void main() // ½ºÀ§Ä¡ ¹® »ç¿ë¹ı ¿¹Á¦
 /*
 #include <iostream>
 using namespace std;
-int main() // if ¶û else if ´Â () ¾ÈÀÇ °ªÀÌ ÂüÀÏ¶§ 0ÀÌ ¾Æ´Ò¶§ ÀÛµ¿ÇÑ´Ù ex) 1 -1 2 3 4 µîµî 
+int main() // if ë‘ else if ëŠ” () ì•ˆì˜ ê°’ì´ ì°¸ì¼ë•Œ 0ì´ ì•„ë‹ë•Œ ì‘ë™í•œë‹¤ ex) 1 -1 2 3 4 ë“±ë“± 
 {
 	int num;
 	
-	cout << "Â¦¼öÀÎÁö È¦¼öÀÎÁö ¾Ë¾Æº¼ °ªÀ» ÀÔ·ÂÇÏ½Ã¿À : ";
+	cout << "ì§ìˆ˜ì¸ì§€ í™€ìˆ˜ì¸ì§€ ì•Œì•„ë³¼ ê°’ì„ ì…ë ¥í•˜ì‹œì˜¤ : ";
 	cin >> num;
 	
 	if (!(num % 2))
-		cout << num << " Àº Â¦¼öÀÔ´Ï´Ù\n" << endl;
+		cout << num << " ì€ ì§ìˆ˜ì…ë‹ˆë‹¤\n" << endl;
 	else if ((num % 2))
-		cout << num << " Àº È¦¼öÀÔ´Ï´Ù.\n" << endl;
+		cout << num << " ì€ í™€ìˆ˜ì…ë‹ˆë‹¤.\n" << endl;
 	else
-		cout << "´Ï³ğÀº Á¤¼ö¸¦ ÀÔ·ÂÇÏÁö¾Ê¾Ò´Ù ¾¯ºÒ³ğ¾Æ." << endl;
+		cout << "ë‹ˆë†ˆì€ ì •ìˆ˜ë¥¼ ì…ë ¥í•˜ì§€ì•Šì•˜ë‹¤ ì´ë†ˆì•„." << endl;
 	
 
 	system("pause");
@@ -1518,7 +1518,7 @@ void main()
 	cout << --a << endl;
 	
 	system("pause");
-// 5775 Ãâ·ÂµÊ. 	
+// 5775 ì¶œë ¥ë¨. 	
 }
 	*/ 
 
@@ -1526,22 +1526,22 @@ void main()
 
 
 /*
-// ´ë¹®ÀÚ¸¦ ¼Ò¹®ÀÚ·Î ¼Ò¹®ÀÚ´Â ±×´ë·Î. ½¬¹æ ¾Æ½º³¢²¿µå °è»êÇØ¾ß´ë³ª..
+// ëŒ€ë¬¸ìë¥¼ ì†Œë¬¸ìë¡œ ì†Œë¬¸ìëŠ” ê·¸ëŒ€ë¡œ. ì•„ìŠ¤ë¼ê¼¬ë“œ ê³„ì‚°í•´ì•¼ëŒ€ë‚˜..
 #include <iostream>
 using namespace std;	
 
 int main()
 {
 	char char_temp;
-	cout << "¹®ÀÚ¸¦ ÀÔ·ÂÇØ¶ó";
+	cout << "ë¬¸ìë¥¼ ì…ë ¥í•´ë¼";
 	cin >> char_temp;
 	int char_gap = (int)'A' - (int)'a';
 
-	((int)char_temp < (int)'a') ? cout << "º¯È¯ ¿Ï·á " << char((int)char_temp + (int)((int)'a' - (int)'A')) << endl : cout << "º¯È¯ ¿Ï·á " << char_temp << endl;
+	((int)char_temp < (int)'a') ? cout << "ë³€í™˜ ì™„ë£Œ " << char((int)char_temp + (int)((int)'a' - (int)'A')) << endl : cout << "ë³€í™˜ ì™„ë£Œ " << char_temp << endl;
 	
 	system("pause");
 	return 0;
-// ÀÌ°É·Î ¾Ë¼öÀÖ´Â°Å´Â cout º¯¼öÃâ·Â°ø°£¿¡¼­ º° ÀÌ»óÇÑ ¿¬»êÀ» ´Ù ÇØµµ µÈ´Ù´Â°Åˆª¤»¤»¤»¤»¤» 		
+// ì´ê±¸ë¡œ ì•Œìˆ˜ìˆëŠ”ê±°ëŠ” cout ë³€ìˆ˜ì¶œë ¥ê³µê°„ì—ì„œ ë³„ ì´ìƒí•œ ì—°ì‚°ì„ ë‹¤ í•´ë„ ëœë‹¤ëŠ”ê±°ë‹¼ã…‹ã…‹ã…‹ã…‹ã…‹ 		
 }
 */
 
@@ -1552,16 +1552,16 @@ int main()
 
 
 /*
-// ¼ıÀÚ¸¦ ÀÔ·ÂÇØ¼­ Àı´ñ°ªÀ» Ãâ·ÂÇÏ¶ó
+// ìˆ«ìë¥¼ ì…ë ¥í•´ì„œ ì ˆëŒ“ê°’ì„ ì¶œë ¥í•˜ë¼
 #include <iostream>
 using namespace std;
 int main()
 {
-	int num; // ÀÔ·Â¹ŞÀ» Á¤¼öÇü º¯¼ö ¼±¾ğ
-	cout << "Àı´ñ°ªÀ» ±¸ÇÒ ¼ö¸¦ ÀÔ·ÂÇÏ¶ó" << endl;
-	cin >> num; // num ÀÔ·Â¹ŞÀ½.
+	int num; // ì…ë ¥ë°›ì„ ì •ìˆ˜í˜• ë³€ìˆ˜ ì„ ì–¸
+	cout << "ì ˆëŒ“ê°’ì„ êµ¬í•  ìˆ˜ë¥¼ ì…ë ¥í•˜ë¼" << endl;
+	cin >> num; // num ì…ë ¥ë°›ìŒ.
 	
-	(num >= 0) ? cout << num << "ÀÇ Àı´ñ°ªÀº " << num << "ÀÌ´Ù" : cout << num << "ÀÇ Àı´ñ°ªÀº " << -num << "ÀÌ´Ù"; // Àı´ñ°ª ÆÇ´Ü °è»ê
+	(num >= 0) ? cout << num << "ì˜ ì ˆëŒ“ê°’ì€ " << num << "ì´ë‹¤" : cout << num << "ì˜ ì ˆëŒ“ê°’ì€ " << -num << "ì´ë‹¤"; // ì ˆëŒ“ê°’ íŒë‹¨ ê³„ì‚°
 	
 	cout << endl;
 	
@@ -1577,7 +1577,7 @@ int main()
 /*
 #include <iostream>
 using namespace std;
-// Â¦¼ö È¦¼ö ÆÇ´ÜÇÏ´Â ÄÚµå. odd °¡ Â¦¼öÀÎµí ¤¾¤¾¤¾ 
+// ì§ìˆ˜ í™€ìˆ˜ íŒë‹¨í•˜ëŠ” ì½”ë“œ. odd ê°€ ì§ìˆ˜ì¸ë“¯ ã…ã…ã… 
 void main()
 {
 
@@ -1585,10 +1585,10 @@ void main()
 	cout << "\nInput the number : ";
 	cin >> a;
 
-	(a%2==1) ? cout << a << " is odd number" : cout << a << " is even number"; // ÂüÀÏ¶§ ¾Õ¿¡²¨ ½ÇÇà . a is odd number ¶ó°í Ãâ·Â
+	(a%2==1) ? cout << a << " is odd number" : cout << a << " is even number"; // ì°¸ì¼ë•Œ ì•ì—êº¼ ì‹¤í–‰ . a is odd number ë¼ê³  ì¶œë ¥
 
 	cout << endl;
-	system("pause"); //vs2017 ÀÌ°Å °³ºıÄ£´Ù ¤Ğ¤Ğ
+	system("pause"); //vs2017 ì´ê±° ê°œë¹¡ì¹œë‹¤ ã… ã… 
 	
 	
 }
@@ -1604,7 +1604,7 @@ void main()
 
 
 
-//°¢ º¯¼ö´ç ¸î¹ÙÀÌÆ®¸¦ ÃÄ¸Ô´ÂÁö ¾Ë¾Æº¸´Â ÄÚµå. 
+//ê° ë³€ìˆ˜ë‹¹ ëª‡ë°”ì´íŠ¸ë¥¼ ì³ë¨¹ëŠ”ì§€ ì•Œì•„ë³´ëŠ” ì½”ë“œ. 
 /*
 #include <iostream>
 using namespace std;
@@ -1622,21 +1622,21 @@ int main()
 	
 	bool test_bool = true;
 
-	cout << "ÀÌ°Å´Â ³» ÄÄÇ»ÅÍ x64È¯°æ¿¡¼­ ¸Ş¸ğ¸®°¡ ¾ó¸¶¸¸Å­ ÇÒ´çµÇ´ÂÁö È®ÀÎÇÏ´Â ÄÚµåÀÌ´Ù¾Æ¾Æ¾Æ\n" << endl;
+	cout << "ì´ê±°ëŠ” ë‚´ ì»´í“¨í„° x64í™˜ê²½ì—ì„œ ë©”ëª¨ë¦¬ê°€ ì–¼ë§ˆë§Œí¼ í• ë‹¹ë˜ëŠ”ì§€ í™•ì¸í•˜ëŠ” ì½”ë“œì´ë‹¤ì•„ì•„ì•„\n" << endl;
 
 
-	cout << "test_shortÀÇ °ª" << test_short << "\t test_shortÀÇ Å©±â" << sizeof(test_short) << endl;
-	cout << "test_intÀÇ °ª" << test_int << "\t test_intÀÇ Å©±â" << sizeof(test_int) << endl;
-	cout << "test_longÀÇ °ª" << test_long << "\t test_longÀÇ Å©±â" << sizeof(test_long) << endl;
+	cout << "test_shortì˜ ê°’" << test_short << "\t test_shortì˜ í¬ê¸°" << sizeof(test_short) << endl;
+	cout << "test_intì˜ ê°’" << test_int << "\t test_intì˜ í¬ê¸°" << sizeof(test_int) << endl;
+	cout << "test_longì˜ ê°’" << test_long << "\t test_longì˜ í¬ê¸°" << sizeof(test_long) << endl;
 	
-	cout << "test_floatÀÇ °ª" << test_float << "\t test_floatÀÇ Å©±â" << sizeof(test_float) << endl;
-	cout << "test_doubleÀÇ °ª" << test_double << "\t test_doubleÀÇ Å©±â" << sizeof(test_double) << endl;
+	cout << "test_floatì˜ ê°’" << test_float << "\t test_floatì˜ í¬ê¸°" << sizeof(test_float) << endl;
+	cout << "test_doubleì˜ ê°’" << test_double << "\t test_doubleì˜ í¬ê¸°" << sizeof(test_double) << endl;
 	
-	cout << "test_charÀÇ °ª" << (char)test_char << "\t test_charÀÇ Å©±â" << sizeof(test_char) << endl;
-	cout << "test_stringÀÇ °ª" << test_string << "\t test_stringÀÇ Å©±â" << sizeof(test_string) << endl;
-	cout << "test_stringÀÇ °¢ °ªµéÀ» ÇÏ³ª¾¿ ÇØº¸ÀÚ, \t" << test_string[1] << "\t" << test_string[5]<< endl;
+	cout << "test_charì˜ ê°’" << (char)test_char << "\t test_charì˜ í¬ê¸°" << sizeof(test_char) << endl;
+	cout << "test_stringì˜ ê°’" << test_string << "\t test_stringì˜ í¬ê¸°" << sizeof(test_string) << endl;
+	cout << "test_stringì˜ ê° ê°’ë“¤ì„ í•˜ë‚˜ì”© í•´ë³´ì, \t" << test_string[1] << "\t" << test_string[5]<< endl;
 
-	cout << "test_boolÀÇ °ª" << test_bool << "\t test_boolÀÇ Å©±â" << sizeof(test_bool) << endl;
+	cout << "test_boolì˜ ê°’" << test_bool << "\t test_boolì˜ í¬ê¸°" << sizeof(test_bool) << endl;
 
 
 
@@ -1657,7 +1657,7 @@ int main()
 
 
 
-//this Æ÷ÀÎÅÍ ¿¹Á¦ 
+//this í¬ì¸í„° ì˜ˆì œ 
 /*#include <iostream>
 #include <string>
 using namespace std;
@@ -1671,7 +1671,7 @@ class inventory {
 public:
 	inventory(char *i, double c, int o)
 	{
-		strcpy(this->item, i); //this Æ÷ÀÎÅÍ »ç¿ë
+		strcpy(this->item, i); //this í¬ì¸í„° ì‚¬ìš©
 		this->cost = c;
 		this->on_hand = o;
 	}
@@ -1706,8 +1706,8 @@ int main()
 
 
 /*
-#include <stdio.h>// ¿Ö iostream Çì´õ°¡ ¾ÈºÙÁö
-#include <iostream>	//.h ºÙÀÌ¸é ¾È´ï ¤¾¤¾¤¾ <> ½è±â¶§¹®ÀÎµí ¤¾¤¾¤¾ ÀÌ°Ô ¾îµğ¿¡ÀÖ´ÂÆÄÀÏÀÌ¶ó ±×·±°Å¶ó°í µéÀ½ ¤¾¤¾ Çì´õÆÄÀÏ ¸ğ¿©ÀÖ´Âµ¥
+#include <stdio.h>// ì™œ iostream í—¤ë”ê°€ ì•ˆë¶™ì§€
+#include <iostream>	//.h ë¶™ì´ë©´ ì•ˆëŒ ã…ã…ã… <> ì¼ê¸°ë•Œë¬¸ì¸ë“¯ ã…ã…ã… ì´ê²Œ ì–´ë””ì—ìˆëŠ”íŒŒì¼ì´ë¼ ê·¸ëŸ°ê±°ë¼ê³  ë“¤ìŒ ã…ã… í—¤ë”íŒŒì¼ ëª¨ì—¬ìˆëŠ”ë°
 
 int main()
 {
@@ -1715,14 +1715,14 @@ int main()
 	for (int i = 1; i < 6; i++)
 		fact *= i;
 	printf("factorial = %d \n", fact);
-	system("pause"); //¾È²¨Áö°Ô ÇÏ´Â ÄÚµåÀÓ
+	system("pause"); //ì•ˆêº¼ì§€ê²Œ í•˜ëŠ” ì½”ë“œì„
 	return 0;
 }
-/*¹¹ ¾î¶§ ¿ì¿ì¿ì¿ì¿ì
-¿ì¿ì¿ì¿ì¿ì¿ì
+/*ë­ ì–´ë•Œ ìš°ìš°ìš°ìš°ìš°
+ìš°ìš°ìš°ìš°ìš°ìš°
 */
-// ±×³É ÁÖ¼®  just comment 
-//¿ì¿ì¿ì¿ì
+// ê·¸ëƒ¥ ì£¼ì„  just comment 
+//ìš°ìš°ìš°ìš°
 
 
 /*
@@ -1778,9 +1778,9 @@ class inventory {
 	int on_hand;
 
 public:
-	inventory(char *i, double c, int o) // const ºÙ¿©¾ßÇÔ ¤¾¤¾ ±×·¡¾ß ÀÛµ¿ÇÔ  ¤¾¤¾ 2019 
+	inventory(char *i, double c, int o) // const ë¶™ì—¬ì•¼í•¨ ã…ã… ê·¸ë˜ì•¼ ì‘ë™í•¨  ã…ã… 2019 
 	{
-		strcpy(this->item, i); //this Æ÷ÀÎÅÍ »ç¿ë
+		strcpy(this->item, i); //this í¬ì¸í„° ì‚¬ìš©
 		this->cost = c;
 		this->on_hand = o;
 	}

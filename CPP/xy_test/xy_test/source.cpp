@@ -51,7 +51,7 @@ void printMap(Ball *balls) {
 	system("cls");
 	printf("X = %d  Y = %d \n", balls->getX(), balls->getY());
 	int map[20][50];
-	memset(map, 0, sizeof(map)); // ¸Ê°ø°£ ÃÊ±âÈ­ 
+	memset(map, 0, sizeof(map)); // ë§µê³µê°„ ì´ˆê¸°í™” 
 
 	map[balls->getY()][balls->getX()] = 8;
 
@@ -100,42 +100,42 @@ int main() {
 
 		balls->setX(balls->getX() + balls->getVectorX());
 		balls->setY(balls->getY() + balls->getVectorY());
-		if (balls->getX() < 0 && balls->getY() < 0) { // ¿ÞÂÊ ¾Æ·¡ ±¸¼® 
+		if (balls->getX() < 0 && balls->getY() < 0) { // ì™¼ìª½ ì•„ëž˜ êµ¬ì„ 
 			balls->setVector(getAbsolute(balls->getVectorX()), getAbsolute(balls->getVectorY()));
 			balls->setX(balls->getX() + balls->getVectorX());
 			balls->setY(balls->getY() + balls->getVectorY());
 		}
-		else if (balls->getX() < 0 && balls->getY() > 19) { // ¿ÞÂÊ À§ ±¸¼® 
+		else if (balls->getX() < 0 && balls->getY() > 19) { // ì™¼ìª½ ìœ„ êµ¬ì„ 
 			balls->setVector(getAbsolute(balls->getVectorX()), -getAbsolute(balls->getVectorY()));
 			balls->setX(balls->getX() + balls->getVectorX());
 			balls->setY(balls->getY() + balls->getVectorY());
 		}
-		else if (balls->getX() > 49 && balls->getY() < 0) { // ¿À¸¥ÂÊ ¾Æ·¡ ±¸¼® 
+		else if (balls->getX() > 49 && balls->getY() < 0) { // ì˜¤ë¥¸ìª½ ì•„ëž˜ êµ¬ì„ 
 			balls->setVector(-getAbsolute(balls->getVectorX()), getAbsolute(balls->getVectorY()));
 			balls->setX(balls->getX() + balls->getVectorX());
 			balls->setY(balls->getY() + balls->getVectorY());
 		}
-		else if (balls->getX() > 49 && balls->getY() > 19) { // ¿À¸¥ÂÊ À§ ±¸¼® 
+		else if (balls->getX() > 49 && balls->getY() > 19) { // ì˜¤ë¥¸ìª½ ìœ„ êµ¬ì„ 
 			balls->setVector(-getAbsolute(balls->getVectorX()), -getAbsolute(balls->getVectorY()));
 			balls->setX(balls->getX() + balls->getVectorX());
 			balls->setY(balls->getY() + balls->getVectorY());
 		}
-		else if (balls->getY() < 0) { // ¾Æ·¡
+		else if (balls->getY() < 0) { // ì•„ëž˜
 			balls->setVector(balls->getVectorX(), getAbsolute(balls->getVectorY()));
 			
 			balls->setY(balls->getY() + balls->getVectorY());
 		}
-		else if ( balls->getY() > 19) { // À§
+		else if ( balls->getY() > 19) { // ìœ„
 			balls->setVector(balls->getVectorX(), -getAbsolute(balls->getVectorY()));
 			
 			balls->setY(balls->getY() + balls->getVectorY());
 		}
-		else if (balls->getX() > 49) { // ¿À¸¥ÂÊ
+		else if (balls->getX() > 49) { // ì˜¤ë¥¸ìª½
 			balls->setVector(-getAbsolute(balls->getVectorX()), balls->getVectorY());
 			balls->setX(balls->getX() + balls->getVectorX());
 			
 		}
-		else if (balls->getX() < 0 ) { // ¿ÞÂÊ
+		else if (balls->getX() < 0 ) { // ì™¼ìª½
 			balls->setVector(getAbsolute(balls->getVectorX()), balls->getVectorY());
 			balls->setX(balls->getX() + balls->getVectorX());
 			

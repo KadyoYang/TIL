@@ -1,12 +1,12 @@
-// ½ºÅÃ±¸Á¶.
-// ÈÄÀÔ ¼±Ãâ first in first out 
-// Ç×»ó topÀº Ç×»ó »ðÀÔµÈ ÀÚ·á¸¦ ¸¶Áö¸· ÀÚ·á·Î °¡¸£Å²´Ù.
-// pop() À¸·Î ²¨³»°í push()·Î ³Ö°í.
-// pop »èÁ¦
-// push »ðÀÔ
+// ìŠ¤íƒêµ¬ì¡°.
+// í›„ìž… ì„ ì¶œ first in first out 
+// í•­ìƒ topì€ í•­ìƒ ì‚½ìž…ëœ ìžë£Œë¥¼ ë§ˆì§€ë§‰ ìžë£Œë¡œ ê°€ë¥´í‚¨ë‹¤.
+// pop() ìœ¼ë¡œ êº¼ë‚´ê³  push()ë¡œ ë„£ê³ .
+// pop ì‚­ì œ
+// push ì‚½ìž…
 
-// c++ÀÇ Ä¸½¶È­. Å¬·¡½º°¡ ³»ºÎÀûÀ¸·Î ¾î¶»°Ô µ¹¾Æ°¡´ÂÁö´Â ¸ô¶óµµ.
-// ¸â¹öÇÔ¼ö·Î Àß ¾µ¼öÀÖ°Ô ¾Ë¾Æ¼­ .
+// c++ì˜ ìº¡ìŠí™”. í´ëž˜ìŠ¤ê°€ ë‚´ë¶€ì ìœ¼ë¡œ ì–´ë–»ê²Œ ëŒì•„ê°€ëŠ”ì§€ëŠ” ëª°ë¼ë„.
+// ë©¤ë²„í•¨ìˆ˜ë¡œ ìž˜ ì“¸ìˆ˜ìžˆê²Œ ì•Œì•„ì„œ .
 
 /*
 
@@ -20,9 +20,9 @@ private:
 	double item[MAX];
 	int top;
 public:
-	Stack(); // ÃÖÃÊ¿¡ push µÉ±ú top+1ÀÌ µÇ¹Ç·Î    »ý¼ºÀÚ¿¡¼­ top = -1·Î ÃÊ±âÈ­ÇØ³õÀÚ.
-	bool Push(double data); // ÀÛ¾÷ÀÇ ¼º°ø°ú ½ÇÆÐ¸¦ ¾Ë¼öÀÖµµ·Ï ¹ÝÈ¯ÇüÀ» bool·Î ÇÏÀÚ
-	bool Pop(double &data); // ¸Å°³º¯¼ö·Î ²¨³»¿Í¾ßÇÏ¹Ç·Î
+	Stack(); // ìµœì´ˆì— push ë ê¹¨ top+1ì´ ë˜ë¯€ë¡œ    ìƒì„±ìžì—ì„œ top = -1ë¡œ ì´ˆê¸°í™”í•´ë†“ìž.
+	bool Push(double data); // ìž‘ì—…ì˜ ì„±ê³µê³¼ ì‹¤íŒ¨ë¥¼ ì•Œìˆ˜ìžˆë„ë¡ ë°˜í™˜í˜•ì„ boolë¡œ í•˜ìž
+	bool Pop(double &data); // ë§¤ê°œë³€ìˆ˜ë¡œ êº¼ë‚´ì™€ì•¼í•˜ë¯€ë¡œ
 	void ShowStack() {
 		cout << top << endl;
 		for (int i = 0; i < MAX; i++) {
@@ -37,7 +37,7 @@ Stack::Stack(){
 
 bool Stack::Push(double data) {
 	if (top >= MAX - 1) {
-		cout << "Error: ½ºÅÃÀÌ °¡µæ Ã¡´Ù" << endl;;
+		cout << "Error: ìŠ¤íƒì´ ê°€ë“ ì°¼ë‹¤" << endl;;
 		return false;
 	}
 	else {
@@ -49,7 +49,7 @@ bool Stack::Push(double data) {
 
 bool Stack::Pop(double &data) {
 	if (top < 0) {
-		cout << "Error: ½ºÅÃÀÌ ºñ¾ú´Ù."<<endl;
+		cout << "Error: ìŠ¤íƒì´ ë¹„ì—ˆë‹¤."<<endl;
 		return false;
 	}
 	else {

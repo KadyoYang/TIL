@@ -1,11 +1,11 @@
 
 /*
-// µÑ ÀÌ»óÀÇ ÀÚ·áÇü¿¡ ´ëÇÑ ÅÛÇÃ¸´È­
+// ë‘˜ ì´ìƒì˜ ìžë£Œí˜•ì— ëŒ€í•œ í…œí”Œë¦¿í™”
 
 #include <iostream>
 using namespace std;
 // Data<TYPE, ARG_TYPE>
-// ÅÛÇÃ¸´È­ÇÏ¸é °´Ã¼¼±¾ðÇÒ¶§ Á¶¹°Á¶¹° <> ¾È¿¡´Ù°¡ Çü ½á³ÖÀ¸¸é °¢ÀÚ ±× º¯¼ö¿¡ ´Ù ´ëÄ¡µÇ¼­ »õ·Ó°Ô ¸¸µé¾îÁø´Ù.
+// í…œí”Œë¦¿í™”í•˜ë©´ ê°ì²´ì„ ì–¸í• ë•Œ ì¡°ë¬¼ì¡°ë¬¼ <> ì•ˆì—ë‹¤ê°€ í˜• ì¨ë„£ìœ¼ë©´ ê°ìž ê·¸ ë³€ìˆ˜ì— ë‹¤ ëŒ€ì¹˜ë˜ì„œ ìƒˆë¡­ê²Œ ë§Œë“¤ì–´ì§„ë‹¤.
 template <typename TYPE, typename ARG_TYPE>
 class Data {
 private:
@@ -30,7 +30,7 @@ template <typename TYPE, typename ARG_TYPE>
 TYPE Data<TYPE, ARG_TYPE>::GetData() {
 	return value;
 }
-// ÅÛÇÃ¸´ Å¬·¡½ºÀÇ ÀÎ½ºÅÏ½ºÈ­00
+// í…œí”Œë¦¿ í´ëž˜ìŠ¤ì˜ ì¸ìŠ¤í„´ìŠ¤í™”00
 
 int main() {
 	int a = 10;
@@ -44,7 +44,7 @@ int main() {
 
 	double b = 3.4;
 	
-	Data<double, double &> obj2(1.5); // Á¶¹°Á¶¹° ÅÛÇÃ¸´È­ÇÑ Å¬·¡½º¸¦ Á¶¹°Á¶¹° <   > ÇüÅÂ¸¸µé¾î¼­ »õ·Î¸¸µç´Ù.
+	Data<double, double &> obj2(1.5); // ì¡°ë¬¼ì¡°ë¬¼ í…œí”Œë¦¿í™”í•œ í´ëž˜ìŠ¤ë¥¼ ì¡°ë¬¼ì¡°ë¬¼ <   > í˜•íƒœë§Œë“¤ì–´ì„œ ìƒˆë¡œë§Œë“ ë‹¤.
 	cout << obj2.GetData() << endl;
 	
 	obj2.CopyData(b);
@@ -59,11 +59,11 @@ int main() {
 
 
 /*
-// ÅÆÇÃ¸´ Å¬·¡½º template <typename any>
+// íƒ¬í”Œë¦¿ í´ëž˜ìŠ¤ template <typename any>
 #include <iostream>
 using namespace std;
 
-template <typename DATATYPE> // Å¬·¡½º test ¸¦ DATATYPEÀÌ¶ó´Â ÀÌ¸§À¸·Î ÅÛÇÃ¸´È­ ÇÏ°Ú´Ù.
+template <typename DATATYPE> // í´ëž˜ìŠ¤ test ë¥¼ DATATYPEì´ë¼ëŠ” ì´ë¦„ìœ¼ë¡œ í…œí”Œë¦¿í™” í•˜ê² ë‹¤.
 class Test {
 private:
 	DATATYPE value;
@@ -79,8 +79,8 @@ Test<DATATYPE>::Test(DATATYPE v)
 	value = v;
 }
 
-template <typename DATATYPE> // ÇÔ¼ö³»ºÎ¿¡¼­ »ç¿ëÇÏ°í ÀÖ´Â µ¥ÀÌÅ¸Å¸ÀÔ¿¡ ´ëÇØ¼­ ¼³¸íÇÏ´ÂºÎºÐ 
-void Test<DATATYPE>::SetValue(DATATYPE v) // SetValueÇÔ¼ö°¡ ÅÛÇÃ¸´Å¬·¡½ºÀÇ ¸â¹öÇÔ¼ö°¡ µÇ¾î¾ßÇÏ¹Ç·ÎTest<DATATYPE>:: ÇØÁØ´Ù
+template <typename DATATYPE> // í•¨ìˆ˜ë‚´ë¶€ì—ì„œ ì‚¬ìš©í•˜ê³  ìžˆëŠ” ë°ì´íƒ€íƒ€ìž…ì— ëŒ€í•´ì„œ ì„¤ëª…í•˜ëŠ”ë¶€ë¶„ 
+void Test<DATATYPE>::SetValue(DATATYPE v) // SetValueí•¨ìˆ˜ê°€ í…œí”Œë¦¿í´ëž˜ìŠ¤ì˜ ë©¤ë²„í•¨ìˆ˜ê°€ ë˜ì–´ì•¼í•˜ë¯€ë¡œTest<DATATYPE>:: í•´ì¤€ë‹¤
 {
 	value = v;
 }
@@ -94,14 +94,14 @@ DATATYPE &Test<DATATYPE>::GetValue()
 
 int main()
 {
-	Test<int> Obj1(10); // °´Ã¼¼±¾ðÀ» ÇÏ¸é ÅÛÇÃ¸´ Å¬·¡½º¿¡ ÀÇÇØ¼­ Å¬·¡½º ÀÎ½ºÅÏ½º°¡ ¸¸µé¾îÁø´Ù.
-	Obj1.SetValue(10); // À§¿¡ <int> ÀÖÀ¸¸é °´Ã¼°¡ »ý¼ºµÇ¸é¼­ Å¬·¡½º³»ºÎÀÇ<DATATYPE> ÀÌ int ·Î ´ëÄ¡°¡ ÀÏ¾î³­´Ù.
+	Test<int> Obj1(10); // ê°ì²´ì„ ì–¸ì„ í•˜ë©´ í…œí”Œë¦¿ í´ëž˜ìŠ¤ì— ì˜í•´ì„œ í´ëž˜ìŠ¤ ì¸ìŠ¤í„´ìŠ¤ê°€ ë§Œë“¤ì–´ì§„ë‹¤.
+	Obj1.SetValue(10); // ìœ„ì— <int> ìžˆìœ¼ë©´ ê°ì²´ê°€ ìƒì„±ë˜ë©´ì„œ í´ëž˜ìŠ¤ë‚´ë¶€ì˜<DATATYPE> ì´ int ë¡œ ëŒ€ì¹˜ê°€ ì¼ì–´ë‚œë‹¤.
 	cout << Obj1.GetValue() << endl;
 
 	Test<double> Obj2(5.7);
 	cout << Obj2.GetValue() << endl;
 
-	// ÀÌ¿Í °°ÀÌ ÅÛÇÃ¸´ Å¬·¡½ºµµ ¿©·¯ ¹ø Á¤ÀÇÇÏ´Â ¼ö°í¸¦ ´ú°í ÄÚµå¸¦ ÀçÈ°¿ëÇÒ¼öÀÖ°Ô ÇØÁØ´Ù.
+	// ì´ì™€ ê°™ì´ í…œí”Œë¦¿ í´ëž˜ìŠ¤ë„ ì—¬ëŸ¬ ë²ˆ ì •ì˜í•˜ëŠ” ìˆ˜ê³ ë¥¼ ëœê³  ì½”ë“œë¥¼ ìž¬í™œìš©í• ìˆ˜ìžˆê²Œ í•´ì¤€ë‹¤.
 	return 0;
 }
 */
@@ -112,13 +112,13 @@ int main()
 
 
 /*
-// ÅÛÇÃ¸´Àº ÄÚµåÀÇ ÀçÈ°¿ë  c++ ÄÄÆÄÀÏ·¯°¡ Á¦°øÇÑ´Ù.
+// í…œí”Œë¦¿ì€ ì½”ë“œì˜ ìž¬í™œìš©  c++ ì»´íŒŒì¼ëŸ¬ê°€ ì œê³µí•œë‹¤.
 #include <iostream>
 using namespace std;
 
-// ÄÄÆÄÀÏ·¯¿¡°Ô T´Â Á¤ÇØÁöÁö¾ÊÀº ÀÚ·áÇüÀÌ¶ó°í ¹Ì¸® ¾Ë·ÁÁà¾ßÇÔ
-// ¹Ýµå½Ã ÇÔ¼öÁ¤ÀÇºÎ À§¿¡ Á¤ÀÇÇØ¾ßÇÑ´Ù°íÇÔ.
-// »ç¿ëÀÚ°¡ Á¦°øÇÏ´Â ±¸Á¶Ã¼³ª Å¬·¡½ºÇüµµ µÉ¼öÀÖ´Ù.
+// ì»´íŒŒì¼ëŸ¬ì—ê²Œ TëŠ” ì •í•´ì§€ì§€ì•Šì€ ìžë£Œí˜•ì´ë¼ê³  ë¯¸ë¦¬ ì•Œë ¤ì¤˜ì•¼í•¨
+// ë°˜ë“œì‹œ í•¨ìˆ˜ì •ì˜ë¶€ ìœ„ì— ì •ì˜í•´ì•¼í•œë‹¤ê³ í•¨.
+// ì‚¬ìš©ìžê°€ ì œê³µí•˜ëŠ” êµ¬ì¡°ì²´ë‚˜ í´ëž˜ìŠ¤í˜•ë„ ë ìˆ˜ìžˆë‹¤.
 template <typename T>
 T abs(T num)
 {
@@ -131,8 +131,8 @@ int main()
 {
 	int a = -10;
 	cout << abs(a) << endl; 
-	// int ÇüÀ¸·Î ¸Å°³º¯¼öÁÖ¸é
-	// ÅÛÇÃ¸´ÇÔ¼ö°¡ ±×¿¡¸Â°Ô ÀÎ½ºÅÏ½º¸¦ ¸¸µé¾î¼­ µüµü ¸¸µé¾îÁØ´Ù.
+	// int í˜•ìœ¼ë¡œ ë§¤ê°œë³€ìˆ˜ì£¼ë©´
+	// í…œí”Œë¦¿í•¨ìˆ˜ê°€ ê·¸ì—ë§žê²Œ ì¸ìŠ¤í„´ìŠ¤ë¥¼ ë§Œë“¤ì–´ì„œ ë”±ë”± ë§Œë“¤ì–´ì¤€ë‹¤.
 	float b = -3.4;
 	cout << abs(b) << endl;
 	return 0;
@@ -143,7 +143,7 @@ int main()
 
 
 
-//Àý´ñ°ªÀ» ±¸ÇÏ´ÂÇÔ¼ö ¿©±â¼­ ¹Ýº¹µÇ´Â°Í¸¸ T·Î ´ëÃ¼ÇÏÀÚ
+//ì ˆëŒ“ê°’ì„ êµ¬í•˜ëŠ”í•¨ìˆ˜ ì—¬ê¸°ì„œ ë°˜ë³µë˜ëŠ”ê²ƒë§Œ Të¡œ ëŒ€ì²´í•˜ìž
 /*
 #include <iostream>
 using namespace std;
@@ -192,7 +192,7 @@ int main()
 
 
 
-// ¿¹Á¦¹®Á¦   ÀÌ°Å¸¦ ÅÛ»Ê¸´È­ÇØ¶ó  
+// ì˜ˆì œë¬¸ì œ   ì´ê±°ë¥¼ í…œë½ˆë¦¿í™”í•´ë¼  
 /*
 #include <iostream>
 using namespace std;

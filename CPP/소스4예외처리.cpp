@@ -1,8 +1,8 @@
 
 /*
-// ÇÁ·Î±×·¥ÀÌ ¿¹¿Ü»óÈ²À» ¸ÂÀÌÇßÀ»¶§ ¿À·ù°¡³µÀ»¶§  Åö ²¨Áö¸é ±²ÀåÈ÷ ±âºÐ ³ª»Ú´Ù./
-// ±×·¡¼­ Áß°£¿¡ ¿¹»óÄ¡ ¸øÇÑ ¿¡·¯°¡³ªµµ ÇÁ·Î±×·¥À» ±×·¡µµ Àß µ¹¾Æ°¡¾ßÇÑ´Ù. ±×·¡¼­ ¿¹¿ÜÃ³¸®ÀÖ¾î¾ßÇÔ 
-// ¿¹Á¦·Î ³ª´©±â ÇÁ·Î±×·¥À» Â¥º¸ÀÚ
+// í”„ë¡œê·¸ëž¨ì´ ì˜ˆì™¸ìƒí™©ì„ ë§žì´í–ˆì„ë•Œ ì˜¤ë¥˜ê°€ë‚¬ì„ë•Œ  íˆ­ êº¼ì§€ë©´ êµ‰ìž¥ížˆ ê¸°ë¶„ ë‚˜ì˜ë‹¤./
+// ê·¸ëž˜ì„œ ì¤‘ê°„ì— ì˜ˆìƒì¹˜ ëª»í•œ ì—ëŸ¬ê°€ë‚˜ë„ í”„ë¡œê·¸ëž¨ì„ ê·¸ëž˜ë„ ìž˜ ëŒì•„ê°€ì•¼í•œë‹¤. ê·¸ëž˜ì„œ ì˜ˆì™¸ì²˜ë¦¬ìžˆì–´ì•¼í•¨ 
+// ì˜ˆì œë¡œ ë‚˜ëˆ„ê¸° í”„ë¡œê·¸ëž¨ì„ ì§œë³´ìž
 
 #include <iostream>
 using namespace std;
@@ -11,41 +11,41 @@ void main()
 {
 	int a, b, c, d;
 	
-	cout << "³ª´°¼ÀÀ» ÇÏ±â À§ÇØ¼­ µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÏ½Ã¿À" << endl;
+	cout << "ë‚˜ëˆ—ì…ˆì„ í•˜ê¸° ìœ„í•´ì„œ ë°ì´í„°ë¥¼ ìž…ë ¥í•˜ì‹œì˜¤" << endl;
 
-	cout << "³ª´©´Â ¼ö ÇÇÁ¬¼ö ÀÔ·Â" << endl;
+	cout << "ë‚˜ëˆ„ëŠ” ìˆ˜ í”¼ì ¯ìˆ˜ ìž…ë ¥" << endl;
 	cin >> a;
 
-	cout << "³ª´©´Â ¼ö Á¬¼ö ÀÔ·Â" << endl;
+	cout << "ë‚˜ëˆ„ëŠ” ìˆ˜ ì ¯ìˆ˜ ìž…ë ¥" << endl;
 	cin >> b;
 
-	c = a / b;//°ª
-	cout << "°ª = " << c << endl;
-	d = a % b; // ³ª¸ÓÁö
-	cout << "³ª¸ÓÁö = " << d << endl;
+	c = a / b;//ê°’
+	cout << "ê°’ = " << c << endl;
+	d = a % b; // ë‚˜ë¨¸ì§€
+	cout << "ë‚˜ë¨¸ì§€ = " << d << endl;
 
 	return;
 }
-// 0À¸·Î ³ª´©¸é ²¨Áø´Ù.
-// c++Àº ¿¹¿Ü¸¦ °Ë»çÇÏ°í Ã³¸®ÇÏ´Âµ¥ »ç¿ëÇÏ´Â ±¸¹®À¸·Î try-catch ¸¦ Á¦°øÇÑ´Ù. 
-// ¿¹¿Ü°¡ ¹ß»ýÇÒ ¸¸ÇÑ ³»¿ëÀ» try ºí·Ï¾È¿¡ ±â¼úÇÏ°í
-// °Ë»çÇØ¼­ ¿¹¿Ü°¡ ¹ß»ýÇÏ¸é catch ±¸¹® ¾ÈÀÇ ¿¹¿Ü Ã³¸® ±¸¹®À» ¼öÇàÇÏµµ·Ï ÇÑ´Ù.
+// 0ìœ¼ë¡œ ë‚˜ëˆ„ë©´ êº¼ì§„ë‹¤.
+// c++ì€ ì˜ˆì™¸ë¥¼ ê²€ì‚¬í•˜ê³  ì²˜ë¦¬í•˜ëŠ”ë° ì‚¬ìš©í•˜ëŠ” êµ¬ë¬¸ìœ¼ë¡œ try-catch ë¥¼ ì œê³µí•œë‹¤. 
+// ì˜ˆì™¸ê°€ ë°œìƒí•  ë§Œí•œ ë‚´ìš©ì„ try ë¸”ë¡ì•ˆì— ê¸°ìˆ í•˜ê³ 
+// ê²€ì‚¬í•´ì„œ ì˜ˆì™¸ê°€ ë°œìƒí•˜ë©´ catch êµ¬ë¬¸ ì•ˆì˜ ì˜ˆì™¸ ì²˜ë¦¬ êµ¬ë¬¸ì„ ìˆ˜í–‰í•˜ë„ë¡ í•œë‹¤.
 */
 
 
 /*
 try{
-	¿¹¿Ü°¡ ¹ß»ýÇÒ ¸¸ÇÑ ÄÚµå
+	ì˜ˆì™¸ê°€ ë°œìƒí•  ë§Œí•œ ì½”ë“œ
 	}
 
-catch{ÇØ´ç_Exception e) {
-	¿¹¿ÜÃ³¸®¸¦ À§ÇÑ ·çÆ¾
+catch{í•´ë‹¹_Exception e) {
+	ì˜ˆì™¸ì²˜ë¦¬ë¥¼ ìœ„í•œ ë£¨í‹´
 	}
 	
 */
-// ±×¸®°í throw ¿¹¿Ü°´Ã¼;    ´Â ÇÁ·Î±×·¡¸Ó°¡ ÀÇµµÀûÀ¸·Î ¿¹¿Ü¸¦ ¹ß»ý½ÃÅ°°íÀÚ ÇÒ¶§ »ç¿ëÇÑ´Ù.
+// ê·¸ë¦¬ê³  throw ì˜ˆì™¸ê°ì²´;    ëŠ” í”„ë¡œê·¸ëž˜ë¨¸ê°€ ì˜ë„ì ìœ¼ë¡œ ì˜ˆì™¸ë¥¼ ë°œìƒì‹œí‚¤ê³ ìž í• ë•Œ ì‚¬ìš©í•œë‹¤.
 
-//´ÙÀ½ ¿¹Á¦´Â throw ÀýÀ» ÀÌ¿ëÇØ ÀÇµµÀûÀ¸·Î ¿¹¿Ü¸¦ ¹ß»ý½ÃÅ°°í ¹ß»ýÇÑ ¿¹¿Ü¸¦ try catch ±¸¹®À¸·Î Ã³¸®ÇÏ´Â ÇÁ·Î±×·¥
+//ë‹¤ìŒ ì˜ˆì œëŠ” throw ì ˆì„ ì´ìš©í•´ ì˜ë„ì ìœ¼ë¡œ ì˜ˆì™¸ë¥¼ ë°œìƒì‹œí‚¤ê³  ë°œìƒí•œ ì˜ˆì™¸ë¥¼ try catch êµ¬ë¬¸ìœ¼ë¡œ ì²˜ë¦¬í•˜ëŠ” í”„ë¡œê·¸ëž¨
 
 
 /*
@@ -61,7 +61,7 @@ void main()
 
 	try {
 		if (b == 0) {
-			throw b; // ÇØ´ç b°¡ 0ÀÌ¸é 0À» ´øÁø´Ù.
+			throw b; // í•´ë‹¹ bê°€ 0ì´ë©´ 0ì„ ë˜ì§„ë‹¤.
 		}
 		c = a / b;
 		d = a % b;
@@ -69,10 +69,10 @@ void main()
 	}
 
 	catch (int ex) {
-		cout << ex << "·Î ³ª´©·Á´Â ½Ãµµ°¡ ÀÖ¾úÀ¸¹Ç·Î ¿¹¿Ü ¹ß»ý" << endl;
+		cout << ex << "ë¡œ ë‚˜ëˆ„ë ¤ëŠ” ì‹œë„ê°€ ìžˆì—ˆìœ¼ë¯€ë¡œ ì˜ˆì™¸ ë°œìƒ" << endl;
 	}
 
-	cout << "¿¹¿Ü°¡ ÀÖ¾îµµ Á¤»óÁ¾·áµÊ ¤¾" << endl;
+	cout << "ì˜ˆì™¸ê°€ ìžˆì–´ë„ ì •ìƒì¢…ë£Œë¨ ã…Ž" << endl;
 	return;
 }
 
@@ -85,19 +85,19 @@ void main()
 #include <iostream>
 using namespace std;
 
-// divide ÇÔ¼ö ³»¿¡¼­ ¿À·ùÃ³¸®ÇÏ±â, ¾Æ´Ï¸é È£ÃâÇÑ ÇÔ¼ö·Î ¿À·ù¸¦ Àü´ÞÇÏ±â.
-//È£ÃâÇÑ ÇÔ¼ö¿¡ ¿¹¿Ü Àü´ÞÇÏ±â
+// divide í•¨ìˆ˜ ë‚´ì—ì„œ ì˜¤ë¥˜ì²˜ë¦¬í•˜ê¸°, ì•„ë‹ˆë©´ í˜¸ì¶œí•œ í•¨ìˆ˜ë¡œ ì˜¤ë¥˜ë¥¼ ì „ë‹¬í•˜ê¸°.
+//í˜¸ì¶œí•œ í•¨ìˆ˜ì— ì˜ˆì™¸ ì „ë‹¬í•˜ê¸°
 
 void divide(int a, int b)
 {
 	int c, d;
-	cout << "********divide ÇÔ¼ö********" << endl;
+	cout << "********divide í•¨ìˆ˜********" << endl;
 
 	if (b == 0)
 		throw b;
 	c = a / b;
 	d = a % b;
-	cout << " ¸ò=" << c << " ³ª¸ÓÁö=" << d << endl;
+	cout << " ëª«=" << c << " ë‚˜ë¨¸ì§€=" << d << endl;
 	
 }
 
@@ -112,7 +112,7 @@ void main()
 
 	}
 	catch(int ex){
-		cout << " ¿¹¿Ü¹ß»ý " << ex << "·Î ³ª´©·Á´Â ½Ãµµ" << endl;
+		cout << " ì˜ˆì™¸ë°œìƒ " << ex << "ë¡œ ë‚˜ëˆ„ë ¤ëŠ” ì‹œë„" << endl;
 	}
 
 }
@@ -121,25 +121,25 @@ void main()
 
 
 /*
-// ±×·¯¸é ÇÔ¼ö ³»ºÎ¿¡ try catch ÀýÀ» divide ÇÔ¼ö ³»ºÎ¿¡ Àü¹« ¿Å°Üº¸ÀÚ
+// ê·¸ëŸ¬ë©´ í•¨ìˆ˜ ë‚´ë¶€ì— try catch ì ˆì„ divide í•¨ìˆ˜ ë‚´ë¶€ì— ì „ë¬´ ì˜®ê²¨ë³´ìž
 #include <iostream>
 using namespace std;
 
 void divide(int a, int b)
 {
 	int c, d;
-	cout << "**********divide ÇÔ¼ö*******" << endl;
+	cout << "**********divide í•¨ìˆ˜*******" << endl;
 	try 
 	{
 		if (b == 0)
 			throw b;
 		c = a / b;
 		d = a % b;
-		cout << "¸ò" << c << " ³ª¸ÓÁö" << d << endl;
+		cout << "ëª«" << c << " ë‚˜ë¨¸ì§€" << d << endl;
 	}
 	catch (int ex)
 	{
-		cout << ex << "·Î ³ª´©·Á´Â ½Ãµµ ¿À·ù¹ß»ý" << endl;
+		cout << ex << "ë¡œ ë‚˜ëˆ„ë ¤ëŠ” ì‹œë„ ì˜¤ë¥˜ë°œìƒ" << endl;
 	}
 
 }
@@ -150,7 +150,7 @@ void main()
 	divide(12, 0);
 	divide(13, 2);
 
-	cout << "0À¸·Î ³ª´©´õ¶óµµ Á¤»óÁ¾·áµÊ ^^" << endl;
+	cout << "0ìœ¼ë¡œ ë‚˜ëˆ„ë”ë¼ë„ ì •ìƒì¢…ë£Œë¨ ^^" << endl;
 }
 */
 
@@ -159,7 +159,7 @@ void main()
 
 
 /*
-// try ±¸¹® ³»ºÎ¿¡¼­ ¹ß»ýÇÏ´Â ¿¹¿Ü°¡ ´Ù¾çÇÒ ¼ö ÀÖÀ¸¹Ç·Î ¿©·¯ Á¾·ùÀÇ ¿¹¿Ü¸¦ Ã³¸®ÇÏ±â À§ÇØ¼­ ÇÏ³ª ÀÌ»óÀÇ catch¹®À» ±â¼úÇÒ ¼ö ÀÖ´Ù.
+// try êµ¬ë¬¸ ë‚´ë¶€ì—ì„œ ë°œìƒí•˜ëŠ” ì˜ˆì™¸ê°€ ë‹¤ì–‘í•  ìˆ˜ ìžˆìœ¼ë¯€ë¡œ ì—¬ëŸ¬ ì¢…ë¥˜ì˜ ì˜ˆì™¸ë¥¼ ì²˜ë¦¬í•˜ê¸° ìœ„í•´ì„œ í•˜ë‚˜ ì´ìƒì˜ catchë¬¸ì„ ê¸°ìˆ í•  ìˆ˜ ìžˆë‹¤.
 #include <iostream>
 using namespace std;
 
@@ -167,15 +167,15 @@ void func(int a)
 {
 	try {
 		if (a == 0)
-			throw "º¯¼öÀÇ °ªÀÌ 0ÀÌ´Ù¾Æ¾Æ";
+			throw "ë³€ìˆ˜ì˜ ê°’ì´ 0ì´ë‹¤ì•„ì•„";
 		else
 			throw a;
 	}
-	catch (const char *str){ // const ¾ÈÇØÁÖ¸é ¿À·ù¶ä
+	catch (const char *str){ // const ì•ˆí•´ì£¼ë©´ ì˜¤ë¥˜ëœ¸
 		cout << str << endl;
 	}
 	catch (int ex) {
-		cout << "¼ýÀÚ " << ex << "·Î ÀÎÇÑ ¿¹¿Ü ¹ß»ý" << endl;
+		cout << "ìˆ«ìž " << ex << "ë¡œ ì¸í•œ ì˜ˆì™¸ ë°œìƒ" << endl;
 	}
 
 }
@@ -194,17 +194,17 @@ void main() {
 
 
 /*
-//ÇÔ¼ö¿¡ ¿¹¿Ü ¹ß»ý ¸í½ÃÇÏ±â
-// ¿¹¿Ü°¡ ¹ß»ýÇÒ °¡´É¼ºÀÌ ÀÖ´Â ÇÔ¼ö¿¡¼­ ¿¹¿Ü¸¦ Á÷Á¢ Ã³¸®ÇÏÁö ¾Ê°í È£ÃâÇÑ ÇÔ¼ö·Î ¿Å±æ¼ö ÀÖ´Â ¿¹¿Ü ÀÚ·áÇüÀ» Á¤ÀÇÇÏ¸é¼­
-// ¸í½ÃÀûÀ¸·Î ³ªÅ¸³¾¼öÀÖ´Ù. 
+//í•¨ìˆ˜ì— ì˜ˆì™¸ ë°œìƒ ëª…ì‹œí•˜ê¸°
+// ì˜ˆì™¸ê°€ ë°œìƒí•  ê°€ëŠ¥ì„±ì´ ìžˆëŠ” í•¨ìˆ˜ì—ì„œ ì˜ˆì™¸ë¥¼ ì§ì ‘ ì²˜ë¦¬í•˜ì§€ ì•Šê³  í˜¸ì¶œí•œ í•¨ìˆ˜ë¡œ ì˜®ê¸¸ìˆ˜ ìžˆëŠ” ì˜ˆì™¸ ìžë£Œí˜•ì„ ì •ì˜í•˜ë©´ì„œ
+// ëª…ì‹œì ìœ¼ë¡œ ë‚˜íƒ€ë‚¼ìˆ˜ìžˆë‹¤. 
 #include <iostream>
 using namespace std;
 
-void func(int a) throw(const char *, int) // ¶²Áö°íÀÚ ÇÏ´Â°É ¿©±â´Ù°¡ ±â¼úÇØ³õ´Â´Ù. ÀÚ·áÇü¸¸.
-{ // À§ÀÇ throwÀýÀº ÄÄÆÄÀÏ·¯¿¡°Ô ÀÌ·¯ÇÑ ¿¹¿Ü »óÈ²ÀÌ ¹ß»ýÇÒ¼öÀÖ´Ù´Â °ÍÀ» ¸í½ÃÀûÀ¸·Î ¾Ë·ÁÁØ´Ù.
-	// try ±¸¹®Àº ÄÄÆÄÀÏ·¯°¡ ²Ä²ÄÇÏ°Ô »ìÆìº¸´Â°÷ÀÌ¶ó¼­ ³Ê¹« ³²¿ëÇÏ¸é ÇÁ·Î±×·¥ ´À·ÁÅÍÁø´Ù.
+void func(int a) throw(const char *, int) // ë–¤ì§€ê³ ìž í•˜ëŠ”ê±¸ ì—¬ê¸°ë‹¤ê°€ ê¸°ìˆ í•´ë†“ëŠ”ë‹¤. ìžë£Œí˜•ë§Œ.
+{ // ìœ„ì˜ throwì ˆì€ ì»´íŒŒì¼ëŸ¬ì—ê²Œ ì´ëŸ¬í•œ ì˜ˆì™¸ ìƒí™©ì´ ë°œìƒí• ìˆ˜ìžˆë‹¤ëŠ” ê²ƒì„ ëª…ì‹œì ìœ¼ë¡œ ì•Œë ¤ì¤€ë‹¤.
+	// try êµ¬ë¬¸ì€ ì»´íŒŒì¼ëŸ¬ê°€ ê¼¼ê¼¼í•˜ê²Œ ì‚´íŽ´ë³´ëŠ”ê³³ì´ë¼ì„œ ë„ˆë¬´ ë‚¨ìš©í•˜ë©´ í”„ë¡œê·¸ëž¨ ëŠë ¤í„°ì§„ë‹¤.
 		if (a == 0)
-			throw "º¯¼öÀÇ °ªÀÌ 0ÀÌ´Ù";
+			throw "ë³€ìˆ˜ì˜ ê°’ì´ 0ì´ë‹¤";
 		else
 			throw a;
 	
@@ -228,7 +228,7 @@ void main()
 		cout << str << endl;
 	}
 	catch (int ex) {
-		cout << "¼ýÀÚ" << ex << "¿¹¿Ü¹ß»ý" << endl;
+		cout << "ìˆ«ìž" << ex << "ì˜ˆì™¸ë°œìƒ" << endl;
 	}
 }
 */
