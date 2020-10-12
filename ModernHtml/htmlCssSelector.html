@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>TestDocument</title>
+        <style>
+            #header h1, #header h2 {color: red;}
+            #header h1, h2 { color: blue;}
+            h1 ~ h3 {color : green;}
+            h1 + h4 {color : burlywood;}
+            h1:hover { color : red;}
+            h1:active { color : yellow; }
+
+            ul {overflow : hidden;}
+            li{
+                list-style: none;
+                float: left; padding: 15px;
+            }
+            li:first-child { border-radius:10px 0 0 10px;}
+            li:last-child { border-radius: 0 10px 10px 0;}
+
+            li:nth-child(2n) { background-color: #ff0003;}
+            li:nth-child(2n+1) { background-color: #800000;}
+        </style>
+    </head>
+
+    <body>
+        <body>
+            <div id='header'> 
+                <h1>CSS3 Selector Basic</h1>
+                <h2>Lorem ipsum</h2>
+                <ul>
+                    <li>universla selector</li>
+                    <li>type selector</li>
+                    <li>id & class selector</li>
+                </ul>
+            </div>
+            <div id='top'>
+                <h1>hahahahaha</h1><!-- 적용 안되고-->
+                <h2>hehehehe</h2> <!-- 적용 되고 왜냐하면 #header h1 과 h2 이기때문에 h2만 적용-->
+            </div>
+            <br />
+            <h1>h1</h1>
+            <h4>h4</h2>
+            <h4>h4</h2>
+            <h3>h3</h3>
+            <h3>h3</h3>
+            <h3>h3</h3>
+            <h1>NYAAAAA</h1>
+
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+            </ul>
+        </body>
+    </body>
+</html>
+
+<!--
+
+태그 선택자
+ex) 
+<style>
+div {background: blue;}
+body, p, h1, h2 {margin: 0; padding: 0;}
+</style>
+
+아이디 선택자(아이디는 유일해야하므로 뭐... 화면분할할때 쓰임)
+#header {background: blue;}
+#customid {margin: 0; padding: 0;}
+
+클래스 선택자 (가장 많이 쓰임)
+.select {color: red; }
+li.select {color: blue; }
+
+속성 선택자
+선택자[속성]
+선택자[속성=값][속성=값]
+input[type=text] {background: red; }
+input[type=password] {background: blue; }
+
+문자열 속성 선택자
+선택자[속성~=값]
+선택자[속성|=값]
+ex) img[src$=png] {border: 3px solid red;}
+
+자손선택자 후손선택자
+자손과 후손이 무슨차이냐?;
+<body>
+    <div>
+        <h1>CSS3 Selector Basic</h1>
+        <h2>Lorem ipsum</h2>
+        <ul>
+            <li>universla selector</li>
+            <li>type selector</li>
+            <li>id & class selector</li>
+        </ul>
+    </div>
+</body>
+div 한단계 아래있는 h1 h2 ul 이 자손
+div 여러단계 밑에있는 모든놈들이 후손 h1 h2 ul li
+후손선택자
+선택자A 선택자B : 선택자A의 후손에 위치하는 선택자 B를 선택합니다
+#header h1 {color: orange; }
+id속성값(header)를 가지는 태그의 후손 위치에 있는 h1태그의 color속성에 orange키워드 적용
+#section h1  {color: red; }
+위와 동
+자손선택자
+선택자A > 선택자B : 선택자A의 자손에 위치하는 선택자B를 선택한다
+
+동위선택자
+동등한 위치에 있는 태그끼리
+선택자A + 선택자B : 선택자A 바로 뒤에 위치하는 선택자B를 선택합니다
+선택자A ~ 선택자B : 선택자 A 뒤에 위치하는 선택자B를 선택합니다(여러개 가능)
+
+반응선택자
+사용자 반응으로 생성되는 특정한 상태를 선택하는 선택자
+마우스가 특정한 태그 위로 올라가면 hover상태
+클릭하면 active 상태
+:active, :hover
+
+상태선택자
+:checked 체크상태의 input태그
+:focus 초점이 맞추어진 input 태그
+:enabled 사용 가능한 input태그
+:disabled 사용 불가능한 input 태그
+ex) input[type=checkbox]:checked + div {height : 0px;}
+
+구조선택자
+일반구조선택자 : 일반 구조 선택자는 특정한 위치에 있는 택를 선택하는 선택자
+:first-child 형제 관계 중에서 첫번째 위치하는 태그
+:last-child 마지막에 위치하는 태그
+:nth-child(수열) 앞에서 수열번째 태그 선택
+:nth-last-child(수열) 뒤에서 수열번째 태그 선택
+형태구조선택자 : 태그 형태를 구분한다!!? 딱 하나만 선택
+:first-of-type 형제관계중에서 첫번째로 등장하는 특정 태그를 선택
+:last-of-type 마지막 태그
+:nth-of-type 형제 관계 중에서 앞에서 수열번째로 등장하는 특정 태그 선택
+:nth-last-of-type 마지막에서 수열번째로...
+
+문자선택자
+시작문자선택자
+::first-letter 첫번째글자선택
+::first-line 첫번째 줄 선택
+전후문자선택자 : 공간을 선택
+::after
+::before
+ex) p::before { content: counter(rint) "."; }   는 숫자. 으로 글이 시작하게함
+ex) p::after { content: " - " attr(data-page) " page";} 는  - 56 page 이렇게 끝나게함 attr안에있는 data-page 속성값에 숫자넣어서 그 숫자 정하는거임
+반응문자선택자
+::selection 사용자가 드래그한 글자 선택
+
+링크선택자
+:link href속성을 가지고 있는 a 태그 선택
+:visited 다녀왔던 a 태그 선택
+
+부정선택자 효과를 반대로 돌린다
+:not(선택자)
+ex) input:not([type=password]) { background: red; }
+--> 
+
+
