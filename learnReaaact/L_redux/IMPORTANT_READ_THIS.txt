@@ -28,3 +28,23 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+
+
+
+
+// 그리고 컴포넌트에 id 쓰지마라.. 컴포넌트 재활용할때 그 id 중복되는거 문제때문에
+// reference 를 써라 
+// ex
+
+~~~
+render(){
+  <input ref={(ref)=> this.something=ref} type="text" />
+}
+
+위에 뭐 함수에서 위에 인풋엘레먼트에 접근하고싶을때
+this.something.focus(); 라든지 
+등등
+
+아ㅣ아 리액트 최신버전은 createRef쓴다
+https://ko.reactjs.org/docs/refs-and-the-dom.html 참고
