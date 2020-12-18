@@ -5,24 +5,41 @@ package main
 
 // 왜 go rsc.io/quote 자동으로 다운 안받지 이거 참고
 // https://stackoverflow.com/questions/64442213/cannot-find-package-rsc-io-quote
+// go mod init "너의모듈명" 해줘야 의존성 다운로드 해준다 및 의존성 추적 버전관리
+//
+
+/*
+이 fmt 패키지는 기본적으로 내장하고있는 패키지고 콘솔에 출력 텍스트 포맷팅등의 기능을 담고있는 함수를 가지고있다
+*/
 import (
 	"fmt"
 
 	"rsc.io/quote"
 )
 
+// main 패키지 선언
+// 이 패키지라는 것은 함수들을 하나의 패키지로 묶을때 사용
+
+// 왜 go rsc.io/quote 자동으로 다운 안받지 이거 참고
+// https://stackoverflow.com/questions/64442213/cannot-find-package-rsc-io-quote
+// go mod init "너의모듈명" 해줘야 의존성 다운로드 해준다
+
 /*
 이 fmt 패키지는 기본적으로 내장하고있는 패키지고 콘솔에 출력 텍스트 포맷팅등의 기능을 담고있는 함수를 가지고있다
 */
+
+func test01() {
+	fmt.Println("Hello, World!")
+	fmt.Println(quote.Go())
+	fmt.Println(quote.Glass())
+	fmt.Println(quote.Hello())
+	fmt.Println(quote.Opt())
+}
 
 /*
 헬로월드 출력하기위해 main을 구현함
 파일안에서 코드를 실행하면 디폴트로 main을 실행함
 */
-func main() {
-	fmt.Println("Hello, World!")
-	fmt.Println(quote.Go())
-}
 
 /*
 외부 패키지 코드 호출하기
