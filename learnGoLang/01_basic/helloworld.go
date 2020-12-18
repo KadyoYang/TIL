@@ -27,7 +27,6 @@ import (
 /*
 이 fmt 패키지는 기본적으로 내장하고있는 패키지고 콘솔에 출력 텍스트 포맷팅등의 기능을 담고있는 함수를 가지고있다
 */
-
 func test01() {
 	fmt.Println("Hello, World!")
 	fmt.Println(quote.Go())
