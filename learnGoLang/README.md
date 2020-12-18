@@ -9,6 +9,13 @@
     - 에디터 설치(ex vsc)
 * 실행 
     - go run "file path/~.go"
+* 새로운것
+    - defer 
+        - 함수내에서 defer a.doSomething()
+        - defer b.doSomeThing()
+        - 식으로 해서 defer 스택에 쌓고 함수가 끝날때 하나씩 꺼내서 실행
+        - 약간 동적메모리할당 풀어주는데 쓸만한 물건같이 생김
+    - c와 같이 포인터는 지원하지만 포인터 산술은 지원하지않음 
 * 실습
     - 01_basic 
         - 기본적인 헬로월드 테스트, 외부 패키지 검색 및 사용

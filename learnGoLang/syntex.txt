@@ -1,0 +1,62 @@
+for if switch 거의 똑같음 
+swtich case에 있던 break 는 자동으로 되있음 만약에 흐름을 그대로 내리고싶다하면 그 예약어 또 있음 그거 넣으면 됨
+
+
+* 구조체
+type Vertex struct{
+    X int
+    Y int
+}
+func main(){
+    fmt.Println(Vertex(1,2))
+}
+
+
+* Array
+var a [2]string
+var a [6]int(2,3,4,5,6,7)
+* slice 
+    a[1:6] index1부터 6전에까지 길이 5 용량 6의 슬라이스 만들어짐 
+
+make함수로 슬라이스 만들 수 있음
+make([]int, 5) 5의 길이의 슬라이스 생성
+용량도 지정하려면 3번째 인자에 숫자 전달
+
+* 슬라이스에 요소 추가
+append(목표슬라이스, 요소들... )
+용량이 작으면 더 할당을 함
+
+* range 
+    for 에서 range는 슬라이스 또는 맵의 요소들을 순회함
+    슬라이스에서 range를 사용하면 각 순회마다 인덱스, 값의 복사본 이렇게 두개 반환
+    _ 로 두개중 하나를 생략 가능
+
+* Map
+var m map[string]int
+m = make(map[string]int)
+m["hello"] = 5;
+fmt.Println(m["hello"])
+
+요소 추가 업데이트
+m[key] = el
+요소 검색
+m[key]
+요소 제거
+delete(m, key)
+키 존재하는지 체크
+el, ok = m[key]
+존재하면 ok 는 true
+
+
+* 함수 클로저
+func adder() func(int) int{
+    sum := 0
+    return func(x int) int{
+        sum += x
+        return sum
+    }
+}
+
+post, neg := adder(), adder()
+sum 값이 유지된다
+post neg는 서로 다르다
