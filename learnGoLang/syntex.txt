@@ -60,3 +60,209 @@ func adder() func(int) int{
 post, neg := adder(), adder()
 sum 값이 유지된다
 post neg는 서로 다르다
+
+
+
+### method & interface
+
+* method
+go는 클래스가 없음
+하지만 이와 같ㅌ은 타입의 메소드를 정의가능
+receiver 인자가 있는 함수
+ex)
+type Vertex struct {
+    X, Y float64
+}
+// abs메소드는 v 라는 이름의 Vertex유형의 리시버가 있음
+func (v Vertex) Abs() float64{
+    return math.Sqrt(v.X * v.X + v.Y * v.Y)
+}// v Vertex를 Abs(여기에 넣으면 일반함수처럼 됨)
+
+func main(){
+    v := Vertex{3,4}
+    fmt.Println(v.Abs())
+}
+
+
+구조체가 아닌 형식에도 메소드 선언가능
+ex)
+type MyFloat float64;
+// 메소드와 동일한 패키지에 유형이 정의된 수신자가 있는 메소드만 선언가능
+// 위와 동
+
+
+* 포인터 리시버 
+func (v *Vertex) Scale(f float64) {
+	v.X = v.X * f
+	fmt.Println(f)
+	v.Y = v.Y * f
+}
+보통 값리시버 는 복사본가져오는거라 리시버로 오는거 값을 변경못함
+그럴때 포인터 리시버를 사용, 보통 멤버클래스처럼 멤버변수바꾸는거하고싶다 그러면 바로 포인터리시버
+
+
+
+
+* 인터페이스
+_interface_type_ 은 메소드의 시그니처 집합으로 정의
+해당 메소드를 구현하는 모든 값을 보유 가능
+
+type Abser interface{
+    Abs() float64
+}
+type MyFloat float64
+type Vertex struct { X, Y float64}
+
+func(f MyFloat) Abs() float64{
+    ~~
+}
+func (v *Vertex) Abs() float64{
+    ~~
+}
+
+func main(){
+    var a Abser
+    f := MyFloat(-math.Sqrt2)
+    v := Vertex{3,4}
+
+    a = f
+    a = &v 
+    // a = v 는 안됨 왜냐하면 *Vertex가 Abser를 구현하고있는거지 Vertex가 아니기 때문 
+}
+// 이때문에 하나의 타입에 대해서 인터페이스 여러개 뭐 하는거있으면
+// 포인터리시버를 쓸꺼냐 값리시버를 쓸꺼냐 양자택일 해야함
+
+
+* 인터페이스 암시적 구현
+var a Abser = &Vertex{3,4}
+a.some()
+implementaion의 키워드도 필요없음
+
+* 인터페이스 값
+인터페이스 i 로 받은 F타입과 V타입은 출력하면 
+func describe(i I) {
+	fmt.Printf("(%v, %T)\n", i, i)
+}
+(&{Hello}, *main.T)
+(3.141592653589793, main.F)
+이렇게 나온다
+
+	var t *T
+	i = t
+    이렇게 단순히 빈 포인터 변수 t를 
+    인터페이스 i에 넣고 
+    describe함수에 넣어도 null exception이 나오지않고 
+    %v에는 nil이 뜸
+    포인터변수 t는 널일지몰라도 인터페이스자체는 nil이 아니다
+
+    그냥 i만 선언해놓고 M을 호출하면 에러뜸
+    튜플 내부에 타입이 없기 때문 main.T 이런 타입 어떤것을 호출해야하는지 알려주는 타입
+
+* 빈 인터페이스 값
+var i interface{}
+
+i = 42
+describe(i) -> (42, int) 
+어떤값이 넘어올지 모르면은 빈 인터페이스를 사용하면 좋음
+
+기본값을 이렇게 넘길수도있음
+var i interface{} = "hello" -> (hello, string)
+
+s, ok := i.(string)
+
+
+* 타입 스위치문
+func do(i interface{}){
+    switch v := i.(type){
+        case int:
+            fmt.Printf("Twice %v is %v\n" v, v*2)
+        case string:
+            fmt.Println("%q is %v bytes long\n", v, len(v))
+        default:
+            fmt.Printf("I don't know about type %T!\n", v)
+    }
+}
+func main(){
+    do(21)
+    do("hello")
+    do(true)
+}
+Twice 21 is 42
+"hello" is 5 bytes long
+I don't know about type bool!
+
+* Stringers
+가장 널리 사용되는 인터페이스 fmt안에 있는 Stringer
+type Stringer interface{
+    String() string
+}
+자기 자신을 문자열로 설명할때 사용하는 타입
+func (p Person) String() string{
+    return fmt.Sprintf(~~~)
+}
+fmt.Println(Person{"hello", 123})
+
+
+
+
+* Errors 인터페이스
+fmt에서 많이 쓰이는 error도 이 인터페이스가 쓰인다
+ex)
+type MyErropr struct{
+    When time.Time
+    What string
+}
+
+func(e *MyError) Error() string{
+    return fmt.Sprintf(at %v, %s", e.When, e.What)
+}
+func run() error{
+    return &MYError{time.Now(), "it didnt work"}
+}
+func main(){
+    if err := run(); err != nil{
+        fmt.Println(err)
+    }
+}
+
+
+
+* Readers
+io 패키지는 데이터 스트림의 읽기를 나타내는 io.Reader 인터페이스를 지정한다
+Go 표준 라이브러리에는 파일, 네트워크 연결, 압축기, 암호 등을 포함하여 인터페이스의 많은 구현이 포함되어있음
+io.Reader 인터페이스에는 Read 메소드가 있음
+ex)
+package main
+import (
+    "fmt"
+    "io"
+    "stringgs"
+)
+func main(){
+    r := strings.NewReader("Hello, Reader")
+    b := make([]byte, 8)
+    for{
+        n, err := r.Read(b)
+        fmt.Printf("n = %v err = %v b = %v\n", n, err, b)
+        fmt.Printf("b[:n] = %q\n", b[:n])
+        if err == io.EOF{
+            break
+        }
+    }
+
+}
+
+간단한 구현
+type MyReader struct{}
+// TODO: Add a Read([]byte) (int, error) method to MyReader.
+func (mr MyReader) Read(b []byte) (int, error){
+	b[0] = 'A'
+	return 1, nil
+	
+}
+func main() {
+	reader.Validate(MyReader{})
+}
+
+io.Reader를 래핑하여 어떤방식으로든 수트림을 수정할 수 있다.
+gzip.NewReader함수는 io.Reader(압축된 데이터 스트림)을 가져와 *gzip.Reader를 반환함

@@ -40,5 +40,8 @@ func main() {
 	}
 
 	fmt.Println(messages);
+
+
+	
 }
 // 와 고에서는 소문자로 시작하는 함수는 암묵적으로 private 식으로 처리한다  멋진데
