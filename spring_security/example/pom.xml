@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- pom model 버전 -->
+
+    <!-- 최근버전 2.3.6 사용 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.6.RELEASE</version>
+        <!-- <version>2.1.3.RELEASE</version> -->
+        <relativePath/>
+        <!-- lookup parent from repository -->
+    </parent>
+
+
+
+    <groupId>jpabook</groupId>    <!-- 프로젝트 그룹명 ex) com.hohoho-->
+    <artifactId>jpashop</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <!-- java library는 jar, web application 은 war -->
+    <name>jpatestproject</name>
+
+
+
+    <!-- 버전 설정값 등-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <start-class>com.jpabook.jpashop.App</start-class>
+        <java.version>1.8</java.version>
+        <lombok.version>1.18.16</lombok.version>
+        <log4jdbc.log4j2.version>1.16</log4jdbc.log4j2.version>
+        <rest.assured.version>2.3.3</rest.assured.version>
+        <spring-loaded.version>1.2.8.RELEASE</spring-loaded.version>
+    </properties>
+
+
+    <!-- 의존성 scope
+각 의존성마다 <scope> ? </scope>
+compile(기본값)
+    - 테스트 및 런타임에도 classpath에 포함
+provided
+    - jdk 또는 컨테이너에 의해서 runtime에 제공되는 모듈
+    - 이미 컨테이너가 해당 라이브러리를 제공하고 있을때 유용 따라서 실제 배포시에는 제외대상
+runtime
+    - 컴파일시에는 필요하지않지만 실행시에 사용되는 경우 실행시 라이브러리 사용
+test
+    - 테스트 코드에만 사용, 배포시 제외
+-->
+
+    <dependencies>
+        <!-- 부트 스타터 웹 -->
+        <!-- spring-web, spring-webmvc, spring-boot-starter-json, tomcat-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!--             <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions> -->
+        </dependency>
+        <!-- 스타터 jdbc -->
+        <!-- 히카리 jdbc pool, spring-jdbc-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <!-- starter test 아마 여기에 junit 포함 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- h2 테스트 디비 음..-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+
+        <!-- 롬복 위 properties에 롬복버전 정의되있음-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- jdbc preparedstatement 에 ?가 어떻게 됬는지 확인가능하게함-->
+        <dependency>
+            <groupId>org.bgee.log4jdbc-log4j2</groupId>
+            <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+            <version>${log4jdbc.log4j2.version}</version>
+        </dependency>
+
+        <!-- java DSL for easy testing of REST service -->
+        <dependency>
+            <groupId>com.jayway.restassured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest.assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!-- #### 여기부터 추가 의존성 ####  -->
+
+        <!-- spring Object/Relational Mapping -->
+        <!-- 스프링 프레임워크 JPA 연동 라이브러리-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>5.2.11.RELEASE</version>
+        </dependency>
+
+        <!-- JPA표준을 포함하는 Hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.4.24.Final</version>
+        </dependency>
+
+        <!-- mysql connector -->
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.22</version>
+        </dependency>
+
+        <!-- 로깅 SLF4J & LogBack-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+            <scope>test</scope>
+        </dependency>
+        -->
+
+        <!-- jasper jstl provided-->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+        </dependency>
+
+        <!-- jstl 라이브러리 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+
+
+
+        <!-- spring security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+
+    </dependencies>
+
+
+
+
+    <!-- 빌드 -->
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+</project>

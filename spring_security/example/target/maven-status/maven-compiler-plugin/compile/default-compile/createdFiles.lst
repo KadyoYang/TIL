@@ -1,0 +1,10 @@
+com\jpabook\jpashop\domain\UserStatus.class
+com\jpabook\jpashop\repository\UserRepository.class
+com\jpabook\jpashop\domain\User.class
+com\jpabook\jpashop\MvcConfig.class
+com\jpabook\jpashop\controller\UserController.class
+com\jpabook\jpashop\PersistenceJPAConfig.class
+com\jpabook\jpashop\App.class
+com\jpabook\jpashop\RootConfig.class
+com\jpabook\jpashop\service\UserService.class
+com\jpabook\jpashop\WebSecurityConfig.class
