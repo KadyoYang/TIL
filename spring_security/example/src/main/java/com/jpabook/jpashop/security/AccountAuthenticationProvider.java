@@ -14,13 +14,16 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AccountAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
-    private AccountSecService accountSecService;
+    private UserDetailsService accountUserDetailsServiceImpl;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -32,7 +35,7 @@ public class AccountAuthenticationProvider implements AuthenticationProvider {
             throw new AuthenticationCredentialsNotFoundException("Credentials is null");
         String password = authentication.getCredentials().toString();
 
-        UserDetails loadedUser = accountSecService.loadUserByUsername(username);
+        UserDetails loadedUser = accountUserDetailsServiceImpl.loadUserByUsername(username);
         if(loadedUser == null)
             throw new InternalAuthenticationServiceException("accountSecService.loadUserByUsername() returned null, which is an interface contract violation");
         

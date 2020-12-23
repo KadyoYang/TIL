@@ -12,7 +12,25 @@
 <title>signin</title>
 </head>
 <body>
-<h1>signin</h1>
+<h1>login</h1>
+<p>this is login page</p>
+<ul>
+	<li><a href="/home">go to HOME page</a></li>
+	
+	<li><a href="/login">go to LOGIN page</a></li>
+	<li><a href="/signup">go to SIGNUP page</a></li>
+	
+	<li><a href="/welcome">go to WELCOME page</a></li>
+	<li><a href="/admin">go to ADMIN page</a></li>
+</ul>
 
+<div>
+<form method="post" action="/login/proc">
+    <h1>Login</h1>
+    <input type="text" placeholder="ID" name="userEmail"/>
+    <input type="password" placeholder="PASSWORD" name="userPw"/>
+    <button type="submit">login</button>
+  </form>
+</div>
 </body>
 </html>

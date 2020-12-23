@@ -13,6 +13,16 @@
 </head>
 <body>
 <h1>welcome</h1>
-
+<p>this is welcome page</p>
+<p>content...content...content...</p>
+<ul>
+	<li><a href="/home">go to HOME page</a></li>
+	
+	<li><a href="/login">go to LOGIN page</a></li>
+	<li><a href="/signup">go to SIGNUP page</a></li>
+	
+	<li><a href="/welcome">go to WELCOME page</a></li>
+	<li><a href="/admin">go to ADMIN page</a></li>
+</ul>
 </body>
 </html>
