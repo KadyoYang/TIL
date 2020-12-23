@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -29,7 +29,8 @@
     <h1>Login</h1>
     <input type="text" placeholder="ID" name="userEmail"/>
     <input type="password" placeholder="PASSWORD" name="userPw"/>
-    <button type="submit">login</button>
+	<button type="submit">login</button>
+	<sec:csrfInput />
   </form>
 </div>
 </body>

@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 // 웹시큐리티를 활성화하기위한 어노테이션
 // 몇가지 웹시큐리티설정을 하는 메소드를 사용하기 오버라이드 하기위해서 WebSecurityConfigurerAdapter를 상속
@@ -57,9 +58,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         post할때마다 csrf 토큰이 일단 필요한데 그거 일단 disable
         */
-
+        // csrf 엔에이블하면 logout post로 csrf방지하고 같이 보내야한다.
         http
-        .csrf().disable()
+        // .csrf().disable()
         .authorizeRequests()
             .antMatchers("/admin")
                 .hasRole("ADMIN")
@@ -81,7 +82,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
             .logout()
-                .logoutUrl("/logout")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
+                //.logoutUrl("/logout")
                 .permitAll()
                 .and()
             .addFilterBefore(customAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
