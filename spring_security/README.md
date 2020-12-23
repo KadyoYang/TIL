@@ -44,6 +44,8 @@
     - Provider에서 인증
 
 * 프로젝트 확인해야할 파일
-    - AccountAuthenticationProvider.java, AccountSecService.java
+    - security 폴더안 AccountAuthenticationProvider.java, AccountSecService.java
     - WebSecurityConfig.java
+    - pom.xml
+
 
