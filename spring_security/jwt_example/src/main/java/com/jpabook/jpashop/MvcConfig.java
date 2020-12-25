@@ -43,8 +43,8 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // TODO Auto-generated method stub
-        registry.addInterceptor(jwtTokenInterceptor())
-            .addPathPatterns("/경로");
+        /* registry.addInterceptor(jwtTokenInterceptor())
+            .addPathPatterns("/**"); */
     }
 
     @Bean

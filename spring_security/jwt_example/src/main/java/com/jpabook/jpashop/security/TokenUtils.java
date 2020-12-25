@@ -91,11 +91,11 @@ public class TokenUtils {
         return Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(secretKey)).parseClaimsJws(token).getBody();
     }
 
-    private static String getUserEmailFromToken(String token){
+    public static String getUserEmailFromToken(String token){
         Claims claims = getClaimsFromToken(token);
         return (String)claims.get("email");
     }
-    private static AccountStatus getRoleFromToken(String token){
+    public static AccountStatus getRoleFromToken(String token){
         Claims claims = getClaimsFromToken(token);
         return (AccountStatus)claims.get("role");
     }

@@ -26,6 +26,7 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
         String token = TokenUtils.generateJwtToken(account);
 
         response.addHeader(AuthConstants.AUTH_HEADER, AuthConstants.TOKEN_TYPE + " " + token);
+        response.sendRedirect("/welcome");
     }
     
     

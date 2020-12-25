@@ -18,6 +18,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component
 public class AccountAuthenticationProvider implements AuthenticationProvider {
     @Autowired
@@ -27,6 +30,7 @@ public class AccountAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        log.info("매니저로부터 인증 위임받음");
         if(authentication == null)
             throw new InternalAuthenticationServiceException("Authentication is null");
         String username = authentication.getName();
@@ -34,6 +38,7 @@ public class AccountAuthenticationProvider implements AuthenticationProvider {
         if(authentication.getCredentials() == null)
             throw new AuthenticationCredentialsNotFoundException("Credentials is null");
         String password = authentication.getCredentials().toString();
+        log.info("아이디 패스워드 초기화 끝");
 
         UserDetails loadedUser = accountUserDetailsServiceImpl.loadUserByUsername(username);
         if(loadedUser == null)
@@ -53,6 +58,7 @@ public class AccountAuthenticationProvider implements AuthenticationProvider {
         if(!passwordEncoder.matches(password, loadedUser.getPassword())){
             throw new BadCredentialsException("Password does not match stored value");
         }
+        log.info("패스워드 동일 인증성공");
         /* checker */
         if(!loadedUser.isCredentialsNonExpired()){
             throw new CredentialsExpiredException("User credentials have expired");
@@ -60,6 +66,7 @@ public class AccountAuthenticationProvider implements AuthenticationProvider {
         /* 인증완료 */
         UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(loadedUser, null, loadedUser.getAuthorities());
         result.setDetails(authentication.getDetails());
+        log.info("인증완료");
         return result;
 
     }

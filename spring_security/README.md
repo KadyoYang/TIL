@@ -1,12 +1,20 @@
 # 스프링 시큐리티 학습
 * 학습 경로
-    - https://jeong-pro.tistory.com/205
-    - https://spring.io/guides/topicals/spring-security-architecture 영문
-    - https://mangkyu.tistory.com/77 예제
-    - https://mangkyu.tistory.com/57 jwt 예제
-    - https://flyburi.com/584 간단설명 예제
-    - https://coding-start.tistory.com/search/JwtAuthorizationFilter 상세설명 예제
-    - https://jungeunlee95.github.io/java/2019/07/18/3-SpringSecurity-Authorization(%EA%B6%8C%ED%95%9C)-%EC%84%A4%EC%A0%95(ROLE),-TagLib-authorize-%EC%B6%94%EA%B0%80/ 권한예제
+    * spring security with session
+        - https://jeong-pro.tistory.com/205
+        - https://spring.io/guides/topicals/spring-security-architecture 영문
+        - https://mangkyu.tistory.com/77 예제
+        - https://mangkyu.tistory.com/57 jwt 예제
+        - https://flyburi.com/584 간단설명 예제
+        - https://coding-start.tistory.com/search/JwtAuthorizationFilter 상세설명 예제
+        - https://jungeunlee95.github.io/java/2019/07/18/3-SpringSecurity-Authorization(%EA%B6%8C%ED%95%9C)-%EC%84%A4%EC%A0%95(ROLE),-TagLib-authorize-%EC%B6%94%EA%B0%80/ 권한예제
+    * spring security with jwt
+        - https://stackoverflow.com/questions/46730665/hasrole-doesnt-work-with-jwt 글 주제는 다르지만 jwt 사용할때 hasRole같은거 사용하려면 authentication filter(extends UsernamePasswordAuthenticationFilter)외에 authorization filter(extends BasicAuthenticationFilter)도 구현해서 추가해야할것같은데 다음 링크 확인
+        -  https://www.freecodecamp.org/news/how-to-setup-jwt-authorization-and-authentication-in-spring/ 실제 authorization filter 구현 
+        - 위 링크에서 SecurityContextHolder.getContext().setAuthentication(authentication); 하는거보니까 스프링시큐리티 rolebased access controll 하려면 jwt토큰 정보를 뽑아내서 세션에 저장해서 사용하는것같은데,, 물론 jwt를 사용하기때문에 세션id를 여러 백엔드 공유 안해도되니까..
+    * 스프링시큐리티필터 정보
+        - https://velog.io/@sa833591/Spring-Security-5-Spring-Security-Filter-%EC%A0%81%EC%9A%A9
+
 
 * 로그인 과정 순서도 
     - 클라이언트(브라우저)로부터 요청이 오면 요청은 ApplicationFilter객체들로 먼저 가게됨

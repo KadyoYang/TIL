@@ -39,6 +39,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
         UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(userEmail, userPw);
         setDetails(request, authRequest);
+        log.info("email pw 파싱 성공 및 매니저에게 인증위임");
         return this.getAuthenticationManager().authenticate(authRequest);
     }
 
