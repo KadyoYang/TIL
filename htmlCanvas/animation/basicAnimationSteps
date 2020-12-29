@@ -1,0 +1,7 @@
+1. clear the canvas
+애니메이션 될공간에 clearRect로 지워줘야한다
+2. save the canvas state
+스타일이나 transformatioh,,, 등등 바꿀때 초기상태를 가지고 계속 써먹고 싶을때 원본상태를 save해야한다
+3. draw animated shapes
+4. restore the canvas state
+state를 저장했으면 새로운 프레임을 그리기 전에 복구해라
