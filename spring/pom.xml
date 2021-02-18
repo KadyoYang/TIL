@@ -96,6 +96,14 @@
       <artifactId>spring-jms</artifactId>
       <version>${org.springframework-version}</version>
     </dependency>
+<!-- org.springframework.mail.javamail.JavaMailSenderImpl 를 사용하기 위해 필요-->
+<dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-context-support</artifactId>
+  <version>${org.springframework-version}</version>
+</dependency>
+
+
 
     <!-- Spring security -->
     <dependency>
@@ -145,6 +153,19 @@
       <artifactId>aspectjrt</artifactId>
       <version>${org.aspectj-version}</version>
     </dependency>
+
+  <dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>${org.aspectj-version}</version>
+  </dependency><!-- aspect 정보 바탕으로 코드 생성하는데 필요-->
+  <!-- ts actually a bytecode weaver which weaves aspects into classes at load time. -->
+
+<!-- <dependency>
+  <groupId>org.aspectj</groupId>
+  <artifactId>aspectjtools</artifactId>
+  <version>${org.aspectj-version}</varsion>
+</dependency> -->
 
     <!-- json -->
     <dependency>
@@ -273,6 +294,15 @@
 			<version>${org.apache.activemq-version}</version>
 		</dependency>
 
+<!-- mail -->
+  		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>jakarta.mail</artifactId>
+			<version>1.6.5</version>
+		</dependency>
+
+
+    <!-- -->
 
 
 

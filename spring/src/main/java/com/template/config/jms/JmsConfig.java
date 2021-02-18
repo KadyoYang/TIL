@@ -62,6 +62,7 @@ public class JmsConfig {
         // 명시한 패키지에 속하는 객체만 JMS ObjectMessage를 통해 교환가능
 		List<String> trustedPackages = new ArrayList<>();
 		trustedPackages.add("com.template.domain");
+		trustedPackages.add("com.template.dto");
 		trustedPackages.add("java.util");
 		activeMQConnectionFactory.setTrustedPackages(trustedPackages);
 

@@ -30,7 +30,7 @@ public class FixedDepositServiceTest {
         
         fd.setActive("active");
         fd.setBankAccountId(4);
-        fd.setEmail("mrreiy00@naver.com");
+        fd.setEmail("mrriey00@naver.com");
         fd.setFdAmount(40);
         fd.setFdCreationDate(Calendar.getInstance().getTime());
         fd.setFixedDepositId(4);
