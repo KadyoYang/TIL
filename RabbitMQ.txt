@@ -1,0 +1,31 @@
+# L_Rabbit MQ
+### 기본
+* 생산자 브로커 구독자는 하나에 모으지 말라 이 구조는 아무도 안쓴다고함.
+* rabbit mq는 메시지 처리중에 구독자가 뻗었을때 메시지 유실을 막을 수있는 message acknowledgments 를 지원함
+* 메시지 받고 잘 처리하고 rabbitmq에 그 메시지 지워도 된다고 말해준다
+* 구독자 죽으면(해당 메시지 ack 없이채널 닫히고, 커넥션 닫히고, tcp연결 유실되면) 다음 구독자에게 그 메시지 줌
+* 이 설정은 autoAck 플래그로 관리하는데 기본값은 true
+
+### durability
+* rabbit mq가 꺼지면 위에 써놨던 유실이 또 일어난다
+* channel.queueDeclare( 두번째 true 설정
+* basicPublish 로 데이터 보낼때 세번째 아규먼트로 MessageProperties.PeRSISTENCE_TEXT_PLAIN 플래그 설정
+* 이마저도 완벽한건아니다 disk에 쓰이기전에 뭐 캐시형태로만 있다가 꺼지면 날라가는건 매한가지
+* 완벽한 데이터의 존재 보장을 위해서 publisher confirms를 사용할 수 있다.
+
+### basicQOS #Fair Dispatch
+* 일다 안끝났는데 두개의 구독자한테 일감을 몰아준다
+* 그리고 0 2 4 6번째의 일이 너무나 빡세다
+* 첫번째 구독자는 일 빡세게할수밖에없다
+* 이때 channel.basicQOS(1) 하면 구독자한테 일단 그때기준으로 1만을 준다
+* 오래걸리는작업은 빨리 일처리한사람한테 주는 식
+
+
+### pub/sub model
+* rabbit mq 메시징모델의 핵심 아이디어는 생산자가 큐에 직접적으로 메시지를 보내지않는것이다.
+* exchange에다 넣는다 exchange는 생산자로부터 받고 큐에 푸시한다( empty string "" 는 default exchange이다 )
+* 이 exchange에는 타입이 있는데 direct, topic, headers, fanout 이 있다.
+* fanout은 알고있는 모든 큐에다 똑같은 데이터를 집어넣는거다, 라우팅 키를 평가할 필요가 없어서 상당한 성능의 장점이 있다.
+* direct는 메시지에 포함된 라우팅 키를 기반으로 메시지를 큐에 전달한다. 특정 큐에 메시지를 하나씩 전달, rabbitMQ기본내장, 메시지의 라우팅키가 그 큐의 바인딩키에 맞다 하면 거기로 보낸다
+* topic 은 하나 이상의 큐에게 routing key 패턴 기반으로 queue에 바인딩한다, 주로 pub/sub에 사용, a.b.* 나 b.* 같이 사용됨
+* (*)은 무조건 하나의 단어 #은 없거나 뒤에 더 있을 수 있음 1.# can be 1.2.3
