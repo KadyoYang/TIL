@@ -14,9 +14,16 @@ producer -> queue -> consumer...
 
 example 03~... 구조
 producer -> exchange -> queue .....
+
+exchangeType
+    fanout : 전체 뿌리기
+    direct : 특정 routing key에만 모든 큐가 같은 routing key 가지고있으면 fanout마냥 동작
+    topic : .으로 구분되는 word의 집합 라우팅키를 이용 * # 이용 *반드시하나의 단어 #없거나 더 많은 word
 ```
 * gradle
     - install https://docs.gradle.org/current/userguide/installation.html
     - init https://docs.gradle.org/current/samples/sample_building_java_applications.html
 
-    
+
+* rabbitmq
+    - to start : docker run -d --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
