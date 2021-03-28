@@ -1,0 +1,50 @@
+components 디렉터리
+    - 보여주는 부분
+    - 프레젠테이셔널 컴포넌트 넣자
+    - 리덕스스토어에 직접 접근안한다.
+containers 디렉터리
+    - 리덕스 스토어의 상태를 조회하고 
+    - 디스패치함수를 만들어서
+    - component에 전달한것을
+    - return 하는 놈
+    - 브레인
+modules
+    - 액션객체생성함수, 리듀서함수 만들고 (Ducks패턴) 익스포트하는 놈하고
+    - index.js 에서 위엣놈들을 하나의 루트 리듀서로 만드는놈
+
+
+
+App.js 
+    - 단순히 CounterContainer를 표시
+index.js
+    - 스토어 생성, 렌더
+const store = createStore(rootReducer);
+    - 아래 식으로 감싸줘야 렌더링하는 그 어떤 컴포넌트든 리덕스 스토어에 접근 가능
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+
+
+
+
+// 그리고 컴포넌트에 id 쓰지마라.. 컴포넌트 재활용할때 그 id 중복되는거 문제때문에
+// reference 를 써라 
+// ex
+
+~~~
+render(){
+  <input ref={(ref)=> this.something=ref} type="text" />
+}
+
+위에 뭐 함수에서 위에 인풋엘레먼트에 접근하고싶을때
+this.something.focus(); 라든지 
+등등
+
+아ㅣ아 리액트 최신버전은 createRef쓴다
+https://ko.reactjs.org/docs/refs-and-the-dom.html 참고

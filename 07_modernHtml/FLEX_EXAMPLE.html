@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .container{
+            display: flex;
+/*             display: inline-flexbox; */
+        }
+    </style>
+</head>
+
+
+
+
+
+<body>
+
+
+<div class="container">
+    <div class="item">HellofoIndex</div>
+    <div class="item">aabc</div>
+    <div class="item">hello</div>
+
+</div>
+
+</body>
+</html>
+
+
+
+<!--
+    학습경로 https://studiomeal.com/archives/197
+
+    부모 요소 div.container 를 flex container라고 부르고
+    자식 요소 div.item 를 flex item 이라고 부른다
+    컨테이너가 flex의 영향을 받는 전체 공간이고 
+    설정된 속성에 따라 플럭스 아이템이 특정한 형태로 배치된다
+
+    display block은 위에서 아래로 차곡차곡하는반면
+    display flex 는 가로방향으로 배치되고 자신이 가진 내용물의 width 만큼만 차지한다 height는 컨테이너의 높이만큼 늘어난다.container
+
+    아이템들이 배치된 방향을 메인축(Main Axis) 라고한다
+    메인축과 수직인 축을 수직축 또는 교차축(Cross Axis) 라고한다
+    메인축을 오댕꼬치라고 생각하자
+
+    
+    ######################################### Container에 적용할 설정####################
+    
+    ######################################### flex 배치방향 설정 #############
+    flex-direction
+    아이템들이 배치되는 축의 방향을 설정
+    flex-direction: row; // default 가로로 된다
+    flex-direction: column; // 위에서 아래로
+    flex-direction: row-reverse; // row-reverse의 거꾸로 오른쪽에서 왼쪽으로 오른쪽에 딱붙어서 온다
+    flex-direction: column-reverse; // 아래에서 위로 아래 딱 붙어서
+
+
+    ######################################### 줄넘김 처리 설정 #################
+    flex-wrap
+    컨테이너가 더 이상 아이템들을 한 줄에 담을 여유 공간이 없을 때
+    아이템 줄바꿈을 어떻게 할지 정하는 속성
+
+    flex-wrap: nowrap; (default) // 삐져나오면 삐져나온대로
+    flex-wrap: wrap; // 삐져나오면 아래로 내려서 배치
+    flex-wrap: wrap-reverse; // 삐져나오면 위로 원래것들은 아래로
+
+
+    ######################################### 
+    flex-flow 방향 줄넘김 
+    동시 설정할 수 있다.
+
+
+    ######################################### 정렬 ###################
+    정렬 
+    선행지식 (GRID에도 나오는 지식이므로 알아둬라)
+    justify는 메인축 방향으로 정렬 (ex 오른쪽 왼쪽 중앙 사이공간 아이템둘레공간 아이템사이공간둘레공간추가)
+    align은 메인축의 수직충 방향정렬 
+
+    메인축
+    justify-content: flex-start; (default)
+    justify-content: flex-end;
+    justify-contnet: center;
+    justify-content: space-between; // 아이템 사이에 균일한 간격을 만들어준다
+    justify-content: space-around; // 아이템 둘레(뱃살ㅋㅋ)에 균일한 간견을 만들어준다
+    justify-content: space-evenly; // 아이템 사이와 양끝에 균일한 간격을 만들어준다
+
+    교차축
+    align-items: stretch; (default) // 늘린다 수직축으로 쭈욱 늘린다
+    align-items: flex-start; // 시작점으로 정렬한다
+    align-items: flex-end; // 메인축이 가로일때 맨밑에 정렬
+    align-items: center; // 중앙 정렬
+    align-items: baseline; // 아이템을 글자 baseLine 기준으로 정렬한다.
+    // 여러행도 포함 -> space-패밀리 사용가능
+
+
+
+
+
+    ######################################## item 에 적용해야 하는 설정 ##############
+    
+    ############################# 유연한 박스의 기본영역 ############
+    flex-basis
+
+    flex-basis는 flex 아이템의 기본 크기를 설정한다
+    // flex-direction이 row일때는 너비 column일때는 높이
+    
+    flex-basis: auto; (default)
+    flex-basis: flex-basis: 0;
+    flex-basis: flex-basis: 50%;
+    flex-basis: 300px;
+    flex-basis: 10rem;
+    flex-basis: content;
+
+    flex-basis: 100px; 설정하면 100px보다 작은놈들의 크기 100px로 되고 100px보다 큰놈은 그대로 있는다
+    그냥 width: 100px; 전부다 100px로 고정된다
+
+
+    ############################ 유연하게 늘리기
+    flex-grow
+    flex-grow: 0; (default) // 여백부분 아무것도 안가져감
+    flex-grow: 1; // 여백부분 가져간다 똑같은 비율로
+    아이템마다 다르게 1: 2: 1 비율로도 가져가게 할 수 있다.
+
+
+    ############################ 유연하게 줄이기
+    flex-shrink
+    flex-grow와 쌍을 이루는 속성으로 flex-basis 값보다 작아질 수 있는지 결정
+    
+    flex-shrink: 1; (defualt) // container 찌그러지면 나도 찌그러진다!!
+    flex-shrink: 0; // container 찌그러져도 자기 flex-basis는 지킨다.
+
+
+    ########################## flex
+    위 세개 한번에 할 수 있는 축약형이다
+    flex: grow shrink basis
+
+
+
+    ########################### 수직축으로 아이템 정렬
+    align-self
+    align-items 는 컨테이너에서 예하 아이템 일괄적으로 해주는반면에
+    align-self는 아이템에 설정되는 설정이고 혼자만 튈수 있다
+
+    ############################# order
+    자식 order 바꿔줄수있음 order낮을수록 먼저
+
+    ############################## z-index
+    숫자가 클수록 올라온다
+    올라오면서 
+    transform: scale(2); 하면 뾰족 튀어나온다
+-->

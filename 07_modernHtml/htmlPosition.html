@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 100px; height: 100px;
+            position: absolute;
+        }
+        .red{
+            background-color: red;
+            left: 10px; top:10px;
+            z-index: 1;
+        }
+        .green{
+            background-color: green;
+            left:50px; top:50px;
+            z-index: 2;
+            }
+        .blue{
+            background-color: blue;
+            left:90px; top:90px;
+            z-index: 3;
+        }
+
+        body>div{
+            width: 400px; height: 100px;
+            border: 3px solid black;
+
+            position: relative;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        위치속성 poosition
+
+        static : 태그가 위에서 아래로 순서로 배치된다.
+        relative : 초기 위치 상태에서 상하좌우로 위치를 이동한다.
+        absolute : 절대 위치 좌표를 설정한다.
+        fixed : 화면을 기준으로 절대위치 좌표를 설정한다.
+
+        상대위치좌표 : static, relative 
+        절대위치좌표 : absolute, fixed
+
+        기억해둬라!
+        자손의 position 속성에 absolute 키워드를 적용하면 부모에 height속성을 적용해줘야 부모 div가 공간을 차지한다. 또는 
+        자손의 position 속성에 absolute 키워드를 적용하면  부모의 position 속성에 relative 키워드를 적용한다. relative로 하면 자식의 위치가 부모기준으로 된다
+    -->
+
+
+    <h1>Lorem ipsum dolor amet</h1>
+    <div>
+        <div class="box red"></div>
+        <div class="box green"></div>
+        <div class="box blue"></div>
+    </div>
+    <h1>Lorem ipsum dolor amet</h1>
+    
+</body>
+</html>

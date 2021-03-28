@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            float: left;
+        }
+        .box{
+            width: 100px; height: 100px;
+            background-color: red;
+            margin: 10px; padding: 10px;
+
+            float:right;
+
+        }
+
+        body{
+            width: 960px;
+            margin: 0 auto;
+        }
+        #aside{
+            width: 200px;
+            float: left;
+            background-color: yellow;
+            background-color: blahblah;
+        }
+        #section{
+            width:760px;
+            float: left;
+        }
+        #wrap{
+            overflow: hidden;
+        }
+
+        .clear{
+            clear:both;
+        }
+        
+        
+
+    </style>
+    <!--
+        자손에 float 속성을 적용하면 부모의 overflow속성에 hidden 키워드를 적용한다.
+        one true layout 방식
+        또는 
+        clear:both를 사용해도댄다
+        claer:both는 중간중간에 
+        자르기를 원하는 부분에 <div class='claer'></div> 해주면된다 그러면 위에 
+        부모에 overflow: hidden을 안해줘도된다. 원하는 방법을 써라
+    -->
+</head>
+<body>
+    <!--
+    <img src="a.png" />
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi dicta impedit perferendis consectetur molestias nesciunt mollitia aliquam commodi voluptate nihil iste voluptatibus incidunt beatae rem maxime, Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi dicta impedit perferendis consectetur molestias nesciunt mollitia aliquam commodi voluptate nihil iste voluptatibus incidunt beatae rem maxime, repellat quae quos repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi dicta impedit perferendis consectetur molestias nesciunt mollitia aliquam commodi voluptate nihil iste voluptatibus incidunt beatae rem maxime, repellat quae quos repellendus. repellat quae quos repellendus.</p>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi dicta impedit perferendis consectetur molestias nesciunt mollitia aliquam commodi voluptate nihil iste voluptatibus incidunt beatae rem maxime, repellat quae quos repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi dicta impedit perferendis consectetur molestias nesciunt mollitia aliquam commodi voluptate nihil iste voluptatibus incidunt beatae rem maxime, repellat quae quos repellendus. Animi cumque pariatur neque saepe! Dolorum officia aperiam laborum quis temporibus, laboriosam ex alias quos, commodi eos nam. Est esse corrupti ex.</p>
+
+    <div class="box">1</div>
+    <div class="box">2</div>
+    -->
+
+    <div id="header"><h1>Header</h1></div>
+    <div id="navigation"><h1>Navigation</h1></div>
+    <div id="wrap">
+        <div id="aside">
+            <h1>Aside</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur odio sunt amet reiciendis excepturi exercitationem numquam voluptas, temporibus quis, rerum labore explicabo incidunt, illum voluptatem ipsum tenetur. Cumque, explicabo doloremque?</p>
+        </div>
+        <div id="section">
+            <h1>Section</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias quia tempora et esse cupiditate qui cumque iste suscipit hic laboriosam iure laborum, aliquid enim doloremque rem, tempore voluptas temporibus corporis.</p>
+        </div>
+    </div>
+    <div id="footer"><h1>Footer</h1></div>
+</body>
+</html>
