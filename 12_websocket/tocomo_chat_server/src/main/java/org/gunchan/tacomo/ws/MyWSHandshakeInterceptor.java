@@ -23,14 +23,23 @@ public class MyWSHandshakeInterceptor implements HandshakeInterceptor{
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
         // TODO Auto-generated method stub
         
+        /*
+        // deprecated 
+        // 이 방법 말고 queryString에다 넣어라 임시 jwt토큰 티켓을 발급받아서 보내라
         HttpHeaders headers = request.getHeaders();
         List<String> authorizationHeaders = headers.get("Authorization");
-        
+
         for(String s : authorizationHeaders){
             log.info(s);
         }
-        
         attributes.put("testAtt", authorizationHeaders.get(0));
+        */
+        
+        String path = request.getURI().getPath();
+        log.info("PATH : " + path);
+        
+        attributes.put("testAtt", path);
+        
         
         // false means abort 
         // true means it's good to proceed 
