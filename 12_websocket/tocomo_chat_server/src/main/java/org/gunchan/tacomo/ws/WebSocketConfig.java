@@ -13,14 +13,23 @@ public class WebSocketConfig implements WebSocketConfigurer{
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry arg0) {
-        // TODO Auto-generated method stub
-        arg0.addHandler(myHandler(), "/ws");//.withSockJS();
+        arg0.addHandler(myHandler(), "/ws").addInterceptors(myWSHandshakeInterceptor());
         
     }
 
     @Bean
     public WebSocketHandler myHandler(){
         return new MyHandler();
+    }
+
+    @Bean
+    public ChatManager chatManager(){
+        return new ChatManager();
+    }
+
+    @Bean 
+    public MyWSHandshakeInterceptor myWSHandshakeInterceptor(){
+        return new MyWSHandshakeInterceptor();
     }
     
 }
