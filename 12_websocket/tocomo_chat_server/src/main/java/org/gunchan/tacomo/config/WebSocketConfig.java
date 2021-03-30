@@ -1,5 +1,8 @@
-package org.gunchan.tacomo.ws;
+package org.gunchan.tacomo.config;
 
+import org.gunchan.tacomo.ws.ChatManager;
+import org.gunchan.tacomo.ws.MyHandler;
+import org.gunchan.tacomo.ws.MyWSHandshakeInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;
@@ -13,12 +16,12 @@ public class WebSocketConfig implements WebSocketConfigurer{
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry arg0) {
-        arg0.addHandler(myHandler(), "/ws").addInterceptors(myWSHandshakeInterceptor());
+        arg0.addHandler(myHandler(), "/ws").addInterceptors(myWSHandshakeInterceptor()).setAllowedOrigins("*");
         
     }
 
     @Bean
-    public WebSocketHandler myHandler(){
+    public MyHandler myHandler(){
         return new MyHandler();
     }
 

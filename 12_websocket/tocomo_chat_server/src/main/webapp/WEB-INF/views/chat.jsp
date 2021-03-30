@@ -30,7 +30,7 @@
     <td>&nbsp;</td>
     <td>
     <p>
-    Chat: <input id=" text" type="text" name="text" size="80" maxlength="256" placeholder="Chat with us!"
+    Chat: <input id="text" type="text" name="text" size="80" maxlength="256" placeholder="Chat with us!"
                     autocomplete="off" onkeyup="handleKey(event)" disabled>
                     <input type="button" id="send" name="send" value="Send" onclick="send()" disabled></p>
             </td>

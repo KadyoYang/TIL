@@ -31,7 +31,7 @@ function connect() {
     scheme += "s";
   }
 
-  serverUrl = scheme + "://" + document.location.hostname + "/ws:8080";
+  serverUrl = scheme + "://" + document.location.hostname + "/ws?username=" + userName;
 
   connection = new WebSocket(serverUrl, "json");
   console.log("***CREATED WEBSOCKET");
@@ -63,26 +63,19 @@ function connect() {
     var time = new Date(msg.date);
     var timeStr = time.toLocaleTimeString();
 
+
     switch(msg.type) {
-      case "id":
-        clientID = msg.id;
-        setUsername();
+      case "CHAT":
+        var chatMessage = JSON.parse(msg.jsonMessage);
+        text = "(" + chatMessage.date + ") <b>" + chatMessage.sender + "</b>: " + chatMessage.message + "<br>";
         break;
-      case "setUserName":
-        text = "<b>User <em>" + msg.name + "</em> signed in at " + timeStr + "</b><br>";
-        break;
-      case "message":
-        text = "(" + timeStr + ") <b>" + msg.name + "</b>: " + msg.text + "<br>";
-        break;
-      case "rejectusername":
-        text = "<b>Your username has been set to <em>" + msg.name + "</em> because the name you chose is in use.</b><br>";
-        break;
-      case "userlist":
+      case "PARTICIPANTS":
+        var participantsMessage = JSON.parse(msg.jsonMessage);
         var ul = "";
         var i;
 
-        for (i=0; i < msg.users.length; i++) {
-          ul += msg.users[i] + "<br>";
+        for(i=0; i < participantsMessage.length;i++){
+          ul += participantsMessage[i] + "<br>";
         }
         document.getElementById("userlistbox").innerHTML = ul;
         break;
@@ -101,11 +94,14 @@ function connect() {
 function send() {
   console.log("***SEND");
   var msg = {
-    text: document.getElementById("text").value,
-    type: "message",
-    id: clientID,
-    date: Date.now()
+    type: "CHAT",
+    jsonMessage: JSON.stringify({
+      sender : document.getElementById("name").value,
+      message : document.getElementById("text").value,
+      date : Date.now()
+    })
   };
+
   connection.send(JSON.stringify(msg));
   document.getElementById("text").value = "";
 }

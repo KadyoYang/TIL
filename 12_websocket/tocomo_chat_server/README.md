@@ -53,8 +53,8 @@ docker를 이용해 로컬에서 테스트를 위한 실행 가능하게함
     - WSL2(windows 10 환경일때)
 * 실행 순서
 ```shell
-mvn package -f .\ -Dmaven.test.skip=true
-docker-compose -f docker-compose-dev.yml up -d 
+mvn package -f .\ '-Dmaven.test.skip=true'
+docker-compose -f docker-compose-dev.yml up -d  --build backend
 docker-compose -f docker-compose-production.yml up -d
 
 # 이것을 기반으로 스크립트파일 만들어서 통합해도됨
