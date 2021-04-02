@@ -19,7 +19,7 @@ public class TestAccountRepository {
             em.merge(user);
         }
     }
-
+    
     public TestUser findOne(Long id){
         return em.find(TestUser.class, id);
     }
@@ -27,5 +27,9 @@ public class TestAccountRepository {
     public List<TestUser> findByEmail(String email){
         return em.createQuery("select a from TestUser a where a.email = :email", TestUser.class)
         .setParameter("email", email).getResultList();
+    }
+
+    public List<TestUser> findAll(){
+        return em.createQuery("select a from TestUser a", TestUser.class).getResultList();
     }
 }

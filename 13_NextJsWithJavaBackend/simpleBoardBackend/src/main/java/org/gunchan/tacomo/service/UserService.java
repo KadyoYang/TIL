@@ -1,5 +1,7 @@
 package org.gunchan.tacomo.service;
 
+import java.util.List;
+
 import org.gunchan.tacomo.model.TestUser;
 import org.gunchan.tacomo.repository.TestAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +21,21 @@ public class UserService {
         else return false;
     }
 
-    public void signup(String email, String password){
+    public boolean signup(String email, String password){
         if(testAccountRepository.findByEmail(email).isEmpty()){
             TestUser user = new TestUser();
             user.setEmail(email);
             user.setPassword(password);
 
             testAccountRepository.save(user);
+            return true;
         }else{
             // throw Exception
+            return false;
         }
+    }
+
+    public List<TestUser> getUserList(){
+        return testAccountRepository.findAll();
     }
 }

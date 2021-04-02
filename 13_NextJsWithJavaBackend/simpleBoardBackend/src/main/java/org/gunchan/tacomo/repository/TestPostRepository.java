@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
+import org.gunchan.tacomo.model.QTestPost;
 import org.gunchan.tacomo.model.TestPost;
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +25,9 @@ public class TestPostRepository {
 
     public List<TestPost> findAll(){
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-        
-        return em.createQuery("select a from TestPost a", TestPost.class).getResultList();
+        QTestPost testPost = QTestPost.testPost;
+
+        return queryFactory.select(testPost).from(testPost).fetch();
+        // return em.createQuery("select a from TestPost a", TestPost.class).getResultList();
     }
 }
