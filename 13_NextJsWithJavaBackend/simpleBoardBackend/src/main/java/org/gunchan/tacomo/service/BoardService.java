@@ -27,5 +27,7 @@ public class BoardService {
     public List<TestPost> getPostList(){
        return testPostRepository.findAll();
     }
+    
+    
 
 }
