@@ -106,3 +106,30 @@ const router = useRouter();
 <~ onClick={() => router.push('/about')}> Click here to read more </~>
 
 ```
+
+* Shallow Routing
+```
+Shallow 라우팅은 getServerSideProps(), getStaticProps() 등의 data fetching method를 재호출하지않고 URL을 바꿀 수 있게 도와준다
+
+Shallow 라우팅을 쓰면 업데이트된 pathname과 query를 라우터 객체(useRouter()) 를 통해서 받게 된다. without losing state
+
+import {useEffect} from 'react';
+import {useRouter} from 'next/router';
+
+....
+useEffect(() => {
+    //Alwys do navigations after the first render
+    router.push('/?counter=10', undefined, {shallow: true});
+}, []);
+
+useEffect(() => {
+    // the counter changed!
+    console.log("the counter changed");   
+}, [router.query.counter]);
+
+@@@ 주의사항 @@@
+Shallow 라우팅은 오직 같은 페이지 URL 변경에만 작동한다.
+예를 들어 현재 about.js 에 있다고 하면
+/?counter=10, '/about?counter=10', {shallow: true})
+하면은 shallow 라우팅으로 동작을 안하고 새롭게 가져온후 데이타 페칭한다.
+```
