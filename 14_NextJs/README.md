@@ -95,3 +95,14 @@ pages/post/[pid].js
 const {pid, name} router.query
 -> /post/1?name=nine
 ```
+
+* Imperatively (명령형으로 )
+```
+next/link 가 대부분의 라우팅 니즈를 충족해야하지만
+필요에 의해서 클라이언트사이드 네이게이션을 다음과 같이 할 수 있음
+import {useRouter} from 'next/router';
+
+const router = useRouter();
+<~ onClick={() => router.push('/about')}> Click here to read more </~>
+
+```
