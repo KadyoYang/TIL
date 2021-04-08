@@ -76,3 +76,77 @@ public class FooController{
 * SimpleMappingExceptionResolver & (deprecated)AnnotationMethodHandlerExceptionResolver(instead use ExceptionHandlerExceptionResolver)
     - REST API 관련은 아니지만 SimpleMappingExceptionResolver는 exception class name으로 view name들을 map 하는 데에 쓰인다
     - @ExceptionHandler 어노테이션을 핸들하기위해서 나왔으나 deprecated되었고, 대신 ExceptionHandlerExceptionResolver가 쓰인다
+* 커스텀 HandlerExceptionResolver
+    - DefaultHandlerExceptionResolver와 ResposeStatusExceptionResolver의 조합하는 방법으로 Spring REST API 에러 핸들링에 나름 좋은 방안이 될 수 있다.
+    - 단점은 위에 서술했듯이 response의 body에 대한 컨트롤을 할 수가 없다는 것이다.
+    - 이상적으로 우리는 클라이언트가 요청한 포맷대로(Accept 헤더로) JSON이나 XML로 아웃풋을 주고 싶다.
+    - 다음은 새로운 우리의 커스텀 Exception Resolver다 
+    ```java
+    @Component
+    public class CustomRestResponseStatusExceptionResolver extends AbstractHandlerExceptionResolver {
+        @Override
+        protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex){
+            try{
+                if(ex instanceof IllegalArgumentException){
+                    return handleIllegalArgument((IllegalArgumentException)ex, response, handler);
+                }
+                ...
+            } catch(Exception handlerException){
+                logger.warn("Handling of [" + ex.getClass().getName() + "] resulted in Exception", handlerException);
+            }
+            return null;
+        }
+
+        private ModelAndView handleIllegalArgument(IllegalArgumentException ex, HttpServletRespnose respones) throws IOException{
+            response.sendError(HttpServletResponse.SC_CONFLICT);
+            String accept = request.getHeader(HttpHeaders.ACCEPT);
+            ...
+            return new ModelAndView();
+        }
+    }
+    ```
+    - 위 코드에서 주목해야할 하나의 디테일은 request 에 직접 접근한다는 것이다. 따라서 request안에 있는 클라이언트 Accept헤더에 접근할 수 있다.
+    - 예를 들어 클라이언트가 application/json으로 요청을 했을때, 에러발생하면 에러 body에 application/json으로 엔코딩에서 넣어서 리턴할 수 있다.
+    - 또 다른 중요한 디테일은 우리가 ModelAndView(response의 body)를 리턴한다는 것이다. 이것은 우리에게 필요한 무엇이든 할 수 있게 해준다.
+    - 이러한 접근법은 REST API 에러 핸들링에 있어 일관적이고 쉽게 설정가능한 메카니즘이다.
+    - 하지만 이 방법도 한계가 있는데, low-level HttpServletResponse 와 상호작용한다는 것과, 
+    - ModelAndView를 쓰는 옛날 MVC 모델에 적합한 방법이라는 것이다.
+    - 아직 더 향상시켜야할 부분이 더 남아있다.
+
+
+### Solution 3: @ControllerAdvice 어노테이션
+```
+Spring 3.2 는 @ControllerAdvice 어노테이션으로 Global @ExceptionHandler 를 지원한다.
+이것은 오래된 MVC 모델을 벗어나고, @ExceptionHandler의 타입 안정성과 유연함과 함께 ResponseEntity를 사용하는 메카니즘을 가능하게 한다.
+```
+```java
+@ControllerAdvice
+public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(value = {IllegalArgumentException.class, IllegalStateException.class})
+    protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest reuqest){
+        String bodyOfResponse = "This should be application specific";
+        return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.CONFLICT, request);
+    }
+}
+```
+```
+@ControllerAdvice 어노테이션은 흩어진 여러개의 @ExceptionHandler들을 하나의 Global한 에러 핸들링 컴포넌트로 consolidate(통합)할 수 있게 해준다.
+실제 메카니즘은 극도로 쉽고 또한 굉장히 유연하다
+    * response의 body뿐만 아니라 status code에 대한 full control을 우리에게 준다.
+    * 같이 처리될수 있도록 동일한 메소드에대한 여러개의 에러 매핑을 제공한다.
+    * 최신 RESTful ResponseEntity response의 좋은 사용을 만들게 한다
+
+한가지 꼭 머릿속에 가지고 있어야하는것이 @ExceptionHandler 어노테이션 안에 넣어놓은 Exception타입과 메소드 아규먼트의 타입이 맞아야한다.
+만약 매치안되게 했다고 치자, 컴파일타임에도 알 수 없고, 스프링도 모른다.
+그런데 만약에 그 Exception이 runtime에 던져졌을때, 예외 resolving 메카니즘은 다음 에러와 함께 실패할거다
+java.lang.IllegalStateException: No suitable resolver for argument [0] [type=...]
+HandlerMehtod details: ...
+```
+
+
+### Soltuion 4: ResponseStatusException (Spring 5 and Above)
+```
+Spring 5은 ResponseStatusException class를 소개했다.
+HttpStatus, reason(선택적), cause(선택적)를 제공하는 ResponseStatusException.class 의 인스턴스를 생성할 수 있다.
+```
