@@ -136,6 +136,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     * response의 body뿐만 아니라 status code에 대한 full control을 우리에게 준다.
     * 같이 처리될수 있도록 동일한 메소드에대한 여러개의 에러 매핑을 제공한다.
     * 최신 RESTful ResponseEntity response의 좋은 사용을 만들게 한다
+만약에 body로 return 하고싶으면 @RestControllerAdvice 로 대신 사용하면 된다. (@RespnseBody + @ControllerAdvice)
 
 한가지 꼭 머릿속에 가지고 있어야하는것이 @ExceptionHandler 어노테이션 안에 넣어놓은 Exception타입과 메소드 아규먼트의 타입이 맞아야한다.
 만약 매치안되게 했다고 치자, 컴파일타임에도 알 수 없고, 스프링도 모른다.
