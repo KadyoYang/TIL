@@ -46,7 +46,8 @@
     - 아티팩트 패키징은 없음 
     - 추가구성에서 캐시유형을 정해야하는데 -> 빠르고 값싼 빌드를 위해
     - S3로 하면은 maven 의존성라이브러리들은 캐싱이 되는데 도커이미지쪽은 어떻게 해야하는지모르겠네 
-    - 그래서 로컬로 하고 DockerLayerCache, CustomCache 키자 
+    - 그래서 로컬로 하고 DockerLayerCache, CustomCache 키자 XXX
+    > 아 S3로 해라 왜냐하면 DockerLayerCache 라이프타임이 짧다 아.. docker hub pull limitation..
     - 생성
 
 ## 5. ECS task definition 작성 
