@@ -13,13 +13,14 @@
     - buildspec : 빌드 및 docker build
     - appspec : 배포할 타겟서비스에 대한 명세 및 옵셔널한 람다를 통한 테스트
 
-## 2. ECS 클러스터 생성 
+## 2. ECR 레포지토리 및 S3 생성 
+* ECR 레포지토리는 이미지이름
+* S3는 없으면 생성
+* codebuild 용 public ecr 레포지토리로 tomcat8 같은거 이미지 만들어서 푸시해서 사용
+
+## 3. ECS 클러스터 생성
 * 네트워킹 전용 fargate 사용할 것이기 때문
 * 클러스터 이름 `test-dev-cluster` 또는 `test-prod-cluster`
-
-## 3. ECR 레포지토리 및 S3 생성 
-* ECR 레포지토리는 이미지이름
-* S3는 없으면 생성 
 
 ## 4. CodePipeline 설정
 * dev와 prod를 따로 만들것임
@@ -65,3 +66,9 @@
 
 ## 6. ECS service 작성 
 > 여기서 codedeploy 및 elb 등이 자동설정됨 물론 적절한 보안정책 설정은 당신이 잘 해내야함
+* 서비스 구성 
+* 네트워크 구성 -> 보안그룹 설정에서 잘 설정 (만약 8080호스팅있으면 서비스에대한 보안정책으로 8080뚫어줘야함)
+* prod면 테스트 포트도 구성해야함 
+## 7. 자동으로 생성된 codeDeploy 어플리케이션을 codepipeline에 부착
+* dev면은 허가없이 한번에 바뀌고 예전꺼 0분만에 없애는 설정을 dev-deploy app에 설정
+* prod면 허가가 있어야 바뀌고 테스트 포트도 있어야하고 허가가 있어야 바뀌어야하고 유예시간 5시간은 줘야함 

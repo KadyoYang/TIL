@@ -6,6 +6,7 @@
 ## 명령
 * public ecr 에 push 할 이미지 풀 & 태깅 & 푸시
 - docker pull openjdk:8-jdk-buster
+- (optional 하게 docker build --tag something:latest . 해서 만들어서 푸시하던가 )
 - docker tag openjdk:8-jdk-buster public.ecr.aws/{myRegistryAlias}/test_openjdk8:latest
 - docker push public.ecr.aws/{myRegistryAlias}/test_openjdk8:latest
 
