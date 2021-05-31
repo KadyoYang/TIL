@@ -1,0 +1,5 @@
+# 결과파일
+*.exe
+
+# vsc 
+.vscode
