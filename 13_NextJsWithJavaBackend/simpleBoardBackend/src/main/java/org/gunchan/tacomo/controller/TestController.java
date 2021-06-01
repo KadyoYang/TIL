@@ -36,12 +36,12 @@ public class TestController {
 
 
     @GetMapping(value = "/", params = {"a"})
-    public String test1 (@RequestParam("a") int a) { 
+    public String test(@RequestParam int a) { 
         return Integer.toString(a);
     }
 
     @GetMapping(value = "/", params = {"a", "b"})
-    public String test2(@RequestParam("a") int a, @RequestParam("b") int b){
+    public String test(@RequestParam int a, @RequestParam int b){
         return Integer.toString(a+b);
     }
 
