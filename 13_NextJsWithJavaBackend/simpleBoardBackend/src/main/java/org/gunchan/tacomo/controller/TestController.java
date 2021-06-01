@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.gunchan.tacomo.controller.domain.LoginDTO;
+import org.gunchan.tacomo.controller.domain.Page;
 import org.gunchan.tacomo.controller.domain.PostDTO;
 import org.gunchan.tacomo.controller.domain.SignupDTO;
 import org.gunchan.tacomo.model.TestPost;
@@ -32,6 +33,29 @@ public class TestController {
     @Autowired UserService userService;
 
     // 유저 리스트
+
+
+    @GetMapping(value = "/", params = {"a"})
+    public String test1 (@RequestParam("a") int a) { 
+        return Integer.toString(a);
+    }
+
+    @GetMapping(value = "/", params = {"a", "b"})
+    public String test2(@RequestParam("a") int a, @RequestParam("b") int b){
+        return Integer.toString(a+b);
+    }
+
+
+    // @GetMapping(value = "/x", params = {"a"})
+    // public String test3 (@RequestParam Page page){
+    //     return Integer.toString(page.getA());
+    // } 이거 안됨 .. 
+
+    
+
+
+    
+
 
     @GetMapping("/rest/user")
     public List<TestUser> userList(){
