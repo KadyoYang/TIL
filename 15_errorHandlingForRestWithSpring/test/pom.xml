@@ -257,7 +257,7 @@
 <dependency>
     <groupId>org.hibernate.validator</groupId>
     <artifactId>hibernate-validator</artifactId>
-    <version>6.0.13.Final</version>
+    <version>6.0.20.Final</version>
 </dependency>
 <!-- 바이올레이션 메시지안에 익스프레션을 쓸수있게한다-->
 <dependency>
