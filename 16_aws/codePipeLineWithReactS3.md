@@ -9,7 +9,8 @@
     * index.html, index.html 설정
     * Block all public access 언체크
     * Bucket Policy에 다음 입력
-```yaml
+
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -33,3 +34,35 @@
 ### CodeDeploy 생성 
     * Extract file before deploy 체크 
     * 아까 만든 S3 버켓 클릭 
+### 소스코드에 buildspec.yaml 생성 
+```yaml
+version: 0.2
+
+# https://docs.aws.amazon.com/ko_kr/codebuild/latest/userguide/sample-docker.html
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+
+  pre_build:
+    commands:
+      - npm install
+
+  build:
+    commands:
+      - npm run build
+
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: no
+  base-directory: build
+
+# library caching
+cache:
+  paths:
+    - 'node_modules/**/*'
+
+```
