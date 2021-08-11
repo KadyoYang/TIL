@@ -19,7 +19,7 @@ ratings = pd.read_csv("./data/u.data", sep='\t', names=r_cols, encoding='latin-1
 ratings = ratings.set_index('user_id')
 print(ratings.head())
 
-### 인기순 추천 
+### 인기순 추천 best-seller
 def recom_movie1(n_items):
     movie_sort = movie_mean.sort_values(ascending=False)[:n_items]
     recom_movies = movies.loc[movie_sort.index]
