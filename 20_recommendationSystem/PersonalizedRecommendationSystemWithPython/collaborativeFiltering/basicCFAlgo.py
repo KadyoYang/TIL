@@ -9,6 +9,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics.pairwise import cosine_similarity
 
+
 ### 유저정보 가져오기
 u_cols = ['user_id', 'age', 'sex', 'occupation', 'zip_code']
 users = pd.read_csv("./data/u.user", sep="|", names=u_cols, encoding='latin-1')
@@ -61,17 +62,23 @@ def score(model):
 # full matrix
 rating_matrix = x_train.pivot(index='user_id', columns='movie_id', values='rating')
 print(rating_matrix)
-print(rating_matrix[1])
 
 
 # train set의 모든 사용자 pair 의 코사인유사도 계산 
 # 풀매트릭스의 NaN 은 0으로 치환 
 matrix_dummy = rating_matrix.copy().fillna(0)
 
+# 코사인 상관분석
 user_similarity = cosine_similarity(matrix_dummy, matrix_dummy)
 print(user_similarity)
 user_similarity = pd.DataFrame(user_similarity, index=rating_matrix.index, columns=rating_matrix.index)
 print(user_similarity)
+
+# 피어슨 상관분석 
+pearson_similarity = matrix_dummy.corr(method="pearson")
+print(pearson_similarity)
+pearson_similarity = pd.DataFrame(pearson_similarity, index=rating_matrix.index, columns=rating_matrix.index)
+print(pearson_similarity)
 
 
 def CF_simple(user_id, movie_id):
@@ -86,4 +93,18 @@ def CF_simple(user_id, movie_id):
         mean_rating = 3.0
     return mean_rating
 
+def CF_simple_pearson(user_id, movie_id):
+    if movie_id in rating_matrix:
+        sim_scores = pearson_similarity[user_id].copy()
+        movie_ratings = rating_matrix[movie_id].copy()
+        none_rating_idx = movie_ratings[movie_ratings.isnull()].index
+        movie_ratings = movie_ratings.dropna()
+        sim_scores = sim_scores.drop(none_rating_idx)
+        mean_rating = np.dot(sim_scores, movie_ratings) / sim_scores.sum()
+    else:
+        mean_rating = 3.0
+    return mean_rating
+
+
 print(score(CF_simple))
+print(score(CF_simple_pearson))
