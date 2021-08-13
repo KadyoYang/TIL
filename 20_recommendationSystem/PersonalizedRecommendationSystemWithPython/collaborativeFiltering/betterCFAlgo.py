@@ -134,3 +134,55 @@ def recom_movie(user_id, n_items, neighbor_size=30):
     return recoomendations
 
 print(recom_movie(user_id=2, n_items=5, neighbor_size=30))
+
+
+
+# 신뢰도 가중치 방법
+# 사용자별 공통 평가 수 계산 
+
+rating_binary1 = np.array((rating_matrix > 0).astype(float))
+rating_binary2 = rating_binary1.T
+
+counts = np.dot(rating_binary1, rating_binary2)
+counts = pd.DataFrame(counts, index=rating_matrix.index, columns=rating_matrix.index).fillna(0)
+
+def cf_knn_bias_sig(user_id, movie_id, neighbor_size=0):
+    if movie_id in rating_bias:
+        sim_scores = user_similarity[user_id]
+        movie_ratings = rating_bias[movie_id]
+        no_rating = movie_ratings.isnull()
+        common_counts = counts[user_id]
+        low_significance = common_counts < SIG_LEVEL
+        none_rating_idx = movie_ratings[no_rating | low_significance].index
+        movie_ratings = movie_ratings.drop(none_rating_idx)
+        sim_scores = sim_scores.drop(none_rating_idx)     
+
+        if neighbor_size == 0:
+            prediction = np.dot(sim_scores, movie_ratings) / sim_scores.sum()
+            prediction = prediction + rating_mean[user_id]
+        else:        
+            if len(sim_scores) > MIN_RATINGS:
+                neighbor_size = min(neighbor_size, len(sim_scores))
+                sim_scores = np.array(sim_scores)
+                movie_ratings = np.array(movie_ratings)
+                user_idx = np.argsort(sim_scores)
+                sim_scores = sim_scores[user_idx][-neighbor_size:]
+                movie_ratings = movie_ratings[user_idx][-neighbor_size:]
+                prediction = np.dot(sim_scores, movie_ratings) / sim_scores.sum()
+                prediction = prediction + rating_mean[user_id]
+            else:
+                prediction = rating_mean[user_id]
+    else:
+        prediction = rating_mean[user_id]
+
+    if(prediction < 1):
+        prediction = 1
+    if(prediction > 5):
+        prediction = 5
+    return prediction
+
+
+
+SIG_LEVEL = 3
+MIN_RATINGS = 2
+print(score(cf_knn_bias_sig, 30))
