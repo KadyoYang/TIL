@@ -101,6 +101,8 @@ def CF_simple_pearson(user_id, movie_id):
         movie_ratings = movie_ratings.dropna()
         sim_scores = sim_scores.drop(none_rating_idx)
         mean_rating = np.dot(sim_scores, movie_ratings) / sim_scores.sum()
+
+        
     else:
         mean_rating = 3.0
     return mean_rating
