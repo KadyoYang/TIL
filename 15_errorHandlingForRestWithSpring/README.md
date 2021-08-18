@@ -2,6 +2,9 @@
 > source : https://www.baeldung.com/exception-handling-for-rest-with-spring - by Eugen Paraschiv
 > 추가 자료 
 > https://www.baeldung.com/rest-api-error-handling-best-practices
+> http sttaus code 다이어그램 
+> https://stackoverflow.com/questions/942951/rest-api-error-return-good-practices
+
 ## 개요 
 ```
 이 글에서는 어떻게 REST with Spring의 에러핸들링을 구현하는지에 대해서 알려줄것이다
