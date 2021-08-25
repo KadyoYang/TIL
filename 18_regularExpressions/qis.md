@@ -2,6 +2,7 @@
 ```java
 @NotBlank
 @Pattern(regexp = "^[a-z0-9_-]{4,20}$", message = "uid rule violation")
+// /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,20}$/
 ```
 
 # 패스워드
