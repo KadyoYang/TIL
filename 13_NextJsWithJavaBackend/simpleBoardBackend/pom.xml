@@ -40,7 +40,7 @@
     <!-- h2DB 버전-->
     <com.h2database-version>1.4.200</com.h2database-version>
     <!-- postgre sql 버전-->
-    <org.postgresql-version>42.2.18</org.postgresql-version>
+    <org.postgresql-version>42.2.25</org.postgresql-version>
 
 
 
