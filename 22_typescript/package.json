@@ -1,0 +1,15 @@
+{
+  "name": "22_typescript",
+  "version": "1.0.0",
+  "description": "```js\r interface A { \r     name : string;\r }",
+  "main": "classexample.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
+  }
+}
