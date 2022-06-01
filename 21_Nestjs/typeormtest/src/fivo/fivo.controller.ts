@@ -5,6 +5,7 @@ import {
   Get,
   Post,
   Put,
+  Query,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
@@ -14,8 +15,7 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { LoginUserDto } from './dto/login-user.dto';
-import { SignupUserDto } from './dto/signup-user.dto';
+import { CalculateParam } from 'src/dto/calculateParam';
 import { FivoService } from './fivo.service';
 
 @ApiTags('fivo')

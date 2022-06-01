@@ -6,7 +6,6 @@ import {
   getRepository,
   Repository,
 } from 'typeorm';
-import { SignupUserDto } from './dto/signup-user.dto';
 import { Fivo } from './fivo.entity';
 import { captureRejections } from 'events';
 
