@@ -83,8 +83,20 @@ export class TimeController {
     @Post()
     async timeTest2(@Body() timeTestParam:TimeTestParam) {
         console.log("---timeTest2 시작---");
+        console.log(timeTestParam.datetime);
+        console.log(timeTestParam.datetime.getUTCHours());
+        console.log(timeTestParam.datetime.getHours());
+        console.log(timeTestParam.datetime.toISOString());
+
+        console.log(dayjs(timeTestParam.datetime));
+        console.log(dayjs(timeTestParam.datetime).toISOString());
+        console.log(dayjs(timeTestParam.datetime).hour());
+
     }
 
-  
+// 로컬에서 돌리면 내 계획대로 돌아간다 
+// curl -X POST http://172.27.112.1:8080/time -H 'Content-Type: application/json' -d '{"datetime":"2022-10-20T10:22:22"}'
+// curl -X POST http://172.27.112.1:8080/time -H 'Content-Type: application/json' -d '{"datetime":"2022-10-20T10:22:22Z"}'
+// curl -X POST http://172.27.112.1:8080/time -H 'Content-Type: application/json' -d '{"datetime":"2022-10-20T10:22:22+0900"}'
 
 }

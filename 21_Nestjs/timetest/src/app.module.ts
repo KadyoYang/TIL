@@ -4,9 +4,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FivoModule } from './fivo/fivo.module';
 import { KctcModule } from './kctc/kctc.module';
+import { TimeModule } from './time/time.module';
 
 @Module({
   imports: [
+    TimeModule
     // FivoModule,
     // KctcModule,
     // TypeOrmModule.forRoot({
