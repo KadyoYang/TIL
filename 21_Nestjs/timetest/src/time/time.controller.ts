@@ -31,7 +31,7 @@ export class TimeController {
         console.log(date.getUTCHours());
 
         // date setHours
-        console.log("# 시간을 15로 설정"); // 한국시간 15시로 인식을 한다
+        console.log("# 시간을 15로 설정");
         date.setHours(15);
         // date.setUTCHour()
         console.log(date.getHours());
@@ -39,7 +39,7 @@ export class TimeController {
 
         // 시간을 받는다 
         console.log("날자 받기 테스트");
-        let parsedDate = new Date("2022-01-02"); // 시간을 안줬는데 그냥 UTC 0시로 맞춰서 된다
+        let parsedDate = new Date("2022-01-02");
         console.log(parsedDate.getHours());
         console.log(parsedDate.getUTCHours());
         console.log(parsedDate.toUTCString());
@@ -47,7 +47,7 @@ export class TimeController {
         console.log(parsedDate.toLocaleString());
 
         console.log("시간도 같이 받기 테스트")
-        let parsedDateWithTime = new Date("2022-01-02T15:26:00"); // 들어온 시간이 한국시간인줄 콤퓨타는 안다
+        let parsedDateWithTime = new Date("2022-01-02T15:26:00");
         console.log(parsedDateWithTime);
         console.log(parsedDateWithTime.toISOString());
         console.log(parsedDateWithTime.toUTCString());
@@ -66,7 +66,7 @@ export class TimeController {
         console.log(d1.toDate());
 
         console.log("dayjs 날짜받기 ")
-        let d2 = dayjs("2022-05-10"); // 들어온 시간을 한국시간 5-10 00시로 인식을 했다 
+        let d2 = dayjs("2022-05-10");
         console.log(d2.toString());
         console.log(d2.toISOString());
         console.log(d2.format("YYYY-MM-DDTHH:mm:ss"));
@@ -74,7 +74,7 @@ export class TimeController {
         console.log(d2.hour());
 
         console.log("dayjs 날짜랑시간받기");
-        let d3 = dayjs("2022-05-10T20:00:00"); // 들어오는 시간이 한국시간인지를 안다 
+        let d3 = dayjs("2022-05-10T20:00:00");
         console.log(d3.toString());
         console.log(d3.format());
         console.log(d3.hour());
@@ -91,12 +91,12 @@ export class TimeController {
         console.log(dayjs(timeTestParam.datetime));
         console.log(dayjs(timeTestParam.datetime).toISOString());
         console.log(dayjs(timeTestParam.datetime).hour());
-
     }
 
 // 로컬에서 돌리면 내 계획대로 돌아간다 
-// curl -X POST http://172.27.112.1:8080/time -H 'Content-Type: application/json' -d '{"datetime":"2022-10-20T10:22:22"}'
-// curl -X POST http://172.27.112.1:8080/time -H 'Content-Type: application/json' -d '{"datetime":"2022-10-20T10:22:22Z"}'
-// curl -X POST http://172.27.112.1:8080/time -H 'Content-Type: application/json' -d '{"datetime":"2022-10-20T10:22:22+0900"}'
+// curl -X GET http://172.19.144.1:8080/time
+// curl -X POST http://172.19.144.1:8080/time -H 'Content-Type: application/json' -d '{"datetime":"2022-10-20T10:22:22"}'
+// curl -X POST http://172.19.144.1:8080/time -H 'Content-Type: application/json' -d '{"datetime":"2022-10-20T10:22:22Z"}'
+// curl -X POST http://172.19.144.1:8080/time -H 'Content-Type: application/json' -d '{"datetime":"2022-10-20T10:22:22+0900"}'
 
 }
