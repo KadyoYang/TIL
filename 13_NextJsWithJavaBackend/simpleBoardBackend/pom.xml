@@ -36,7 +36,7 @@
     <!-- QueryDSL 버전 -->
     <querydsl-version>4.3.1</querydsl-version>
     <!-- mysql connector 버전-->
-    <mysql-version>8.0.22</mysql-version>
+    <mysql-version>8.0.28</mysql-version>
     <!-- h2DB 버전-->
     <com.h2database-version>1.4.200</com.h2database-version>
     <!-- postgre sql 버전-->
