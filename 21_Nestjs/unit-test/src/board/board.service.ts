@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { AddBoardDto } from './dto/add-board.dto';
 import { Board } from './entity/board.entity';
 import { PostRepository } from './repository/post.repository';
+import { SomeService } from './some.service';
 
 @Injectable()
 export class BoardService {
@@ -11,6 +12,7 @@ export class BoardService {
     private readonly postRepository: PostRepository,
     @InjectRepository(Board)
     private readonly boardRepository: Repository<Board>,
+    private readonly someService: SomeService,
   ) {}
 
   async hello(name: string) {
@@ -31,5 +33,11 @@ export class BoardService {
 
   async getPosts(pageIdx: number, pageSize: number, boardId: number) {
     return await this.postRepository.getPosts(pageIdx, pageSize, boardId);
+  }
+
+  async doSome() {
+    this.someService.begging();
+    this.someService.greetings();
+    this.someService.insulting();
   }
 }

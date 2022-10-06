@@ -5,9 +5,12 @@ import {
   HttpException,
   InternalServerErrorException,
   Param,
+  Patch,
   Post,
+  Put,
   Query,
 } from "@nestjs/common";
+import { RequestGreetings } from "./app.dto";
 import { AppService } from "./app.service";
 import { MallArray, Malls } from "./const/con";
 import { DantoDanto, interinter } from "./dto/dto";
@@ -62,5 +65,115 @@ export class AppController {
   async getNumber(@Query() payload: GetNumber) {
     console.log(payload);
     return payload;
+  }
+
+  @Get("maple")
+  async getMaple() {
+    return true;
+  }
+
+  @Get("starcraft/get")
+  async startcrafget() {
+    return {
+      msg: "this is get",
+    };
+  }
+
+  @Get("starcraft/hakoshipda")
+  async startcraftHakoshipda(@Query() payload: RequestGreetings) {
+    const { greetings, howMany } = payload;
+    let result = "";
+    for (let i = 0; i < howMany; i++) {
+      result += greetings;
+    }
+    return {
+      greetings: greetings,
+      howMany: howMany,
+      result: result,
+    };
+  }
+  @Get("starcraft/hakoshipda/:count")
+  async startcraftHakoshipdacount(
+    @Query() payload: RequestGreetings,
+    @Param("count") count: number
+  ) {
+    const { greetings, howMany } = payload;
+    let result = "";
+    for (let i = 0; i < howMany; i++) {
+      result += greetings;
+    }
+    return {
+      greetings: greetings,
+      howMany: howMany,
+      result: result,
+      count: count,
+    };
+  }
+
+  @Post("csgo/post")
+  async csgoHakoshipdagetPost() {
+    return {
+      msg: "this is post",
+    };
+  }
+
+  @Post("csgo/hakoshipda")
+  async csgoHakoshipda(@Body() payload: RequestGreetings) {
+    const { greetings, howMany } = payload;
+    let result = "";
+    for (let i = 0; i < howMany; i++) {
+      result += greetings;
+    }
+    return {
+      greetings: greetings,
+      howMany: howMany,
+      result: result,
+    };
+  }
+
+  @Post("csgo/hakoshipda/:count")
+  async csgoHakoshipdacount(
+    @Body() payload: RequestGreetings,
+    @Param("count") count: number
+  ) {
+    const { greetings, howMany } = payload;
+    let result = "";
+    for (let i = 0; i < howMany; i++) {
+      result += greetings;
+    }
+    return {
+      greetings: greetings,
+      howMany: howMany,
+      result: result,
+      count: count,
+    };
+  }
+
+  @Patch("patch/hakoshipda")
+  async patchHakoshipda(@Body() payload: RequestGreetings) {
+    const { greetings, howMany } = payload;
+    let result = "";
+    for (let i = 0; i < howMany; i++) {
+      result += greetings;
+    }
+    return {
+      greetings: greetings,
+      howMany: howMany,
+      result: result,
+    };
+  }
+
+  @Put("put/hakoshipda")
+  async putHakoshipda(@Body() payload: RequestGreetings) {
+    const { greetings, howMany } = payload;
+    let result = "";
+    for (let i = 0; i < howMany; i++) {
+      result += greetings;
+    }
+    return {
+      greetings: greetings,
+      howMany: howMany,
+      result: result,
+    };
   }
 }

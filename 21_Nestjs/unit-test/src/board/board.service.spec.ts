@@ -1,53 +1,40 @@
 import { Test } from '@nestjs/testing';
-import { getCustomRepositoryToken, getRepositoryToken } from '@nestjs/typeorm';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { makeMockObject, MockObjectType } from './unit';
 import { Repository } from 'typeorm';
 import { BoardService } from './board.service';
 import { AddBoardDto } from './dto/add-board.dto';
 import { Board } from './entity/board.entity';
 import { Post } from './entity/post.entity';
 import { PostRepository } from './repository/post.repository';
+import { SomeService } from './some.service';
 
-const mockPostRepository = () => ({
-  save: jest.fn(),
-  find: jest.fn(),
-  findOne: jest.fn(),
-  getPosts: jest.fn(),
-});
-
-const mockBoardRepository = () => ({
-  create: jest.fn(),
-  save: jest.fn(),
-  find: jest.fn(),
-  findOne: jest.fn(),
-});
-
-type MockRepository<T = any> = Partial<Record<keyof Repository<T>, jest.Mock>>;
-type MockPostRepository = Partial<Record<keyof PostRepository, jest.Mock>>;
 describe('BoardService', () => {
   let boardService: BoardService;
-  let boardRepository: MockRepository<Board>;
-  let postRepository: MockPostRepository;
+  let boardRepository: MockObjectType<Repository<Board>>;
+  let postRepository: MockObjectType<PostRepository>;
+  let someService: MockObjectType<SomeService>;
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
-      providers: [
-        BoardService,
-        {
-          provide: PostRepository,
-          useValue: mockPostRepository(),
-        },
-        {
-          provide: getRepositoryToken(Board),
-          useValue: mockBoardRepository(),
-        },
-      ],
-    }).compile();
+      providers: [BoardService],
+    })
+      .useMocker((token) => {
+        console.log(token);
+        if (typeof token === 'string') {
+          // typeorm Repository
+          return makeMockObject(Repository);
+        }
+        // typeorm Custom Repository Class
+        // Injectable Class
+        return makeMockObject(token as any);
+      })
+      .compile();
 
     boardService = moduleRef.get<BoardService>(BoardService);
-    boardRepository = moduleRef.get<MockRepository<Board>>(
-      getRepositoryToken(Board),
-    );
+    boardRepository = moduleRef.get(getRepositoryToken(Board));
     postRepository = moduleRef.get(PostRepository);
+    someService = moduleRef.get(SomeService);
   });
 
   it('should be defined', () => {
@@ -86,8 +73,28 @@ describe('BoardService', () => {
     const result = await boardService.getPosts(3, 10, 5);
 
     expect(result.length).toBe(3);
-    console.log(result[1].title);
     expect(postRepository.getPosts).toHaveBeenCalledWith(3, 10, 5);
+  });
+
+  it('Custom PostRepository Mock 테스트', async () => {
+    postRepository.findAndCount.mockReturnValueOnce('hello');
+    postRepository.getPosts.mockReturnValueOnce('tototo');
+    expect(await postRepository.findAndCount()).toEqual('hello');
+    expect(await postRepository.getPosts()).toEqual('tototo');
+  });
+
+  it('BoardRepository Mock 테스트', async () => {
+    boardRepository.find.mockReturnValueOnce('bbb');
+    boardRepository.save.mockReturnValueOnce('ccc');
+    expect(await boardRepository.find()).toEqual('bbb');
+    expect(await boardRepository.save()).toEqual('ccc');
+  });
+
+  it('SomeService Mock 테스트', async () => {
+    someService.greetings.mockReturnValueOnce('hi');
+    someService.insulting.mockReturnValueOnce('the word');
+    expect(await someService.greetings()).toEqual('hi');
+    expect(await someService.insulting()).toEqual('the word');
   });
 });
 
