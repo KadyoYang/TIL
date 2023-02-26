@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpException,
   InternalServerErrorException,
@@ -175,5 +176,45 @@ export class AppController {
       howMany: howMany,
       result: result,
     };
+  }
+
+  @Get("blank")
+  async getget() {
+    console.log("1");
+  }
+
+  @Post("blank")
+  async postpost() {
+    console.log("2");
+  }
+
+  @Put("blank")
+  async putput() {
+    console.log("3");
+  }
+
+  @Patch("blank")
+  async patchpatch() {
+    console.log("4");
+  }
+
+  @Delete("blank")
+  async deletedelte() {
+    console.log("5");
+  }
+
+  @Get("object")
+  async getObject() {
+    return [];
+  }
+
+  @Get("list")
+  async getList() {
+    const a = [
+      { a: 123, b: "asd" },
+      { a: 234, b: "duu" },
+    ];
+    const b = ["a", "b", "c"];
+    return a;
   }
 }
