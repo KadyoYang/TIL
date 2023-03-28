@@ -1,0 +1,11 @@
+# 몽고디비 mongodb:id:pw@localhost:port/db명 으로 요청했는데 자꾸 authentication failed 뜬다 분명히 id 는 root일건데 그냥 이름만 root인건가 해서 봤더니 권한이 없는듯 
+mongo콘솔에서 
+use db명;
+db.createUser({
+  user: "새로운유저아이디",
+  pwd: "비번",
+  roles: [
+    { role: "dbOwner", db: "목표디비" },
+  ],
+});
+했더니 되었다 여기서 끝 더 이상 파지 않았다 
