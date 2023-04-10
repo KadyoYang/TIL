@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "ts-jenum": "^2.2.2"
   }
 }
