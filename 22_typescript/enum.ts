@@ -25,3 +25,5 @@ export class HttpStatus extends EnumType<HttpStatus>() {
 }
 
 console.log(HttpStatus.toHttpStatus(500).message);
+
+console.log(HttpStatus.values().map((v) => v.code));
