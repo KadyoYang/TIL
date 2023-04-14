@@ -27,3 +27,18 @@ export class HttpStatus extends EnumType<HttpStatus>() {
 console.log(HttpStatus.toHttpStatus(500).message);
 
 console.log(HttpStatus.values().map((v) => v.code));
+
+export enum PlainEnum {
+  NotFound = "404",
+  BadRequest = "400",
+  InternalError = "500",
+}
+
+const plainEnums = [
+  PlainEnum.NotFound,
+  PlainEnum.NotFound,
+  PlainEnum.InternalError,
+  PlainEnum.BadRequest,
+];
+
+console.log(plainEnums.join(","));
