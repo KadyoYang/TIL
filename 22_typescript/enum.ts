@@ -42,3 +42,13 @@ const plainEnums = [
 ];
 
 console.log(plainEnums.join(","));
+
+export const joinArrayValueWithComma = (queryObj: {
+  [key: string]: any;
+}): { [key: string]: any } => {
+  return Object.entries(queryObj).reduce((prev, curr) => {
+    return Object.assign(prev, {
+      [curr[0]]: Array.isArray(curr[1]) ? curr[1].join(",") : curr[1],
+    });
+  }, {} as { [key: string]: any });
+};
