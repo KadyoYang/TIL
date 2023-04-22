@@ -284,3 +284,33 @@ const cursor = db.collection('inventory').find({
 })
 // instock : [{qty: 5, warehouse: "B"}, {qty:99, warehouse:"A"}] 가 검색이 된다는 것이다
 ```
+
+<br />
+<hr />
+<br />
+
+# Array 에 대한 섭리를 느낄 수 있다 다른 링크
+
+`https://www.mongodb.com/community/forums/t/difference-between-elemmatch-and-by-querying-with-dot-notation/12079`
+
+```ts
+const example = [
+{ _id : 1 , array : [ { a : 1 , b : 2 } , { a : 3 , b : 3 } ] }
+{ _id : 2 , array : [ { a : 1 , b : 3 } , { a : 3 , b : 4 } ] }
+]
+
+find( { array.a : 1 , array.b : 3 }) // 두개 다 조회할것
+// 막 array.a 돌면서 1인거 있냐? 있다!
+// 막 array.b 돌면서 3인거 있냐? 있다!
+// 그러면 리턴
+
+find( { array : { $elemMatch : { a:1, b:3 }}} ) // _id 2인것을 조회할것
+find( { array : { $elemMatch : { b:3, a:1 }}} ) // _id 2인것을 조회할것
+// elemMatch를 쓰면 필드순서따위는 생각 안하는듯
+// 밑에 있는 예제는 필드 순서를 신경쓰네 ㅎㅎ
+
+find( { array : {a:1, b:3}} ) // {a:1, b:3} 인 element가지고 있는 id:2만 조회할것
+find( { array : {b:3, a:1}} ) // 이렇게 하면 객체안에 필드 순서 맞는게 없기때문에 아무것도 조회못함
+
+// 어느정도 섭리가 느껴진다
+```
