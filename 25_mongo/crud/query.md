@@ -314,3 +314,63 @@ find( { array : {b:3, a:1}} ) // 이렇게 하면 객체안에 필드 순서 맞
 
 // 어느정도 섭리가 느껴진다
 ```
+
+# 추가 자료
+
+`I need to match all documents where every element of an array matches some predicate. Can that be done?`
+http://www.askasya.com/post/matchallarrayelements/
+
+```js
+const testSet = [
+    {
+      "_id": {"$oid": "644244ee3977e2e1b57332ce"},
+      "order": [
+        {"status": "A", "qty": 7},
+        {"status": "B", "qty": 2},
+        {"status": "C", "qty": 1}
+      ]
+    },
+    {
+      "_id": {"$oid": "644244ee3977e2e1b57332cd"},
+      "order": [
+        {"status": "A","qty": 10},
+        {"status": "B","qty": 7}
+      ]
+    }
+]
+
+{$nor:[   {"order.status":"C"}    ]}
+{$nor:[   {"order.status":{$in: ["C"]}}    ]}
+// order<Array>.status
+// status에 C 가 없는 것만 리턴해준다
+
+// 음 elemMatch를 쓸거면 Array : {$elemMatch} 로 해야하고
+// 그냥 dotNotation으로 할거면 Array.column 으로 해야하나보다
+
+{"order.status": {$in: ["A", "B"]}}
+// A랑 B만 있으면 C가 있든 D가 있든 다 가져온다
+// {"order": {status : {$in: ["A", "B"]}}}
+// 이거는 동작을 안하는데 no result다 이거는 동작안한다
+
+{"order.status": {$nin: ["A", "B"]}}
+// 아무것도 안가져온다
+// 내가 테스트로 넣은 데이터에는 A, B가 다 있기때문
+// {"order": {status: {   $nin: ["A", "B"]}}}
+// 이것도 아무것도 안가져온다 위에있는거랑 문법적으로 다를게 없어보이기도하고..
+// 이것도 동작안한다
+
+
+{"order" : {$elemMatch: {status: {$nin: ["A", "B"]}}}}
+// A 랑 B 이외의 것이 하나라도 있는게 element에 있으면 반환한다
+// C 가 포함된 element가 있는 document를 리턴
+// 동작가정::내생각::order를 하나씩 도는데, order[n]status 가 [A, B] 에 없는게 있으면 리턴하라
+// {"order.status" : {$elemMatch: {$nin: ["A", "B"]}}}
+// 이거는 작동을 안해 아무것도 결과 안줘 그냥 order에다가 elemMatch를 해야겠다
+
+// 위에 있는 쿼리를 negate 하면
+{"$nor": [{"order" : {$elemMatch: {status: {$nin: ["A", "B"]}}}}]}
+// A, B 이외의 값이 있는것이 있으면 반환하지않는다 오직 A, B 만이다
+// 우리가 원하던 쿼리
+
+
+```
