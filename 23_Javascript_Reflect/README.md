@@ -40,3 +40,6 @@ Reflect.set();
 Reflect.setPrototypeOf();
 // 객체의 프로토타입을 지정하는 함수, 지정 성공 여부를 나타내는 boolean을 반환
 ```
+
+프로토타입 관련 자료
+http://kenneth-kin-lum.blogspot.com/2012/10/javascripts-pseudo-classical.html
