@@ -8,6 +8,7 @@ const run = async (func: () => void) => {
  */
 
 run(() => {
+  return;
   function createSomething(a: number, b: number) {
     // @ts-ignore
     this.sum = a + b;
@@ -22,6 +23,7 @@ run(() => {
 // 주어진 property의 property descriptoer를 리턴한다.
 // 있으면 object 이고 없으면 undefined 이다
 run(() => {
+  // return;
   const object1 = {
     a: 1,
     b: "asdsd",
@@ -31,7 +33,7 @@ run(() => {
   // prototype chain에서 정보 긁어 오는게 아니라 object1 그 자체에서 꺼내오는것
   // property Descriptor의 value writable enumrable configurable은 도대체 뭐냐
   // TypedPropertyDescriptor<T>
-  // value : 객체의 현재 값을 가지고있다!!!! i bruise easily
+  // value : 객체의 현재 값을 가지고있다!!!!
   // writable : 해당 프로퍼티에 새로운 값을 할당할수 있는지 여부를 boolean으로 가지고있다
   // enumerable : for in 이나 for of 또는 Object.keys에서 나타날지 안나타날지 여부를 가지고 있따
   // configurable : 유저가 writable이나 enumerable같은 세팅을 바꿀수 있는지 없는지 권한 여부를 가지고 있따

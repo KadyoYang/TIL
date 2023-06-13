@@ -77,7 +77,6 @@ run(() => {
 
   print(Reflect.hasMetadata(metadataKey, AntiHero, "sayHelloStatic")); // true
   print(Reflect.hasMetadata(metadataKey, AntiHero.prototype, "sayHelloStatic")); // false
-
   Reflect.defineMetadata(
     metadataKey,
     "onononPrototype",
@@ -87,6 +86,9 @@ run(() => {
 
   print(Reflect.hasMetadata(metadataKey, AntiHero, "sayHelloStatic")); // true
   print(Reflect.hasMetadata(metadataKey, AntiHero.prototype, "sayHelloStatic")); // true
+  print(
+    Reflect.hasMetadata(metadataKey, AntiHero.constructor, "sayHelloStatic")
+  );
 
   const antiHere = new AntiHero();
   print(Reflect.hasMetadata(metadataKey, antiHere, "sayHelloStatic")); // true
@@ -166,9 +168,35 @@ run(() => {
     methodA() {}
   }
   const my = new My();
+  const mi = new My();
 
   Reflect.defineMetadata(metakey, "hey~", my, "methodA");
   print(Reflect.getMetadata(metakey, my, "methodA")); // "hey~"
   print(Reflect.getMetadata(metakey, My.prototype, "methodA")); // undefined
   print(Reflect.getMetadata(metakey, My, "methodA")); // undefined
+  print(Reflect.getMetadata(metakey, mi, "methodA")); // undefined
+
+  // Reflect.defineMetadata(metakey, "hey~", Object.getPrototypeOf(my), "methodA");
+  // print(Reflect.getMetadata(metakey, my, "methodA")); // "hey~"
+  // print(Reflect.getMetadata(metakey, My.prototype, "methodA")); // "hey~"
+  // print(Reflect.getMetadata(metakey, My, "methodA")); // undefined
+
+  class Apple {
+    static sayHelloStatic() {}
+    sayHello() {}
+    name: string;
+  }
+
+  print(Reflect.defineMetadata("__taste__", "not bad", Apple.prototype));
+  print(Reflect.getMetadata("__taste__", Apple.prototype));
+  print(Reflect.getMetadata("__taste__", new Apple()));
+
+  Reflect.defineMetadata(
+    "__speakable__",
+    "과일은 말을 할 수 없어요",
+    Apple.prototype,
+    "sayHello"
+  );
+  print(Reflect.getMetadata("__speakable__", Apple.prototype, "sayHello")); // 'not bad'
+  print(Reflect.getMetadata("__speakable__", new Apple(), "sayHello")); // 'not bad'
 });
