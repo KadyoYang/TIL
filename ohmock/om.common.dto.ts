@@ -14,7 +14,7 @@ export interface PlayerDescription {
  *
  * [3][0] [3][1] [3][2] [3][3]
  */
-export type Fields = ("" | "O" | "X")[][];
+export type Fields = string[][];
 
 export interface Position2D {
   x: number;

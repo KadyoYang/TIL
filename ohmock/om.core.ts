@@ -17,7 +17,7 @@ function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
 }
 
-const getRandomPosition = (fields: Fields): Position2D => {
+const getRandomPosition = (fields: string[][]): Position2D => {
   const yMax = fields.length;
   const xMax = fields.flat().length / yMax;
   let x = 0,
@@ -34,7 +34,7 @@ const getRandomPosition = (fields: Fields): Position2D => {
   };
 };
 
-const printFields = (fields: Fields): void => {
+const printFields = (fields: string[][]): void => {
   let range = (n: number) => Array.from(Array(n).keys());
   const yMax = fields.length;
   const xMax = fields.flat().length / yMax;
@@ -56,8 +56,8 @@ const printFields = (fields: Fields): void => {
   }
 };
 
-export const createNewFields = (ySize: number, xSize: number): Fields => {
-  const result: Fields = [];
+export const createNewFields = (ySize: number, xSize: number): string[][] => {
+  const result: string[][] = [];
   for (let i = 0; i < ySize; i++) {
     const yArray: Array<"" | "O" | "X"> = [];
     for (let j = 0; j < xSize; j++) {
@@ -69,7 +69,7 @@ export const createNewFields = (ySize: number, xSize: number): Fields => {
 };
 
 export const checkWinningCondition = (
-  fields: Fields,
+  fields: string[][],
   lastPosition: Position2D
 ): boolean => {
   const yMax = fields.length;
@@ -115,8 +115,8 @@ export const checkWinningCondition = (
 };
 
 /** 판이 꽉 찼는지 확인한다. */
-export const isFieldsFull = (fields: Fields): boolean =>
-  fields.flat().every((v) => ["O", "X"].includes(v));
+export const isFieldsFull = (fields: string[][]): boolean =>
+  fields.flat().every((v: any) => ["O", "X"].includes(v));
 
 async function main() {
   console.log("시작");
@@ -157,7 +157,7 @@ async function mainComputer(): Promise<boolean> {
   let winnerExist = false;
   let position = { x: 0, y: 0 };
   while (!winnerExist) {
-    // await sleep(1);
+    await sleep(1000);
     position = toggle
       ? await op.dropTheStone(
           { fields, lastStonePosition: { x: 0, y: 0 } },
@@ -170,8 +170,8 @@ async function mainComputer(): Promise<boolean> {
     if (fields[position.y][position.x] !== "")
       throw new Error("rule violations detected");
     fields[position.y][position.x] = toggle ? "O" : "X";
-    // console.log("======================================");
-    // printFields(fields);
+    console.log("======================================");
+    printFields(fields);
     if (isFieldsFull(fields)) throw new Error("무승부");
     winnerExist = checkWinningCondition(fields, position);
     toggle = !toggle;
@@ -184,8 +184,10 @@ async function mainComputer(): Promise<boolean> {
   return toggle;
 }
 
-(async function () {
-  while (true) {
-    await mainComputer();
-  }
-})();
+mainComputer();
+
+// (async function () {
+//   while (true) {
+//     await mainComputer();
+//   }
+// })();

@@ -2,5 +2,9 @@
   "dependencies": {
     "reflect-metadata": "^0.1.13",
     "ts-jenum": "^2.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "typescript": "^5.1.3"
   }
 }
